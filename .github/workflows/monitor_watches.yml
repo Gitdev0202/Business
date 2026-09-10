@@ -1,0 +1,44 @@
+name: Horloge Koopjes Monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: watch-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run monitor
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          POSTCODE: ""
+          DISTANCE_KM: ""
+          ASKING_MIN_EUR: "400"
+          ASKING_MAX_EUR: "2500"
+          NEGOTIATION_BUFFER_EUR: "150"
+          MIN_MARGIN_EUR: "100"
+        run: python scripts/monitor_watches.py
+
+      - name: Commit bijgewerkte state
+        run: |
+          git config user.name "watch-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/seen_watches.json
+          git diff --cached --quiet || git commit -m "Update seen listings (watches)"
+          git push

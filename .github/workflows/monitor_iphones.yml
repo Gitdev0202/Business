@@ -1,0 +1,40 @@
+name: iPhone Marktplaats Monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iphone-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run monitor
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          POSTCODE: "9678"
+          DISTANCE_KM: "28"
+        run: python scripts/monitor_iphones.py
+
+      - name: Commit bijgewerkte state
+        run: |
+          git config user.name "iphone-monitor-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/seen_iphones.json
+          git diff --cached --quiet || git commit -m "Update seen listings (iPhones)"
+          git push

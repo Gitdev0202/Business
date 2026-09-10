@@ -27,8 +27,8 @@ jobs:
       - name: Run monitor
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          POSTCODE: ""
-          DISTANCE_KM: ""
+          POSTCODE: "9678"
+          DISTANCE_KM: "50"
           ASKING_MIN_EUR: "400"
           ASKING_MAX_EUR: "2500"
           NEGOTIATION_BUFFER_EUR: "150"

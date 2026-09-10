@@ -29,6 +29,10 @@ MAX_PAGES = 5  # ruim genoeg voor een dag vol advertenties in deze categorie
 MIN_PRICE_EUR = float(os.environ.get("MIN_PRICE_EUR", "250"))
 MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
 
+# Locatiefilter (optioneel). Leeg laten = heel Nederland.
+POSTCODE = os.environ.get("POSTCODE", "").strip()
+DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
+
 # priceType-waarden die altijd meetellen, ongeacht prijs:
 # FAST_BID   = "Bieden" (open bieden, geen vraagprijs, technisch 0 cent)
 # SEE_DESCRIPTION = prijs staat in de omschrijving (onbekend, dus liever
@@ -56,6 +60,9 @@ def fetch_page(offset: int) -> dict:
         f"&limit={PAGE_SIZE}&offset={offset}"
         f"&sortBy=SORT_INDEX&sortOrder=DECREASING"
     )
+    if POSTCODE and DISTANCE_KM:
+        distance_meters = int(float(DISTANCE_KM) * 1000)
+        params += f"&postcode={POSTCODE}&distanceMeters={distance_meters}"
     url = f"{SEARCH_URL}?{params}"
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
 

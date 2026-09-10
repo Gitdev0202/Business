@@ -28,6 +28,8 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           MIN_PRICE_EUR: "250"
+          POSTCODE: "9678"
+          DISTANCE_KM: "28"
         run: python scripts/monitor.py
 
       - name: Commit bijgewerkte state

@@ -211,7 +211,7 @@ def send_discord_notifications(listings: list) -> None:
         req = urllib.request.Request(
             DISCORD_WEBHOOK_URL,
             data=body,
-            headers={"Content-Type": "application/json"},
+            headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
             method="POST",
         )
         try:

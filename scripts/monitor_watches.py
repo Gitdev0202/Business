@@ -294,18 +294,16 @@ def is_excluded(listing: dict) -> bool:
 
 
 def evaluate_listing(listing: dict):
-    """Geeft (modelnaam, vraagprijs_centen, marktprijs_centen, marge_centen,
-    onderbouwing) terug als de advertentie een kansje is, anders None."""
+    """Geeft (modelnaam, vraagprijs_centen of None, marktprijs_centen,
+    marge_centen of None, onderbouwing) terug als de advertentie een kansje
+    is, anders None.
+
+    Bij "Bieden"/"Zie omschrijving" (ALWAYS_INCLUDE_PRICE_TYPES) is er geen
+    concrete vraagprijs, dus kan er geen marge berekend worden -- die
+    advertenties worden dan zonder marge-filter doorgestuurd (net als bij
+    de andere monitors), met vraagprijs_centen en marge_centen als None.
+    """
     if not is_posted_today(listing):
-        return None
-
-    price_info = listing.get("priceInfo", {})
-    price_type = price_info.get("priceType")
-    if price_type not in USABLE_PRICE_TYPES:
-        return None
-
-    asking_price_cents = price_info.get("priceCents", 0)
-    if not (ASKING_MIN_CENTS <= asking_price_cents <= ASKING_MAX_CENTS):
         return None
 
     if is_excluded(listing):
@@ -315,12 +313,24 @@ def evaluate_listing(listing: dict):
     if model_name is None:
         return None
 
+    price_info = listing.get("priceInfo", {})
+    price_type = price_info.get("priceType")
+
+    if price_type in ALWAYS_INCLUDE_PRICE_TYPES:
+        return model_name, None, avg_price_cents, None, rationale
+
+    if price_type not in USABLE_PRICE_TYPES:
+        return None
+
+    asking_price_cents = price_info.get("priceCents", 0)
+    if not (ASKING_MIN_CENTS <= asking_price_cents <= ASKING_MAX_CENTS):
+        return None
+
     margin_cents = avg_price_cents - asking_price_cents - NEGOTIATION_BUFFER_CENTS
     if margin_cents < MIN_MARGIN_CENTS:
         return None
 
     return model_name, asking_price_cents, avg_price_cents, margin_cents, rationale
-
 
 # --- State (dedup) -------------------------------------------------------
 
@@ -362,6 +372,22 @@ def fmt_euro(cents: int) -> str:
     return f"€{nl_style}"
 
 
+def format_price(listing: dict) -> str:
+    price_info = listing.get("priceInfo", {})
+    price_type = price_info.get("priceType")
+    price_cents = price_info.get("priceCents", 0)
+
+    if price_type == "FAST_BID":
+        return "Bieden (geen vraagprijs)"
+    if price_type == "SEE_DESCRIPTION":
+        return "Prijs in omschrijving"
+    if price_type == "MIN_BID":
+        return f"Bieden vanaf {fmt_euro(price_cents)}"
+    if price_type == "FIXED":
+        return f"{fmt_euro(price_cents)} (vraagprijs)"
+    return fmt_euro(price_cents)
+
+
 def listing_url(listing: dict) -> str:
     return f"https://www.marktplaats.nl{listing.get('vipUrl', '')}"
 
@@ -376,16 +402,25 @@ def listing_image(listing: dict):
     return url
 
 
-def build_embed(listing: dict, model_name: str, asking_cents: int, avg_cents: int, margin_cents: int, rationale: str) -> dict:
+def build_embed(listing: dict, model_name: str, asking_cents, avg_cents: int, margin_cents, rationale: str) -> dict:
     city = listing.get("location", {}).get("cityName", "Onbekende locatie")
+
+    if asking_cents is None:
+        # Bieden / Zie omschrijving: geen vraagprijs, dus geen marge te berekenen.
+        price_line = f"Vraagprijs: {format_price(listing)} — {city}\n"
+        margin_line = "⚠️ Geen vraagprijs bekend, dus geen marge te berekenen — vergelijk zelf met de geschatte marktprijs.\n"
+    else:
+        price_line = f"Vraagprijs: {fmt_euro(asking_cents)} — {city}\n"
+        margin_line = f"**Geschatte marge: ~{fmt_euro(margin_cents)}** (na €{NEGOTIATION_BUFFER_EUR:.0f} onderhandelbuffer)\n"
+
     embed = {
         "title": listing.get("title", "Horloge advertentie")[:256],
         "url": listing_url(listing),
         "description": (
             f"**{model_name}**\n"
-            f"Vraagprijs: {fmt_euro(asking_cents)} — {city}\n"
+            f"{price_line}"
             f"Geschatte marktprijs: ~{fmt_euro(avg_cents)}\n"
-            f"**Geschatte marge: ~{fmt_euro(margin_cents)}** (na €{NEGOTIATION_BUFFER_EUR:.0f} onderhandelbuffer)\n"
+            f"{margin_line}"
             f"📊 *Onderbouwing marktprijs:* {rationale}\n"
             f"⚠️ Schatting o.b.v. model, niet conditie/doos-papieren. Verifieer zelf echtheid en staat."
         ),
@@ -476,9 +511,11 @@ def main() -> int:
     if new_matches:
         send_discord_notifications(new_matches)
         for listing, model_name, asking_cents, avg_cents, margin_cents, rationale in new_matches:
+            asking_str = fmt_euro(asking_cents) if asking_cents is not None else format_price(listing)
+            margin_str = fmt_euro(margin_cents) if margin_cents is not None else "n.v.t. (geen vraagprijs)"
             print(
-                f"  -> [{model_name}] vraag {fmt_euro(asking_cents)} / markt ~{fmt_euro(avg_cents)} "
-                f"/ marge ~{fmt_euro(margin_cents)} | {listing_url(listing)}"
+                f"  -> [{model_name}] vraag {asking_str} / markt ~{fmt_euro(avg_cents)} "
+                f"/ marge ~{margin_str} | {listing_url(listing)}"
             )
 
     state = prune_state(state)

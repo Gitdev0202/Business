@@ -2,10 +2,13 @@
 PS5 Marktplaats monitor.
 
 Haalt nieuwe advertenties op uit de Marktplaats-categorie
-"Spelcomputers | Sony PlayStation 5" (id 2954), filtert op vandaag geplaatst
-+ minimumprijs, en stuurt alleen nog-niet-eerder-geziene advertenties naar
-Discord via een webhook. Gezien-ids worden bijgehouden in state/seen.json
-zodat elke run alleen de incrementele (nieuwe) advertenties meldt.
+"Spelcomputers | Sony PlayStation 5" (id 2954) EN de Games-categorie
+(id 2952, waar verkopers hun console geregeld per ongeluk in plaatsen),
+filtert op vandaag geplaatst + minimumprijs, weert losse spellen en
+accessoires (controllers, playseats, racestuur e.d.), en stuurt alleen
+nog-niet-eerder-geziene advertenties naar Discord via een webhook.
+Gezien-ids worden bijgehouden in state/seen.json zodat elke run alleen de
+incrementele (nieuwe) advertenties meldt.
 """
 
 import json
@@ -20,11 +23,18 @@ from datetime import datetime, timezone, timedelta
 # --- Configuratie ---------------------------------------------------------
 
 L1_CATEGORY_ID = 356   # Spelcomputers en Games
-L2_CATEGORY_ID = 2954  # Spelcomputers | Sony PlayStation 5
+# Naast de echte consolecategorie (2954) doorzoeken we ook de Games-
+# categorie (2952): verkopers zetten hun PS5-console daar geregeld per
+# ongeluk in (bleek uit live onderzoek: tientallen echte consoles per dag
+# die anders gemist zouden worden). De extra filters verderop (hardware-
+# signaal, bekende spel-titels, accessoire-taal) zorgen dat losse spellen
+# en accessoires uit die categorie niet per ongeluk meetellen.
+L2_CONSOLE_CATEGORY_ID = 2954
+L2_CATEGORY_IDS = [L2_CONSOLE_CATEGORY_ID, 2952]
 
 SEARCH_URL = "https://www.marktplaats.nl/lrp/api/search"
 PAGE_SIZE = 100
-MAX_PAGES = 5  # ruim genoeg voor een dag vol advertenties in deze categorie
+MAX_PAGES_PER_CATEGORY = 5  # ruim genoeg voor een dag vol advertenties
 
 MIN_PRICE_EUR = float(os.environ.get("MIN_PRICE_EUR", "250"))
 MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
@@ -60,9 +70,9 @@ USER_AGENT = (
 
 # --- Marktplaats -----------------------------------------------------------
 
-def fetch_page(offset: int) -> dict:
+def fetch_page(l2_category_id: int, offset: int) -> dict:
     params = (
-        f"l1CategoryId={L1_CATEGORY_ID}&l2CategoryId={L2_CATEGORY_ID}"
+        f"l1CategoryId={L1_CATEGORY_ID}&l2CategoryId={l2_category_id}"
         f"&limit={PAGE_SIZE}&offset={offset}"
         f"&sortBy=SORT_INDEX&sortOrder=DECREASING"
     )
@@ -85,12 +95,13 @@ def fetch_page(offset: int) -> dict:
 
 def fetch_all_listings() -> list:
     listings = []
-    for page in range(MAX_PAGES):
-        data = fetch_page(offset=page * PAGE_SIZE)
-        page_listings = data.get("listings", [])
-        listings.extend(page_listings)
-        if len(page_listings) < PAGE_SIZE:
-            break  # laatste pagina bereikt
+    for l2_category_id in L2_CATEGORY_IDS:
+        for page in range(MAX_PAGES_PER_CATEGORY):
+            data = fetch_page(l2_category_id, offset=page * PAGE_SIZE)
+            page_listings = data.get("listings", [])
+            listings.extend(page_listings)
+            if len(page_listings) < PAGE_SIZE:
+                break  # laatste pagina bereikt
     return listings
 
 
@@ -150,6 +161,112 @@ def is_actual_game_not_console(listing: dict) -> bool:
     return bool(attr_keys & GAME_ONLY_ATTRIBUTE_KEYS)
 
 
+# --- Extra checks specifiek voor advertenties buiten de echte console-
+#     categorie (voornamelijk de meegepakte Games-categorie, 2952) -------
+#
+# Binnen de officiele consolecategorie (2954) blijkt uit onderzoek dat
+# is_actual_game_not_console (het genre/spelersaantal-attribuut) een heel
+# betrouwbaar signaal is -- consoles hebben dat vrijwel nooit. Maar
+# advertenties die uit de Games-categorie komen zijn verplicht een genre/
+# spelersaantal in te vullen, ook als de verkoper eigenlijk een console
+# aanbiedt -- daar is dat signaal dus WEL onbetrouwbaar, en is onderstaande
+# striktere check nodig:
+# - HARDWARE_SIGNAL_PATTERN: staat er iets over de CONSOLE zelf (opslag-
+#   grootte, "Digital/Disc Edition", "console")? Dan is dit hoogst-
+#   waarschijnlijk een echte (verkeerd-gecategoriseerde) console, ook als
+#   er toevallig ook een specifiek spel genoemd wordt. ("Slim"/"Pro" staan
+#   hier bewust NIET bij: die woorden komen net zo goed voor in accessoire-
+#   titels als "hoesje voor de PS5 Pro".)
+# - LEADING_ACCESSORY_PATTERN / ACCESSORY_FOR_PATTERN: "PS5 Controller" of
+#   "hoesje voor PS5" -- PS5 is hier een merk-/compatibiliteitsvoorvoegsel
+#   voor een accessoire, geen consolenaam. Onvoorwaardelijk uitgesloten,
+#   want dit patroon is te specifiek om per ongeluk een console te raken.
+# - Zonder hardware-signaal: begint de titel met "PS5"/"PlayStation 5"?
+#   Dan nemen we aan dat de console zelf het onderwerp is (bv. "PS5 met 4
+#   games en 2 controllers").
+# - Anders: losse accessoire-taal of een bekende specifieke spel-titel
+#   betekent dat het hoogstwaarschijnlijk GEEN console-advertentie is.
+HARDWARE_SIGNAL_PATTERN = re.compile(
+    r"\b\d{2,4}\s?(gb|tb)\b|console|spelcomputer|behuizing"
+    r"|digital edition|disc edition|schijfloos",
+    re.IGNORECASE,
+)
+
+# Onvoorwaardelijk: dit zijn producten, geen PS5-consoles, punt uit.
+HARD_ACCESSORY_KEYWORDS = [
+    "playseat", "racestuur", "race stuur", "logitech g29", "logitech g923",
+    "thrustmaster",
+]
+
+_ACCESSORY_NOUNS = r"controllers?|dualsense|headsets?|koptelefoons?|hoes(je)?|laders?|opladers?|standaards?|koelers?|covers?|skins?|cases?"
+
+# "PS5 Controller ..." / "PlayStation 5 Hoesje ..." -- PS5 direct gevolgd
+# door een accessoire-zelfstandig naamwoord.
+LEADING_ACCESSORY_PATTERN = re.compile(
+    rf"^\s*(sony\s+)?(ps\s?5|playstation\s?5)\s+({_ACCESSORY_NOUNS})\b",
+    re.IGNORECASE,
+)
+# "Controller voor PS5" / "hoesje for Playstation 5" -- omgekeerde volgorde.
+ACCESSORY_FOR_PATTERN = re.compile(
+    rf"({_ACCESSORY_NOUNS})\s*(voor|for)\s*(de\s*)?(ps\s?5|playstation\s?5)",
+    re.IGNORECASE,
+)
+# Titel begint met "PS5"/"Sony PlayStation 5" -- waarschijnlijk de console
+# zelf het onderwerp, ook zonder hardware-details (bv. "PS5 met games").
+LEADS_WITH_PS5_PATTERN = re.compile(r"^\s*(sony\s+)?(ps\s?5|playstation\s?5)\b", re.IGNORECASE)
+# Losse accessoire-woorden, ongeacht positie in de titel/omschrijving.
+ACCESSORY_WORDS_PATTERN = re.compile(rf"\b({_ACCESSORY_NOUNS})\b", re.IGNORECASE)
+
+# Kleine, bewust beperkte lijst actuele/bekende spellen die vaak zonder
+# ingevuld genre-attribuut worden aangeboden. Later eenvoudig uit te
+# breiden als er nieuwe titels opvallen (bv. na een melding die eigenlijk
+# een spel bleek te zijn).
+KNOWN_GAME_TITLE_HINTS = [
+    "call of duty", "ea sports fc", "fifa", "grand theft auto",
+    "gta 6", "gta6", "gta v", "gta5", "ghost of yotei", "mario kart",
+    "zelda", "spider-man", "spiderman", "sniper elite", "assassin's creed",
+    "resident evil", "god of war", "horizon forbidden west", "final fantasy",
+]
+
+
+def has_console_hardware_signal(listing: dict) -> bool:
+    haystack = f"{listing.get('title', '')} {listing.get('description', '')}"
+    return bool(HARDWARE_SIGNAL_PATTERN.search(haystack))
+
+
+def is_likely_accessory_or_specific_game_only(listing: dict) -> bool:
+    title = listing.get("title", "")
+    haystack = f"{title} {listing.get('description', '')}"
+    haystack_lower = haystack.lower()
+
+    if any(kw in haystack_lower for kw in HARD_ACCESSORY_KEYWORDS):
+        return True  # onvoorwaardelijk: dit is geen console
+    if LEADING_ACCESSORY_PATTERN.search(title):
+        return True  # "PS5 Controller/Hoesje/..."
+    if ACCESSORY_FOR_PATTERN.search(haystack):
+        return True  # "Controller voor PS5"
+
+    if has_console_hardware_signal(listing):
+        return False  # er staat genoeg over de console zelf bekend
+
+    if LEADS_WITH_PS5_PATTERN.search(title):
+        return False  # titel gaat duidelijk over de console zelf
+
+    if ACCESSORY_WORDS_PATTERN.search(haystack):
+        return True
+    if any(hint in haystack_lower for hint in KNOWN_GAME_TITLE_HINTS):
+        return True
+    return False
+
+
+def is_relevant_by_category(listing: dict) -> bool:
+    """Kiest de juiste (soepele of strengere) check op basis van waar de
+    advertentie daadwerkelijk in staat -- zie de uitleg hierboven."""
+    if listing.get("categoryId") == L2_CONSOLE_CATEGORY_ID:
+        return not is_actual_game_not_console(listing)
+    return not is_likely_accessory_or_specific_game_only(listing)
+
+
 def passes_price_filter(listing: dict) -> bool:
     price_info = listing.get("priceInfo", {})
     price_type = price_info.get("priceType")
@@ -162,7 +279,7 @@ def passes_price_filter(listing: dict) -> bool:
 
 def is_relevant(listing: dict) -> bool:
     return (
-        not is_actual_game_not_console(listing)
+        is_relevant_by_category(listing)
         and is_posted_today(listing)
         and matches_title(listing)
         and passes_price_filter(listing)

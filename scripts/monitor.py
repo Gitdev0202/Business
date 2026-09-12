@@ -40,6 +40,12 @@ DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
 ALWAYS_INCLUDE_PRICE_TYPES = {"FAST_BID", "SEE_DESCRIPTION"}
 
 TITLE_PATTERN = re.compile(r"ps ?5|playstation ?5", re.IGNORECASE)
+# Kandidaatwoord (9-13 letters, past bij de lengte van "playstation" +/- een
+# paar typefouten) dat direct gevolgd wordt door "5" -- dezelfde nabijheids-
+# eis als TITLE_PATTERN, maar dan met ruimte voor een fuzzy-match op het
+# woord zelf. Voorkomt dat een losse "5" ergens anders in de titel (bv.
+# "PlayStation 3 5-delige bundel") per ongeluk meetelt.
+FUZZY_CANDIDATE_PATTERN = re.compile(r"\b([a-zA-Z]{9,13})\s*5\b")
 
 STATE_FILE = os.path.join(os.path.dirname(__file__), "..", "state", "seen.json")
 PRUNE_AFTER_DAYS = 21  # oude entries opruimen zodat het bestand niet oneindig groeit
@@ -94,8 +100,54 @@ def is_posted_today(listing: dict) -> bool:
     return listing.get("date") == "Vandaag"
 
 
+def _levenshtein(a: str, b: str) -> int:
+    """Edit-afstand tussen twee strings (aantal invoegingen/verwijderingen/
+    vervangingen om van a naar b te komen). Pure Python, geen dependency."""
+    if a == b:
+        return 0
+    prev_row = list(range(len(b) + 1))
+    for i, char_a in enumerate(a, start=1):
+        curr_row = [i] + [0] * len(b)
+        for j, char_b in enumerate(b, start=1):
+            curr_row[j] = min(
+                prev_row[j] + 1,       # verwijdering
+                curr_row[j - 1] + 1,   # invoeging
+                prev_row[j - 1] + (char_a != char_b),  # vervanging (0 als gelijk)
+            )
+        prev_row = curr_row
+    return prev_row[-1]
+
+
 def matches_title(listing: dict) -> bool:
-    return bool(TITLE_PATTERN.search(listing.get("title", "")))
+    title = listing.get("title", "")
+    if TITLE_PATTERN.search(title):
+        return True
+
+    # Soepelere vangnet-check voor typefouten in "playstation" (bv.
+    # "playstaion", "plastation"): tolereer tot 2 tekens verschil, maar
+    # alleen als het kandidaatwoord ook echt direct gevolgd wordt door "5"
+    # (net als bij de strikte check) -- zo telt een losse "5" die ergens
+    # anders in de titel staat (bv. "PlayStation 3 5-delige bundel") niet
+    # per ongeluk mee.
+    for match in FUZZY_CANDIDATE_PATTERN.finditer(title.lower()):
+        if _levenshtein(match.group(1), "playstation") <= 2:
+            return True
+    return False
+
+
+# Attributen die alleen bij een los SPEL voorkomen, nooit bij een console
+# (bv. "genre": "Vechten", "numberOfPlayers": "2 spelers"). Marktplaats'
+# l2CategoryId-parameter is soms geen harde filter -- af en toe glipt een
+# los spel toch mee, ondanks de titel-/categoriefilter. Dit signaal is
+# precies genoeg om zo'n spel te weren, zonder het risico dat een echte
+# PS5-console die toevallig in een net iets andere categorie staat wordt
+# gemist (een harde categoryId-eis zou dat risico wel lopen).
+GAME_ONLY_ATTRIBUTE_KEYS = {"genre", "numberOfPlayers", "multiplayerPossibilities"}
+
+
+def is_actual_game_not_console(listing: dict) -> bool:
+    attr_keys = {attr.get("key") for attr in listing.get("extendedAttributes", [])}
+    return bool(attr_keys & GAME_ONLY_ATTRIBUTE_KEYS)
 
 
 def passes_price_filter(listing: dict) -> bool:
@@ -109,7 +161,12 @@ def passes_price_filter(listing: dict) -> bool:
 
 
 def is_relevant(listing: dict) -> bool:
-    return is_posted_today(listing) and matches_title(listing) and passes_price_filter(listing)
+    return (
+        not is_actual_game_not_console(listing)
+        and is_posted_today(listing)
+        and matches_title(listing)
+        and passes_price_filter(listing)
+    )
 
 
 # --- State (dedup) -------------------------------------------------------

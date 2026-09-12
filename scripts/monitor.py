@@ -5,10 +5,10 @@ Haalt nieuwe advertenties op uit de Marktplaats-categorie
 "Spelcomputers | Sony PlayStation 5" (id 2954) EN de Games-categorie
 (id 2952, waar verkopers hun console geregeld per ongeluk in plaatsen),
 filtert op vandaag geplaatst + minimumprijs, weert losse spellen en
-accessoires (controllers, playseats, racestuur e.d.), en stuurt alleen
-nog-niet-eerder-geziene advertenties naar Discord via een webhook.
-Gezien-ids worden bijgehouden in state/seen.json zodat elke run alleen de
-incrementele (nieuwe) advertenties meldt.
+accessoires (controllers, playseats, racestuur e.d.) en gereserveerde
+advertenties, en stuurt alleen nog-niet-eerder-geziene advertenties naar
+Discord via een webhook. Gezien-ids worden bijgehouden in state/seen.json
+zodat elke run alleen de incrementele (nieuwe) advertenties meldt.
 """
 
 import json
@@ -277,9 +277,21 @@ def passes_price_filter(listing: dict) -> bool:
     return price_cents >= MIN_PRICE_CENTS
 
 
+def is_reserved(listing: dict) -> bool:
+    # Marktplaats geeft dit als los datavel mee ("reserved": true/false) --
+    # betrouwbaarder dan alleen op het woord zoeken. Het woord zelf checken
+    # we er nog wel bij als extra vangnet, voor het geval dat veld een keer
+    # niet (op tijd) is bijgewerkt.
+    if listing.get("reserved") is True:
+        return True
+    haystack = f"{listing.get('title', '')} {listing.get('description', '')}"
+    return "gereserveerd" in haystack.lower()
+
+
 def is_relevant(listing: dict) -> bool:
     return (
         is_relevant_by_category(listing)
+        and not is_reserved(listing)
         and is_posted_today(listing)
         and matches_title(listing)
         and passes_price_filter(listing)

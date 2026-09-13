@@ -5,10 +5,12 @@ Haalt nieuwe advertenties op uit de Marktplaats-categorie
 "Spelcomputers | Sony PlayStation 5" (id 2954) EN de Games-categorie
 (id 2952, waar verkopers hun console geregeld per ongeluk in plaatsen),
 filtert op vandaag geplaatst + minimumprijs, weert losse spellen en
-accessoires (controllers, playseats, racestuur e.d.) en gereserveerde
-advertenties, en stuurt alleen nog-niet-eerder-geziene advertenties naar
-Discord via een webhook. Gezien-ids worden bijgehouden in state/seen.json
-zodat elke run alleen de incrementele (nieuwe) advertenties meldt.
+accessoires (controllers, playseats, racestuur e.d.), en stuurt alleen
+nog-niet-eerder-geziene advertenties naar Discord via een webhook.
+Gereserveerde advertenties worden WEL getoond (de reservering kan nog
+afvallen), maar met een duidelijk "Gereserveerd"-label erbij.
+Gezien-ids worden bijgehouden in state/seen.json zodat elke run alleen de
+incrementele (nieuwe) advertenties meldt.
 """
 
 import json
@@ -281,7 +283,9 @@ def is_reserved(listing: dict) -> bool:
     # Marktplaats geeft dit als los datavel mee ("reserved": true/false) --
     # betrouwbaarder dan alleen op het woord zoeken. Het woord zelf checken
     # we er nog wel bij als extra vangnet, voor het geval dat veld een keer
-    # niet (op tijd) is bijgewerkt.
+    # niet (op tijd) is bijgewerkt. Gereserveerde advertenties worden NIET
+    # uitgesloten -- de reservering kan nog afvallen -- maar dit signaal
+    # wordt gebruikt om de Discord-melding van een label te voorzien.
     if listing.get("reserved") is True:
         return True
     haystack = f"{listing.get('title', '')} {listing.get('description', '')}"
@@ -291,7 +295,6 @@ def is_reserved(listing: dict) -> bool:
 def is_relevant(listing: dict) -> bool:
     return (
         is_relevant_by_category(listing)
-        and not is_reserved(listing)
         and is_posted_today(listing)
         and matches_title(listing)
         and passes_price_filter(listing)
@@ -371,11 +374,15 @@ def listing_image(listing: dict) -> str | None:
 
 def build_embed(listing: dict) -> dict:
     city = listing.get("location", {}).get("cityName", "Onbekende locatie")
+    reserved = is_reserved(listing)
+    title = listing.get("title", "PS5 advertentie")
+    if reserved:
+        title = f"🔒 [GERESERVEERD] {title}"
     embed = {
-        "title": listing.get("title", "PS5 advertentie")[:256],
+        "title": title[:256],
         "url": listing_url(listing),
         "description": f"{format_price(listing)} — {city}",
-        "color": 0x2ECC71,
+        "color": 0xE67E22 if reserved else 0x2ECC71,
     }
     image = listing_image(listing)
     if image:

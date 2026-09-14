@@ -27,7 +27,7 @@ jobs:
       - name: Run monitor
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          POSTCODE: "9678"
+          POSTCODE: ${{ secrets.POSTCODE }}
           DISTANCE_KM: "28"
         run: python scripts/monitor_iphones.py
 

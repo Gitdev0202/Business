@@ -9,7 +9,7 @@ accessoires (controllers, playseats, racestuur e.d.), en stuurt alleen
 nog-niet-eerder-geziene advertenties naar Discord via een webhook.
 Gereserveerde advertenties worden WEL getoond (de reservering kan nog
 afvallen), maar met een duidelijk "Gereserveerd"-label erbij.
-Gezien-ids worden bijgehouden in state/seen.json zodat elke run alleen de
+Gezien-ids worden bijgehouden in state/seen_ps5.json zodat elke run alleen de
 incrementele (nieuwe) advertenties meldt.
 """
 
@@ -59,7 +59,7 @@ TITLE_PATTERN = re.compile(r"ps ?5|playstation ?5", re.IGNORECASE)
 # "PlayStation 3 5-delige bundel") per ongeluk meetelt.
 FUZZY_CANDIDATE_PATTERN = re.compile(r"\b([a-zA-Z]{9,13})\s*5\b")
 
-STATE_FILE = os.path.join(os.path.dirname(__file__), "..", "state", "seen.json")
+STATE_FILE = os.path.join(os.path.dirname(__file__), "..", "state", "seen_ps5.json")
 PRUNE_AFTER_DAYS = 21  # oude entries opruimen zodat het bestand niet oneindig groeit
 
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()

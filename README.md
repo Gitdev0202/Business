@@ -65,8 +65,16 @@ waarde.
 
 1. Ga naar [github.com/new](https://github.com/new) (maak gratis een account
    als je die nog niet hebt).
-2. Repository-naam: bv. `ps5-marktplaats-monitor`. Zet 'm op **Private**
-   (aanbevolen, hoeft niet openbaar te zijn). Geen README/gitignore
+2. Repository-naam: bv. `ps5-marktplaats-monitor`. Zet 'm op **Public**.
+   Dit is belangrijk: met meerdere monitors die elke 5 minuten draaien loop
+   je bij een **Private** repo binnen enkele dagen tegen de gratis limiet
+   van 2.000 Actions-minuten per maand aan (elke run telt mee als minimaal
+   1 volledige minuut, ook al duurt hij maar 15-30 seconden) — dat heeft
+   eerder ook daadwerkelijk tot mislukte runs geleid. Publieke repo's
+   krijgen onbeperkte gratis Actions-minuten. Er staan geen wachtwoorden,
+   tokens of de webhook-URL zelf in de code (die staan alleen als
+   repository-secret, zie stap 3), dus publiek zetten is hier veilig. Geen
+   README/gitignore
    aanvinken. Klik **Create repository**.
 3. Op de lege repo-pagina klik je op **"uploading an existing file"**.
 4. Sleep de hele inhoud van deze map
@@ -109,9 +117,15 @@ hoeft te doen.
   advertenties) blijft de repo "actief" zodra er iets nieuws gevonden
   wordt; is er lang niets nieuws, log dan af en toe even in Actions om te
   checken dat de workflow nog aanstaat.
-- **Kosten**: gratis. GitHub Actions geeft gratis accounts 2.000
-  build-minuten per maand; deze check duurt ~15-20 seconden per run, dus
-  bij elke 5 minuten (~8.640 runs/maand) blijf je ruim binnen die grens.
+- **Kosten**: gratis, zolang de repo **Public** blijft — publieke repo's
+  krijgen onbeperkte gratis GitHub Actions-minuten, ook met meerdere
+  monitors die elk elke 5 minuten draaien. Zet de repo NIET terug op
+  Private: GitHub telt elke run als minimaal 1 volledige minuut (ook al
+  duurt de check zelf maar 15-30 seconden), en met 5 monitors × elke 5
+  minuten loop je dan binnen enkele dagen tegen de gratis limiet van 2.000
+  minuten/maand aan — dat is precies wat er eerder is gebeurd (rond
+  12:39-13:01 op 14-9-2026 faalden alle 5 monitors tegelijk doordat de
+  minuten op waren).
 - **Aanpassen**: alle instellingen (minimumprijs, categorie, titel-check)
   staan bovenin `scripts/monitor.py`. Wijzig het bestand in GitHub (potlood-
   icoon bij het bestand) en commit — de volgende run gebruikt automatisch de

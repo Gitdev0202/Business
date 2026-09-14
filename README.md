@@ -1,12 +1,27 @@
-# PS5 Marktplaats Monitor
+# Marktplaats Monitor
 
-Checkt elke 5 minuten de Marktplaats-categorie **"Spelcomputers | Sony
-PlayStation 5"** op nieuwe advertenties die vandaag zijn geplaatst, en stuurt
-alleen de advertenties die je nog niet eerder hebt gezien naar een Discord-
-kanaal. Draait volledig in de cloud via GitHub Actions — je pc hoeft niet aan
-te staan.
+Checkt elke 5 minuten verschillende Marktplaats-categorieën op nieuwe
+advertenties die vandaag zijn geplaatst, en stuurt alleen de advertenties die
+je nog niet eerder hebt gezien naar een Discord-kanaal. Draait volledig in de
+cloud via GitHub Actions — je pc hoeft niet aan te staan.
 
-## Hoe het filtert
+## Overzicht van alle monitors
+
+| Monitor | Workflow | Script | State-bestand | Categorie |
+| --- | --- | --- | --- | --- |
+| PS5 | `monitor.yml` | `scripts/monitor.py` | `state/seen_ps5.json` | Spelcomputers \| Sony PlayStation 5 (2954) |
+| iPhone | `monitor_iphones.yml` | `scripts/monitor_iphones.py` | `state/seen_iphones.json` | Mobiele telefoons \| Apple iPhone (1953) |
+| MacBook | `monitor_macbooks.yml` | `scripts/monitor_macbooks.py` | `state/seen_macbooks.json` | Apple Macbooks (325) |
+| Nintendo Switch 2 | `monitor_switch2.yml` | `scripts/monitor_switch2.py` | `state/seen_switch2.json` | Spelcomputers \| Nintendo Switch (2943) |
+| Horloges | `monitor_watches.yml` | `scripts/monitor_watches.py` | `state/seen_watches.json` | Horloges \| Heren (1831) |
+
+Elke monitor draait als losse GitHub Actions workflow, gebruikt dezelfde
+`DISCORD_WEBHOOK_URL`-secret, en houdt zijn eigen state-bestand bij zodat
+monitors elkaar niet beïnvloeden. De sectie hieronder beschrijft de
+PS5-monitor als voorbeeld — het volledige filtergedrag van elke monitor staat
+in de docstring bovenin het bijbehorende script.
+
+## Hoe de PS5-monitor filtert
 
 - **Categorie**: alleen de officiële Marktplaats-categorie voor PS5-consoles
   (id 2954). Dit sluit losse accessoires en losse games automatisch uit,
@@ -25,8 +40,8 @@ te staan.
   waarbij de prijs "in de omschrijving" staat — die worden altijd getoond
   omdat de prijs dan niet betrouwbaar te filteren is.
 - **Geen duplicaten**: elke advertentie-id die ooit gemeld is, staat in
-  `state/seen.json` en wordt nooit opnieuw gemeld. Entries ouder dan 21 dagen
-  worden automatisch opgeruimd zodat het bestand niet blijft groeien.
+  `state/seen_ps5.json` en wordt nooit opnieuw gemeld. Entries ouder dan 21
+  dagen worden automatisch opgeruimd zodat het bestand niet blijft groeien.
 
 Wil je dit later aanscherpen (bv. alleen PS5 Slim, of een lagere/hogere
 prijsgrens)? Pas `scripts/monitor.py` aan (zie de constanten bovenin) of zet

@@ -27,6 +27,9 @@ jobs:
       - name: Run monitor
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          # 50km straal (bewust gekozen ondanks dat dit weinig aanbod geeft
+          # voor de huidige curated modellenlijst -- leeg laten zou heel
+          # Nederland betekenen).
           POSTCODE: ${{ secrets.POSTCODE }}
           DISTANCE_KM: "50"
           ASKING_MIN_EUR: "400"

@@ -67,6 +67,10 @@ MIN_MARGIN_CENTS = int(MIN_MARGIN_EUR * 100)
 # "Zie omschrijving" (SEE_DESCRIPTION) geven geen bruikbaar getal.
 USABLE_PRICE_TYPES = {"FIXED", "MIN_BID"}
 
+# priceTypes zonder concrete vraagprijs: geen marge te berekenen, dus worden
+# deze zonder marge-filter doorgestuurd (zie evaluate_listing()).
+ALWAYS_INCLUDE_PRICE_TYPES = {"FAST_BID", "SEE_DESCRIPTION"}
+
 # --- Curated modellenlijst -------------------------------------------------
 # (label, match-functie, geschatte gemiddelde marktprijs in centen)
 #

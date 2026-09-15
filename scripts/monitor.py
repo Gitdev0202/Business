@@ -449,6 +449,15 @@ def main() -> int:
         new_matches.append(listing)
         state[item_id] = {"firstSeen": now_iso, "title": listing.get("title", "")}
 
+    if not (POSTCODE and DISTANCE_KM):
+        print(
+            "[WAARSCHUWING] Geen locatiefilter actief (POSTCODE en/of "
+            "DISTANCE_KM ontbreken/leeg) -- er wordt over HEEL NEDERLAND "
+            "gezocht i.p.v. lokaal. Check of de 'POSTCODE'-secret bestaat "
+            "onder Settings > Secrets and variables > Actions.",
+            file=sys.stderr,
+        )
+
     print(
         f"Opgehaald: {len(listings)} advertenties uit categorie PS5. "
         f"Nieuw en relevant: {len(new_matches)}."

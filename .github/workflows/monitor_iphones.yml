@@ -1,11 +1,8 @@
 name: iPhone Marktplaats Monitor
 
 on:
-  # Automatische planning tijdelijk uitgeschakeld (non-actief).
-  # Verwijder de "#" voor de twee regels hieronder om 'm weer elke 5
-  # minuten te laten draaien.
-  # schedule:
-  #   - cron: "*/5 * * * *"
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 permissions:

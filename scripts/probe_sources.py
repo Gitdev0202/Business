@@ -12,6 +12,7 @@ Wordt alleen handmatig gedraaid (workflow_dispatch), post niets naar
 Discord en schrijft geen state.
 """
 
+import json
 import re
 import urllib.request
 import urllib.error
@@ -58,6 +59,25 @@ def fetch(url: str) -> tuple:
         return None, f"[verbindingsfout] {exc}"
 
 
+AUTOSCOUT_SLUG_CANDIDATES = [
+    "toyota/aygo", "toyota/yaris", "toyota/auris", "kia/picanto", "hyundai/i10",
+    "opel/corsa", "opel/astra", "suzuki/swift", "volkswagen/polo", "ford/fiesta",
+    "peugeot/208", "citroen/c3", "renault/clio", "smart/fortwo", "fiat/500",
+    "fiat/panda", "seat/ibiza", "seat/mii", "skoda/fabia", "skoda/citigo",
+    "honda/jazz", "mazda/2", "citroen/c1", "peugeot/107", "nissan/micra",
+    "nissan/note", "dacia/sandero", "volvo/v40", "mini/cooper", "bmw/1er",
+    "audi/a1", "mercedes-benz/a-klasse", "mitsubishi/space-star", "chevrolet/matiz",
+]
+
+
+def check_autoscout_slugs() -> None:
+    print("\n=== AutoScout24 url-slug check (merk/model) ===")
+    for slug in AUTOSCOUT_SLUG_CANDIDATES:
+        status, body = fetch(f"https://www.autoscout24.nl/lst/{slug}")
+        has_items = bool(body and '"itemListElement"' in body and '"numberOfItems":0' not in body)
+        print(f"  {slug}: status={status}, lengte={len(body) if body else 0}, heeft resultaten? {has_items}")
+
+
 def main() -> int:
     for name, urls in SOURCES.items():
         print(f"\n=== {name} ===")
@@ -77,6 +97,50 @@ def main() -> int:
         if not has_data and not has_block and body:
             print("  -> geen duidelijk signaal; waarschijnlijk JS-rendering nodig (lege shell)")
 
+        if body:
+            block_match = BLOCK_SIGNALS.search(body)
+            if block_match:
+                ctx_start = max(0, block_match.start() - 80)
+                print(f"  context rond block-signaal: ...{body[ctx_start:block_match.start() + 120]!r}...")
+
+            ld_blocks = re.findall(
+                r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+                body, re.DOTALL | re.IGNORECASE,
+            )
+            print(f"  aantal JSON-LD <script>-blokken gevonden: {len(ld_blocks)}")
+
+            # Probeer één volledig listing-item te parsen en pretty-printen
+            # i.p.v. een ruwe tekst-truncatie, zodat écht alle velden
+            # (bouwjaar, verkoper, etc.) zichtbaar worden.
+            printed_item = False
+            for block in ld_blocks:
+                try:
+                    data = json.loads(block)
+                except json.JSONDecodeError:
+                    continue
+                graph = data.get("@graph", [data]) if isinstance(data, dict) else data
+                for node in graph:
+                    item_list = (node.get("mainEntity") or {}).get("itemListElement") if isinstance(node, dict) else None
+                    if item_list:
+                        first_item = item_list[0].get("item")
+                        print("  --- volledig eerste listing-item (pretty-printed) ---")
+                        print("  " + json.dumps(first_item, indent=2, ensure_ascii=False).replace("\n", "\n  "))
+                        printed_item = True
+                        break
+                if printed_item:
+                    break
+            if not printed_item:
+                for i, block in enumerate(ld_blocks[:1]):
+                    print(f"  --- JSON-LD blok {i} (eerste 1000 tekens, geen itemList gevonden) ---")
+                    print(f"  {block.strip()[:1000]}")
+
+            price_match = re.search(r"\"price\"\s*:\s*\"?\d+", body)
+            if price_match:
+                ctx_start = max(0, price_match.start() - 300)
+                print(f"  --- context rond eerste 'price'-veld (600 tekens) ---")
+                print(f"  {body[ctx_start:ctx_start + 600]!r}")
+
+    check_autoscout_slugs()
     return 0
 
 

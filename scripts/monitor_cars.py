@@ -16,11 +16,19 @@ beperkte de referentiegroep tot een klein deel van het actuele aanbod
 dubbele meldingen toch al via state/seen_cars.json (dedup op advertentie-
 id) loopt, niet via de datum. Door het hele huidige aanbod te gebruiken
 i.p.v. alleen "vandaag", krijgt elke advertentie een veel grotere en
-stabielere vergelijkingsgroep (zie MAX_PAGES_PER_MODEL/AUTOSCOUT_MAX_PAGES,
-die ook zijn verhoogd). Eenmalig na deze wijziging kan het aantal meldingen
-in één run hoger zijn dan normaal, omdat nu ook al langer bestaande
-onderprijsde advertenties voor het eerst worden meegenomen -- dat is
-bedoeld, geen storing.
+stabielere vergelijkingsgroep.
+
+Draait 1x per 6 uur (niet meer elke 5 minuten) en is bewust een LANGE,
+grondige run: tot MAX_PAGES_PER_MODEL/AUTOSCOUT_MAX_PAGES pagina's per
+model per bron, met een beleefde, licht gerandomiseerde pauze tussen elk
+verzoek (zie polite_pause/PAGE_FETCH_DELAY_SEC) om niet als bot-verkeer op
+te vallen bij deze grotere volumes. Eén model dat blijft weigeren (bv.
+tijdelijke rate-limiting) mag nooit de hele run laten crashen: fouten
+worden per model opgevangen en overgeslagen, de rest van de catalogus
+draait gewoon door (zie fetch_model_listings). Eenmalig na deze wijziging
+kan het aantal meldingen in één run hoger zijn dan normaal, omdat nu ook
+al langer bestaande onderprijsde advertenties voor het eerst worden
+meegenomen -- dat is bedoeld, geen storing.
 
 AutoScout24-ondersteuning is GEVERIFIEERD (niet giswerk, zie
 scripts/probe_sources.py): de resultatenlijst wordt serverside gerenderd
@@ -80,6 +88,7 @@ de incrementele (nieuwe) kansen meldt.
 
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -98,7 +107,23 @@ L1_CATEGORY_ID = 91  # verondersteld: "Auto's"
 
 SEARCH_URL = "https://www.marktplaats.nl/lrp/api/search"
 PAGE_SIZE = 100
-MAX_PAGES_PER_MODEL = 5  # 500 advertenties per model -- grotere, stabielere vergelijkingsgroep
+# Draait nu 1x per 6 uur i.p.v. elke 5 minuten (zie workflow) -- er is dus
+# ruim tijd voor een grondige, diepe zoekopdracht per model. Pagination
+# stopt vanzelf zodra een model minder aanbod heeft dan dit maximum (zie
+# fetch_model_listings), dus dit is een bovengrens, geen vast aantal
+# requests per model.
+MAX_PAGES_PER_MODEL = 20  # tot 2.000 advertenties per model
+
+# Pauze tussen opeenvolgende pagina-verzoeken (met wat willekeur, zodat het
+# verkeer niet als geautomatiseerd/bot-patroon oogt). Met de nieuwe 6-uurs
+# cadans is er geen enkele haast -- liever rustig en betrouwbaar dan snel
+# en geblokkeerd (zie PAGE_FETCH_DELAY_SEC-gebruik in fetch_model_listings/
+# fetch_autoscout_listings).
+PAGE_FETCH_DELAY_SEC = float(os.environ.get("PAGE_FETCH_DELAY_SEC", "2.0"))
+
+
+def polite_pause() -> None:
+    time.sleep(PAGE_FETCH_DELAY_SEC + random.uniform(0, 1.5))
 
 MAX_PRICE_EUR = float(os.environ.get("MAX_PRICE_EUR", "10000"))
 MAX_PRICE_CENTS = int(MAX_PRICE_EUR * 100)
@@ -268,7 +293,7 @@ def fetch_model_listings(model: dict) -> list:
         listings.extend(page_listings)
         if len(page_listings) < PAGE_SIZE:
             break
-        time.sleep(0.5)  # even pauzeren tussen pagina's, voorkomt bot-detectie bij hogere paginadiepte
+        polite_pause()
     return listings
 
 
@@ -290,7 +315,7 @@ def fetch_model_listings(model: dict) -> list:
 # plaatsingsdatum beschikbaar -- geen probleem, want het hele script filtert
 # niet meer op plaatsingsdatum (zie is_relevant).
 AUTOSCOUT_BASE_URL = "https://www.autoscout24.nl"
-AUTOSCOUT_MAX_PAGES = 5  # 100 advertenties per model -- grotere, stabielere vergelijkingsgroep
+AUTOSCOUT_MAX_PAGES = 15  # tot ~300 advertenties per model (pagination stopt vanzelf bij minder aanbod)
 
 _LD_JSON_PATTERN = re.compile(
     r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
@@ -380,7 +405,7 @@ def fetch_autoscout_listings(model: dict) -> list:
                 listings.append(normalized)
         if len(items) < 20:  # aanname o.b.v. waargenomen numberOfItems, geen harde garantie
             break
-        time.sleep(0.5)  # even pauzeren tussen pagina's, voorkomt bot-detectie bij hogere paginadiepte
+        polite_pause()
     return listings
 
 
@@ -681,10 +706,13 @@ def main() -> int:
 
     # Fouten per model (bv. aanhoudende rate-limiting) worden binnen
     # fetch_model_listings zelf opgevangen en overgeslagen -- één weigerend
-    # model mag de rest van de catalogus niet blokkeren.
+    # model mag de rest van de catalogus niet blokkeren. Ook tussen modellen
+    # onderling een korte pauze (niet alleen tussen pagina's binnen één
+    # model) -- met de 6-uurs cadans is daar ruim de tijd voor.
     all_listings = []
     for model in MODEL_CATALOG:
         all_listings.extend(fetch_model_listings(model))
+        polite_pause()
 
     # AutoScout24 is een aanvullende bron (extra data voor de mediaan, en
     # extra particuliere kansen) -- een fout hier stopt de run niet, want
@@ -693,6 +721,7 @@ def main() -> int:
     for model in MODEL_CATALOG:
         as24_listings = fetch_autoscout_listings(model)
         autoscout_count += len(as24_listings)
+        polite_pause()
         all_listings.extend(as24_listings)
 
     # Referentiegroep voor de mediaan: particulier + handelaar, heel NL.

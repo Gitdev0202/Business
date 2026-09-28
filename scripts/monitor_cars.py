@@ -532,7 +532,7 @@ def extract_mileage(listing: dict) -> int | None:
 # generatie/uitrusting). De mediaan van die peers is de referentieprijs
 # voor precies déze advertentie.
 MAX_MILEAGE_DEVIATION_KM = int(os.environ.get("MAX_MILEAGE_DEVIATION_KM", "50000"))
-MAX_YEAR_DEVIATION = int(os.environ.get("MAX_YEAR_DEVIATION", "4"))
+MAX_YEAR_DEVIATION = int(os.environ.get("MAX_YEAR_DEVIATION", "1"))
 
 
 def group_listings_by_model(listings: list) -> dict:

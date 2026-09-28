@@ -252,7 +252,15 @@ def fetch_page(query: str, offset: int) -> dict:
 def fetch_model_listings(model: dict) -> list:
     listings = []
     for page in range(MAX_PAGES_PER_MODEL):
-        data = fetch_page(model["query"], offset=page * PAGE_SIZE)
+        try:
+            data = fetch_page(model["query"], offset=page * PAGE_SIZE)
+        except RuntimeError as exc:
+            # Eén model dat blijft weigeren (bv. rate-limiting) mag niet de
+            # hele run onderuit halen -- sla dit model verder over, de rest
+            # van de catalogus (en de vorige pagina's van dit model) blijft
+            # gewoon meetellen.
+            print(f"[WAARSCHUWING] {model['label']}: {exc}", file=sys.stderr)
+            break
         page_listings = data.get("listings", [])
         for listing in page_listings:
             listing["_model_label"] = model["label"]
@@ -260,6 +268,7 @@ def fetch_model_listings(model: dict) -> list:
         listings.extend(page_listings)
         if len(page_listings) < PAGE_SIZE:
             break
+        time.sleep(0.5)  # even pauzeren tussen pagina's, voorkomt bot-detectie bij hogere paginadiepte
     return listings
 
 
@@ -371,6 +380,7 @@ def fetch_autoscout_listings(model: dict) -> list:
                 listings.append(normalized)
         if len(items) < 20:  # aanname o.b.v. waargenomen numberOfItems, geen harde garantie
             break
+        time.sleep(0.5)  # even pauzeren tussen pagina's, voorkomt bot-detectie bij hogere paginadiepte
     return listings
 
 
@@ -669,13 +679,12 @@ def send_discord_notifications(listings: list) -> None:
 def main() -> int:
     state = load_state()
 
+    # Fouten per model (bv. aanhoudende rate-limiting) worden binnen
+    # fetch_model_listings zelf opgevangen en overgeslagen -- één weigerend
+    # model mag de rest van de catalogus niet blokkeren.
     all_listings = []
-    try:
-        for model in MODEL_CATALOG:
-            all_listings.extend(fetch_model_listings(model))
-    except RuntimeError as exc:
-        print(f"[FOUT] {exc}", file=sys.stderr)
-        return 1
+    for model in MODEL_CATALOG:
+        all_listings.extend(fetch_model_listings(model))
 
     # AutoScout24 is een aanvullende bron (extra data voor de mediaan, en
     # extra particuliere kansen) -- een fout hier stopt de run niet, want

@@ -711,13 +711,21 @@ def main() -> int:
             file=sys.stderr,
         )
 
-    beoordeelbaar = sum(1 for l in private_relevant if len(find_peer_prices(l, by_model)) >= MIN_GROUP_SIZE)
+    peer_counts = [len(find_peer_prices(l, by_model)) for l in private_relevant]
+    evaluable_counts = [n for n in peer_counts if n >= MIN_GROUP_SIZE]
+    if evaluable_counts:
+        peer_stats = (
+            f"min {min(evaluable_counts)}, mediaan {int(median(evaluable_counts))}, "
+            f"max {max(evaluable_counts)} vergelijkbare buren per advertentie"
+        )
+    else:
+        peer_stats = "geen enkele advertentie had genoeg vergelijkbare buren"
     print(
         f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen "
         f"(waarvan {autoscout_count} via AutoScout24). "
         f"Relevant (automaat, vandaag, bouwjaar/km/budget): {len(relevant)}, "
         f"waarvan particulier: {len(private_relevant)}, "
-        f"waarvan met genoeg vergelijkbare buren om te beoordelen: {beoordeelbaar}. "
+        f"waarvan met genoeg vergelijkbare buren om te beoordelen: {len(evaluable_counts)} ({peer_stats}). "
         f"Nieuwe kansen: {len(new_matches)}."
     )
 
@@ -726,7 +734,8 @@ def main() -> int:
         for listing in new_matches:
             print(
                 f"  -> {listing.get('title')} | {fmt_euro(listing['priceInfo']['priceCents'])} "
-                f"| -{listing['_discount_pct']}% | {listing_url(listing)}"
+                f"| -{listing['_discount_pct']}% (vs {listing['_group_size']} vergelijkbare buren) "
+                f"| {listing_url(listing)}"
             )
 
     state = prune_state(state)

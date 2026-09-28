@@ -59,6 +59,25 @@ def fetch(url: str) -> tuple:
         return None, f"[verbindingsfout] {exc}"
 
 
+AUTOSCOUT_SLUG_CANDIDATES = [
+    "toyota/aygo", "toyota/yaris", "toyota/auris", "kia/picanto", "hyundai/i10",
+    "opel/corsa", "opel/astra", "suzuki/swift", "volkswagen/polo", "ford/fiesta",
+    "peugeot/208", "citroen/c3", "renault/clio", "smart/fortwo", "fiat/500",
+    "fiat/panda", "seat/ibiza", "seat/mii", "skoda/fabia", "skoda/citigo",
+    "honda/jazz", "mazda/2", "citroen/c1", "peugeot/107", "nissan/micra",
+    "nissan/note", "dacia/sandero", "volvo/v40", "mini/cooper", "bmw/1er",
+    "audi/a1", "mercedes-benz/a-klasse", "mitsubishi/space-star", "chevrolet/matiz",
+]
+
+
+def check_autoscout_slugs() -> None:
+    print("\n=== AutoScout24 url-slug check (merk/model) ===")
+    for slug in AUTOSCOUT_SLUG_CANDIDATES:
+        status, body = fetch(f"https://www.autoscout24.nl/lst/{slug}")
+        has_items = bool(body and '"itemListElement"' in body and '"numberOfItems":0' not in body)
+        print(f"  {slug}: status={status}, lengte={len(body) if body else 0}, heeft resultaten? {has_items}")
+
+
 def main() -> int:
     for name, urls in SOURCES.items():
         print(f"\n=== {name} ===")
@@ -121,6 +140,7 @@ def main() -> int:
                 print(f"  --- context rond eerste 'price'-veld (600 tekens) ---")
                 print(f"  {body[ctx_start:ctx_start + 600]!r}")
 
+    check_autoscout_slugs()
     return 0
 
 

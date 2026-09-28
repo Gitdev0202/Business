@@ -3,12 +3,24 @@ Automaat-occasions monitor (autohandel-inkoopsignaal): Marktplaats + AutoScout24
 
 Doorzoekt Marktplaats EN AutoScout24 op een curated lijst van automaat-
 modellen die doorgaans snel verkopen in het budgetsegment
-(<= MAX_PRICE_EUR), filtert op vandaag geplaatst + binnen budget, en
-berekent per model+bouwjaar-groep een LEVENDE mediaan-vraagprijs op basis
-van de advertenties die deze run zelf ophaalt (geen van beide bronnen toont
-verkochte prijzen, dus een vaste schattingstabel zoals bij de horloges-
-monitor is hier niet betrouwbaar genoeg -- prijzen voor auto's variëren te
-veel met km-stand, staat en uitvoering).
+(<= MAX_PRICE_EUR), filtert op bouwjaar/km-stand/budget/transmissie, en
+berekent per advertentie een LEVENDE mediaan-vraagprijs op basis van
+vergelijkbare advertenties die deze run zelf ophaalt (geen van beide
+bronnen toont verkochte prijzen, dus een vaste schattingstabel zoals bij de
+horloges-monitor is hier niet betrouwbaar genoeg -- prijzen voor auto's
+variëren te veel met km-stand, staat en uitvoering).
+
+Filtert BEWUST NIET meer op plaatsingsdatum ("vandaag"): dat filter
+beperkte de referentiegroep tot een klein deel van het actuele aanbod
+(alleen wat toevallig vandaag geplaatst is), terwijl de bescherming tegen
+dubbele meldingen toch al via state/seen_cars.json (dedup op advertentie-
+id) loopt, niet via de datum. Door het hele huidige aanbod te gebruiken
+i.p.v. alleen "vandaag", krijgt elke advertentie een veel grotere en
+stabielere vergelijkingsgroep (zie MAX_PAGES_PER_MODEL/AUTOSCOUT_MAX_PAGES,
+die ook zijn verhoogd). Eenmalig na deze wijziging kan het aantal meldingen
+in één run hoger zijn dan normaal, omdat nu ook al langer bestaande
+onderprijsde advertenties voor het eerst worden meegenomen -- dat is
+bedoeld, geen storing.
 
 AutoScout24-ondersteuning is GEVERIFIEERD (niet giswerk, zie
 scripts/probe_sources.py): de resultatenlijst wordt serverside gerenderd
@@ -86,7 +98,7 @@ L1_CATEGORY_ID = 91  # verondersteld: "Auto's"
 
 SEARCH_URL = "https://www.marktplaats.nl/lrp/api/search"
 PAGE_SIZE = 100
-MAX_PAGES_PER_MODEL = 2  # 200 advertenties per model is ruim genoeg
+MAX_PAGES_PER_MODEL = 5  # 500 advertenties per model -- grotere, stabielere vergelijkingsgroep
 
 MAX_PRICE_EUR = float(os.environ.get("MAX_PRICE_EUR", "10000"))
 MAX_PRICE_CENTS = int(MAX_PRICE_EUR * 100)
@@ -264,12 +276,12 @@ def fetch_model_listings(model: dict) -> list:
 # in MODEL_CATALOG (autoscout_path) zijn stuk voor stuk gecheckt: status
 # 200 met resultaten. GEEN bouwjaar-veld beschikbaar in deze lijst-JSON --
 # extract_year() valt terug op de titel-regex, wat vaak niets oplevert
-# voor AutoScout24 (titels bevatten zelden een jaartal). Ook geen
-# plaatsingsdatum beschikbaar, dus "vandaag geplaatst" wordt voor deze bron
-# genegeerd (elke run scant het actuele aanbod; dedup via state voorkomt
-# dat oude advertenties opnieuw gemeld worden).
+# voor AutoScout24 (titels bevatten zelden een jaartal); zulke advertenties
+# tellen dan simpelweg niet mee (zie passes_age_mileage_filter). Ook geen
+# plaatsingsdatum beschikbaar -- geen probleem, want het hele script filtert
+# niet meer op plaatsingsdatum (zie is_relevant).
 AUTOSCOUT_BASE_URL = "https://www.autoscout24.nl"
-AUTOSCOUT_MAX_PAGES = 2
+AUTOSCOUT_MAX_PAGES = 5  # 100 advertenties per model -- grotere, stabielere vergelijkingsgroep
 
 _LD_JSON_PATTERN = re.compile(
     r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
@@ -328,7 +340,6 @@ def normalize_autoscout_item(item: dict, model: dict) -> dict | None:
         "itemId": f"as24:{url_path}",
         "title": item.get("name", "Auto-advertentie"),
         "description": description,
-        "date": "Vandaag",  # geen datumveld beschikbaar, zie docstring-notitie hierboven
         "priceInfo": {"priceType": "FIXED", "priceCents": int(round(price * 100))},
         "location": {"cityName": address.get("addressLocality", "Onbekende locatie")},
         "attributes": [],
@@ -364,10 +375,6 @@ def fetch_autoscout_listings(model: dict) -> list:
 
 
 # --- Filtering / extractie -------------------------------------------------
-
-def is_posted_today(listing: dict) -> bool:
-    return listing.get("date") == "Vandaag"
-
 
 def is_automatic(listing: dict) -> bool:
     haystack = f"{listing.get('title', '')} {listing.get('description', '')}"
@@ -533,8 +540,7 @@ def passes_age_mileage_filter(listing: dict) -> bool:
 
 def is_relevant(listing: dict) -> bool:
     return (
-        is_posted_today(listing)
-        and is_automatic(listing)
+        is_automatic(listing)
         and passes_price_filter(listing)
         and passes_age_mileage_filter(listing)
     )

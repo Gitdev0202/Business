@@ -35,6 +35,8 @@ jobs:
           MIN_PRICE_EUR: "1500"
           DISCOUNT_THRESHOLD_PCT: "15"
           MIN_GROUP_SIZE: "4"
+          MAX_MILEAGE_KM: "150000"
+          MIN_CONSTRUCTION_YEAR: "2005"
         run: python scripts/monitor_cars.py
 
       - name: Commit bijgewerkte state

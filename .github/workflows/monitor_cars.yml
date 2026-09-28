@@ -54,12 +54,33 @@ jobs:
         run: |
           git config user.name "cars-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/seen_cars.json
-          git diff --cached --quiet || git commit -m "Update seen listings (cars)"
+
+          if git diff --quiet -- state/seen_cars.json; then
+            echo "Geen nieuwe kansen, niets te committen."
+            exit 0
+          fi
+
+          # Bewaar ONZE nieuw gevonden entries apart. Deze run kan (door de
+          # bewust lange looptijd, tot enkele uren) makkelijk overlappen met
+          # een andere push naar main die state/seen_cars.json ook wijzigde
+          # -- een gewone git-rebase kan zo'n content-conflict in JSON niet
+          # automatisch oplossen. In plaats daarvan doen we bij een conflict
+          # een SEMANTISCHE merge (samenvoegen van de twee JSON-dicts) i.p.v.
+          # een tekstuele git-merge.
+          cp state/seen_cars.json /tmp/cars_state_ours.json
+
           for i in 1 2 3 4 5; do
-            git push && break
-            echo "Push mislukt (poging $i), opnieuw proberen na rebase..."
+            git add state/seen_cars.json
+            git commit -m "Update seen listings (cars)"
+            if git push; then
+              echo "Gepusht."
+              exit 0
+            fi
+            echo "Push mislukt (poging $i), state semantisch samenvoegen met de nieuwste main..."
             git fetch origin main
-            git rebase origin/main
+            git reset --hard origin/main
+            python3 scripts/merge_cars_state.py /tmp/cars_state_ours.json state/seen_cars.json
             sleep $((RANDOM % 8 + 2))
           done
+          echo "Kon na 5 pogingen niet pushen." >&2
+          exit 1

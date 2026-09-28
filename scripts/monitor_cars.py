@@ -8,20 +8,37 @@ LEVENDE mediaan-vraagprijs op basis van de advertenties die deze run zelf
 ophaalt (Marktplaats toont geen verkochte prijzen, dus een vaste
 schattingstabel zoals bij de horloges-monitor is hier niet betrouwbaar
 genoeg -- prijzen voor auto's variëren te veel met km-stand, staat en
-uitvoering). Een advertentie is een "kans" als de vraagprijs minimaal
-DISCOUNT_THRESHOLD_PCT onder die groepsmediaan ligt, met een minimum aantal
-vergelijkbare advertenties om de mediaan betekenisvol te maken.
+uitvoering).
+
+Twee aparte groepen, bewust:
+  1. REFERENTIEGROEP (voor de mediaan): ALLE relevante advertenties, van
+     zowel particulieren als handelaren, in HEEL NEDERLAND (geen
+     postcode/afstandsfilter). Meer data = een betrouwbaardere mediaan, en
+     handelaarsprijzen vormen een prima bovengrens-referentie ("dit is wat
+     de markt normaal vraagt").
+  2. MELD-GROEP (wat daadwerkelijk als kans wordt doorgestuurd): alleen
+     advertenties van PARTICULIEREN uit diezelfde referentiegroep die
+     minimaal DISCOUNT_THRESHOLD_PCT onder de groepsmediaan zitten.
+     Handelaren worden nooit gemeld -- die prijzen doorgaans op marktniveau
+     of erboven, dus zijn zelden een "kans" en zitten in de weg als koper.
+Groepering voor de mediaan is op (model, bouwjaar-bin); zie BOUWJAAR_BIN_SIZE.
+Er wordt bewust NIET ook op km-stand gegroepeerd -- dat splitst de data te
+fijn op voor genoeg vergelijkbare advertenties per groep.
 
 BELANGRIJKE BEPERKINGEN (lees dit voor je op een melding afgaat):
-  - De Marktplaats-categorie-ID voor "Auto's" (L1_CATEGORY_ID hieronder) en
-    de veldnamen voor bouwjaar/km-stand/transmissie kon ik niet live
-    verifiëren -- deze omgeving heeft geen toegang tot marktplaats.nl.
-    Het script zoekt daarom op vrije tekst (merk + model + "automaat") in
-    plaats van op exacte categorie-ID's, en probeert meerdere plausibele
-    veldnamen voor bouwjaar/km-stand (zie extract_year/extract_mileage).
-    Controleer na de EERSTE succesvolle run de output; als bouwjaar/km-stand
-    leeg blijven, print dan eenmalig een ruwe listing erbij om de juiste
-    veldnaam te vinden.
+  - De Marktplaats-categorie-ID voor "Auto's" (L1_CATEGORY_ID hieronder), de
+    veldnamen voor bouwjaar/km-stand/transmissie, EN het veld waarmee
+    particulier vs. handelaar te onderscheiden is, kon ik niet live
+    verifiëren -- deze omgeving heeft geen toegang tot marktplaats.nl. Het
+    script zoekt daarom op vrije tekst (merk + model + "automaat") i.p.v.
+    exacte categorie-ID's, probeert meerdere plausibele veldnamen voor
+    bouwjaar/km-stand (zie extract_year/extract_mileage), en behandelt een
+    advertentie als PARTICULIER tenzij er een expliciet handelaarssignaal
+    gevonden wordt (zie is_private_seller) -- bewust de veilige kant op,
+    want een gemiste particuliere advertentie is minder erg dan een
+    handelaarsadvertentie die per ongeluk als "kans" wordt gemeld.
+    Controleer na de EERSTE succesvolle run de output; print zo nodig
+    eenmalig een ruwe listing om de juiste veldnamen te vinden.
   - Dit is een KOOPSIGNAAL, geen koopadvies. Altijd zelf de auto bekijken,
     proefrijden, onderhoudshistorie en (bij DSG/CVT/Powershift) het type
     transmissie navragen voor je toeslaat -- zie RISK_NOTE per model.
@@ -60,8 +77,12 @@ MAX_PRICE_CENTS = int(MAX_PRICE_EUR * 100)
 MIN_PRICE_EUR = float(os.environ.get("MIN_PRICE_EUR", "1500"))  # weert lege carrosserieën/onderdelen-advertenties
 MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
 
+# Bewust HEEL NEDERLAND (leeg = geen locatiefilter, zie fetch_page): meer
+# data voor een betrouwbare mediaan, en de koper kan zelf op stad filteren
+# in de Discord-melding. Zet POSTCODE+DISTANCE_KM als secret/env om dit
+# alsnog lokaal te beperken.
 POSTCODE = os.environ.get("POSTCODE", "").strip()
-DISTANCE_KM = os.environ.get("DISTANCE_KM", "50").strip()
+DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
 
 # Hoeveel procent onder de levende groepsmediaan een advertentie moet zitten
 # om als "kans" te gelden, en hoeveel vergelijkbare advertenties er
@@ -108,6 +129,46 @@ MODEL_CATALOG = [
      "risk": "VERHOOGD RISICO: CVT (Jatco) in dit segment staat bekend om oververhitting/slijtage. Onderhoudshistorie CVT-olie navragen, anders vermijden."},
     {"label": "smart fortwo automaat", "query": "smart fortwo automaat",
      "risk": "Gemiddeld risico: automatische versnellingsbak (enkele koppeling) schakelt schokkerig, geen defect maar wel een aandachtspunt bij proefrit."},
+    {"label": "Fiat 500 automaat/Dualogic", "query": "fiat 500 automaat",
+     "risk": "Gemiddeld risico: Dualogic is een robotbak (enkele koppeling), schakelt schokkerig -- geen defect maar wel navragen of koper dit weet. Erg populair, sells fast."},
+    {"label": "Fiat Panda automaat", "query": "fiat panda automaat",
+     "risk": "Gemiddeld risico: zelfde Dualogic-kanttekening als Fiat 500."},
+    {"label": "Seat Ibiza automaat/DSG", "query": "seat ibiza dsg",
+     "risk": "LET OP: zelfde DSG-platform/kanttekening als Volkswagen Polo (concernauto)."},
+    {"label": "Seat Mii automaat", "query": "seat mii automaat",
+     "risk": "Gemiddeld risico: zelfde ASG-kanttekening als Volkswagen Up! (concernauto)."},
+    {"label": "Skoda Fabia automaat/DSG", "query": "skoda fabia dsg",
+     "risk": "LET OP: zelfde DSG-platform/kanttekening als Volkswagen Polo (concernauto)."},
+    {"label": "Skoda Citigo automaat", "query": "skoda citigo automaat",
+     "risk": "Gemiddeld risico: zelfde ASG-kanttekening als Volkswagen Up! (concernauto)."},
+    {"label": "Honda Jazz automaat", "query": "honda jazz automaat",
+     "risk": "Laag risico: CVT met sterke betrouwbaarheidsreputatie, populair bij oudere kopers -- stabiele vraag."},
+    {"label": "Mazda 2 automaat", "query": "mazda 2 automaat",
+     "risk": "Laag-gemiddeld risico: traditionele automaat, degelijke reputatie."},
+    {"label": "Citroen C1 automaat", "query": "citroen c1 automaat",
+     "risk": "Laag risico: zelfde platform/reputatie als Toyota Aygo (samen ontwikkeld)."},
+    {"label": "Peugeot 107 automaat", "query": "peugeot 107 automaat",
+     "risk": "Laag risico: zelfde platform/reputatie als Toyota Aygo (samen ontwikkeld)."},
+    {"label": "Nissan Micra automaat/CVT", "query": "nissan micra automaat",
+     "risk": "VERHOOGD RISICO: Jatco CVT, zelfde kanttekening als Renault Clio (gedeeld platform/bak)."},
+    {"label": "Nissan Note automaat/CVT", "query": "nissan note automaat",
+     "risk": "VERHOOGD RISICO: zelfde Jatco CVT-kanttekening als Nissan Micra."},
+    {"label": "Dacia Sandero automaat/EDC", "query": "dacia sandero edc",
+     "risk": "VERHOOGD RISICO: EDC-dubbelkoppelingsbak (Renault-afkomstig) kent vergelijkbare problemen als bij Renault zelf. Onderhoudshistorie navragen."},
+    {"label": "Volvo V40 automaat/Geartronic", "query": "volvo v40 automaat",
+     "risk": "Gemiddeld risico: de automaat zelf (Geartronic, koppelomvormer) is betrouwbaar, maar algeheel onderhoud/reparaties zijn duurder dan bij de andere merken hier -- reken dit mee in de marge."},
+    {"label": "Mini (One/Cooper) automaat", "query": "mini cooper automaat",
+     "risk": "Gemiddeld risico: automaat zelf doorgaans prima, maar BMW-onderdelen/onderhoud zijn relatief duur -- reken dit mee in de marge."},
+    {"label": "BMW 1-serie automaat", "query": "bmw 1 serie automaat",
+     "risk": "Gemiddeld risico: Steptronic-automaat is betrouwbaar, maar onderhoud/reparaties zijn duurder dan bij de budgetmerken -- reken dit mee in de marge."},
+    {"label": "Audi A1 automaat/S tronic", "query": "audi a1 s tronic",
+     "risk": "LET OP: S tronic is hetzelfde DSG-platform als Volkswagen Polo/Seat Ibiza (concern) -- zelfde koppelingskanttekening, plus duurder onderhoud."},
+    {"label": "Mercedes A-klasse automaat", "query": "mercedes a klasse automaat",
+     "risk": "VERHOOGD RISICO: 7G-DCT dubbelkoppelingsbak staat bekend om schokkerig schakelen/slijtage, en reparaties zijn duur. Onderhoudshistorie goed navragen."},
+    {"label": "Mitsubishi Space Star automaat/CVT", "query": "mitsubishi space star automaat",
+     "risk": "Laag-gemiddeld risico: CVT met redelijke reputatie, budgetvriendelijk."},
+    {"label": "Chevrolet Spark/Matiz automaat", "query": "chevrolet matiz automaat",
+     "risk": "Gemiddeld risico: eenvoudige, betrouwbare automaat, maar merk is uit NL vertrokken -- onderdelen/support kunnen lastiger te vinden zijn."},
 ]
 
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
@@ -189,6 +250,37 @@ def passes_price_filter(listing: dict) -> bool:
     if price_type not in ("FIXED", "MIN_BID"):
         return False  # "Bieden"/"Zie omschrijving" geeft geen vergelijkbaar getal voor de mediaan
     return MIN_PRICE_CENTS <= price_cents <= MAX_PRICE_CENTS
+
+
+# Best-effort, NIET geverifieerd tegen een live response (zie docstring
+# bovenin). Bekende/vermoedelijke Marktplaats-signalen voor een
+# handelaarsadvertentie: een sellerInformation-blok met een bedrijfsnaam of
+# een expliciete dealer-vlag, of een "Bedrijf"/"Dealer"-achtig woord in de
+# advertentie zelf (sommige categorieën tonen dit als losse tekstregel i.p.v.
+# een JSON-veld). Bij twijfel/geen signaal: PARTICULIER aannemen (zie
+# docstring waarom dat de veilige kant is).
+DEALER_TEXT_HINTS = re.compile(
+    r"\bbedrijfsactiviteit\b|\bautobedrijf\b|\bautohandel\b|\bdealer\b|\bshowroom\b|\bbovag\b",
+    re.IGNORECASE,
+)
+
+
+def is_private_seller(listing: dict) -> bool:
+    seller = listing.get("sellerInformation") or listing.get("seller") or {}
+    if isinstance(seller, dict):
+        if seller.get("isDealer") is True or seller.get("isCompany") is True:
+            return False
+        if seller.get("companyName") or seller.get("sellerWebsiteUrl"):
+            return False
+    for attr in listing.get("attributes", []) + listing.get("extendedAttributes", []):
+        key = str(attr.get("key", "")).lower()
+        value = str(attr.get("value", "")).lower()
+        if key in ("sellertype", "businessseller", "isdealer") and value in ("true", "dealer", "bedrijf", "1"):
+            return False
+    haystack = f"{listing.get('title', '')} {listing.get('description', '')}"
+    if DEALER_TEXT_HINTS.search(haystack):
+        return False
+    return True
 
 
 # Best-effort: bouwjaar en km-stand kunnen bij Marktplaats op verschillende
@@ -408,9 +500,13 @@ def main() -> int:
         print(f"[FOUT] {exc}", file=sys.stderr)
         return 1
 
+    # Referentiegroep voor de mediaan: particulier + handelaar, heel NL.
     relevant = [l for l in all_listings if is_relevant(l)]
     medians = compute_group_medians(relevant)
-    deals = find_deals(relevant, medians)
+
+    # Meld-groep: alleen particulieren uit diezelfde referentiegroep.
+    private_relevant = [l for l in relevant if is_private_seller(l)]
+    deals = find_deals(private_relevant, medians)
 
     now_iso = datetime.now(timezone.utc).isoformat()
     new_matches = []
@@ -425,17 +521,18 @@ def main() -> int:
             "model": listing["_model_label"],
         }
 
-    if not (POSTCODE and DISTANCE_KM):
+    if POSTCODE and DISTANCE_KM:
         print(
-            "[WAARSCHUWING] Geen locatiefilter actief (POSTCODE en/of "
-            "DISTANCE_KM ontbreken/leeg) -- er wordt over HEEL NEDERLAND "
-            "gezocht i.p.v. lokaal.",
+            f"[INFO] Locatiefilter actief: {DISTANCE_KM} km rond {POSTCODE}. "
+            "Dit geldt voor BEIDE groepen (referentie en meldingen) -- zet "
+            "POSTCODE/DISTANCE_KM leeg voor heel NL (het standaardgedrag).",
             file=sys.stderr,
         )
 
     print(
         f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen. "
-        f"Relevant (automaat, vandaag, binnen budget): {len(relevant)}. "
+        f"Relevant (automaat, vandaag, binnen budget): {len(relevant)}, "
+        f"waarvan particulier: {len(private_relevant)}. "
         f"Prijsgroepen met genoeg data: {len(medians)}. "
         f"Nieuwe kansen: {len(new_matches)}."
     )

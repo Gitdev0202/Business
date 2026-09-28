@@ -1,14 +1,27 @@
 """
-Automaat-occasions Marktplaats monitor (autohandel-inkoopsignaal).
+Automaat-occasions monitor (autohandel-inkoopsignaal): Marktplaats + AutoScout24.
 
-Doorzoekt Marktplaats op een curated lijst van automaat-modellen die
-doorgaans snel verkopen in het budgetsegment (<= MAX_PRICE_EUR), filtert op
-vandaag geplaatst + binnen budget, en berekent per model+bouwjaar-groep een
-LEVENDE mediaan-vraagprijs op basis van de advertenties die deze run zelf
-ophaalt (Marktplaats toont geen verkochte prijzen, dus een vaste
-schattingstabel zoals bij de horloges-monitor is hier niet betrouwbaar
-genoeg -- prijzen voor auto's variëren te veel met km-stand, staat en
-uitvoering).
+Doorzoekt Marktplaats EN AutoScout24 op een curated lijst van automaat-
+modellen die doorgaans snel verkopen in het budgetsegment
+(<= MAX_PRICE_EUR), filtert op vandaag geplaatst + binnen budget, en
+berekent per model+bouwjaar-groep een LEVENDE mediaan-vraagprijs op basis
+van de advertenties die deze run zelf ophaalt (geen van beide bronnen toont
+verkochte prijzen, dus een vaste schattingstabel zoals bij de horloges-
+monitor is hier niet betrouwbaar genoeg -- prijzen voor auto's variëren te
+veel met km-stand, staat en uitvoering).
+
+AutoScout24-ondersteuning is GEVERIFIEERD (niet giswerk, zie
+scripts/probe_sources.py): de resultatenlijst wordt serverside gerenderd
+als schema.org JSON-LD, met expliciete velden voor km-stand, transmissie-
+type en verkoper-type (@type "AutoDealer" = handelaar). Alle 35 merk/model-
+URL's in MODEL_CATALOG zijn stuk voor stuk gecheckt. AutoScout24 is in NL
+overwegend een handelaarsplatform -- verwacht dus vooral een sterkere
+mediaan-referentie van deze bron, en minder particuliere kansen dan van
+Marktplaats. Twee kanttekeningen specifiek voor AutoScout24: er is geen
+bouwjaar-veld in de lijstweergave (bouwjaar-groepering lukt hier vaak niet)
+en geen plaatsingsdatum (dus geen "vandaag"-filter, elke run scant het
+actuele aanbod -- dedup via state voorkomt dubbele meldingen).
+Gaspedaal.nl blokkeert met HTTP 403 en is niet meegenomen.
 
 Twee aparte groepen, bewust:
   1. REFERENTIEGROEP (voor de mediaan): ALLE relevante advertenties, van
@@ -99,75 +112,75 @@ BOUWJAAR_BIN_SIZE = 3  # groepeer per 3 bouwjaren (2016-2018, 2019-2021, ...)
 # die laatste staan er wel bij (veel aanbod, veel vraag) maar met een
 # duidelijke waarschuwing in de Discord-melding.
 MODEL_CATALOG = [
-    {"label": "Toyota Aygo automaat", "query": "toyota aygo automaat",
+    {"label": "Toyota Aygo automaat", "query": "toyota aygo automaat", "autoscout_path": "toyota/aygo",
      "risk": "Laag risico: CVT/automaat met goede reputatie. Hoge vraag, vaak snel weg."},
-    {"label": "Toyota Yaris Hybride (automaat)", "query": "toyota yaris hybride",
+    {"label": "Toyota Yaris Hybride (automaat)", "query": "toyota yaris hybride", "autoscout_path": "toyota/yaris",
      "risk": "Laag risico: e-CVT, taxi-beproefd. Hoge vraag kan vraagprijzen al opdrijven -- kansen zijn schaarser maar wel betrouwbaar."},
-    {"label": "Toyota Auris/Corolla Hybride (automaat)", "query": "toyota auris hybride",
+    {"label": "Toyota Auris/Corolla Hybride (automaat)", "query": "toyota auris hybride", "autoscout_path": "toyota/auris",
      "risk": "Laag risico: e-CVT, taxi-beproefd. Zelfde kanttekening als Yaris Hybride."},
-    {"label": "Kia Picanto automaat", "query": "kia picanto automaat",
+    {"label": "Kia Picanto automaat", "query": "kia picanto automaat", "autoscout_path": "kia/picanto",
      "risk": "Laag risico: traditionele automaat/AMT, betrouwbaar, lange fabrieksgarantie-historie."},
-    {"label": "Hyundai i10 automaat", "query": "hyundai i10 automaat",
+    {"label": "Hyundai i10 automaat", "query": "hyundai i10 automaat", "autoscout_path": "hyundai/i10",
      "risk": "Laag risico: vergelijkbaar met Kia Picanto (zelfde groep/fabriek)."},
-    {"label": "Opel Corsa automaat", "query": "opel corsa automaat",
+    {"label": "Opel Corsa automaat", "query": "opel corsa automaat", "autoscout_path": "opel/corsa",
      "risk": "Laag-gemiddeld risico: traditionele automaat, ruim aanbod, gemiddelde vraag."},
-    {"label": "Opel Astra automaat", "query": "opel astra automaat",
+    {"label": "Opel Astra automaat", "query": "opel astra automaat", "autoscout_path": "opel/astra",
      "risk": "Laag-gemiddeld risico: traditionele automaat."},
-    {"label": "Suzuki Swift automaat", "query": "suzuki swift automaat",
+    {"label": "Suzuki Swift automaat", "query": "suzuki swift automaat", "autoscout_path": "suzuki/swift",
      "risk": "Laag-gemiddeld risico: CVT met redelijke reputatie."},
-    {"label": "Volkswagen Up! automaat", "query": "volkswagen up automaat",
+    {"label": "Volkswagen Up! automaat", "query": "volkswagen up automaat", "autoscout_path": "volkswagen/up",
      "risk": "Gemiddeld risico: ASG (robotbak) kan schokkerig schakelen -- geen defect, wel navragen of koper dit weet."},
-    {"label": "Volkswagen Polo DSG", "query": "volkswagen polo dsg",
+    {"label": "Volkswagen Polo DSG", "query": "volkswagen polo dsg", "autoscout_path": "volkswagen/polo",
      "risk": "LET OP: vroege 7-versnellings DSG (DQ200, droge koppeling, vaak <2015) heeft bekende koppelingsproblemen. Vraag onderhoudshistorie/koppelingvervanging na voor je toeslaat."},
-    {"label": "Ford Fiesta Powershift", "query": "ford fiesta powershift",
+    {"label": "Ford Fiesta Powershift", "query": "ford fiesta powershift", "autoscout_path": "ford/fiesta",
      "risk": "VERHOOGD RISICO: Powershift-bak heeft bekende, veelvuldige betrouwbaarheidsproblemen (o.a. terugroepacties). Alleen kopen met aantoonbaar recent vervangen/gereviseerde bak, anders vermijden."},
-    {"label": "Peugeot 208 automaat (EAT6/EAT8)", "query": "peugeot 208 automaat",
+    {"label": "Peugeot 208 automaat (EAT6/EAT8)", "query": "peugeot 208 automaat", "autoscout_path": "peugeot/208",
      "risk": "Gemiddeld risico: vroege EAT6 (voor ~2015) had opstartproblemen, latere EAT8 beter. Bouwjaar checken."},
-    {"label": "Citroen C3 automaat (EAT6)", "query": "citroen c3 automaat",
+    {"label": "Citroen C3 automaat (EAT6)", "query": "citroen c3 automaat", "autoscout_path": "citroen/c3",
      "risk": "Gemiddeld risico: zelfde EAT6/EAT8-kanttekening als Peugeot 208."},
-    {"label": "Renault Clio automaat", "query": "renault clio automaat",
+    {"label": "Renault Clio automaat", "query": "renault clio automaat", "autoscout_path": "renault/clio",
      "risk": "VERHOOGD RISICO: CVT (Jatco) in dit segment staat bekend om oververhitting/slijtage. Onderhoudshistorie CVT-olie navragen, anders vermijden."},
-    {"label": "smart fortwo automaat", "query": "smart fortwo automaat",
+    {"label": "smart fortwo automaat", "query": "smart fortwo automaat", "autoscout_path": "smart/fortwo",
      "risk": "Gemiddeld risico: automatische versnellingsbak (enkele koppeling) schakelt schokkerig, geen defect maar wel een aandachtspunt bij proefrit."},
-    {"label": "Fiat 500 automaat/Dualogic", "query": "fiat 500 automaat",
+    {"label": "Fiat 500 automaat/Dualogic", "query": "fiat 500 automaat", "autoscout_path": "fiat/500",
      "risk": "Gemiddeld risico: Dualogic is een robotbak (enkele koppeling), schakelt schokkerig -- geen defect maar wel navragen of koper dit weet. Erg populair, sells fast."},
-    {"label": "Fiat Panda automaat", "query": "fiat panda automaat",
+    {"label": "Fiat Panda automaat", "query": "fiat panda automaat", "autoscout_path": "fiat/panda",
      "risk": "Gemiddeld risico: zelfde Dualogic-kanttekening als Fiat 500."},
-    {"label": "Seat Ibiza automaat/DSG", "query": "seat ibiza dsg",
+    {"label": "Seat Ibiza automaat/DSG", "query": "seat ibiza dsg", "autoscout_path": "seat/ibiza",
      "risk": "LET OP: zelfde DSG-platform/kanttekening als Volkswagen Polo (concernauto)."},
-    {"label": "Seat Mii automaat", "query": "seat mii automaat",
+    {"label": "Seat Mii automaat", "query": "seat mii automaat", "autoscout_path": "seat/mii",
      "risk": "Gemiddeld risico: zelfde ASG-kanttekening als Volkswagen Up! (concernauto)."},
-    {"label": "Skoda Fabia automaat/DSG", "query": "skoda fabia dsg",
+    {"label": "Skoda Fabia automaat/DSG", "query": "skoda fabia dsg", "autoscout_path": "skoda/fabia",
      "risk": "LET OP: zelfde DSG-platform/kanttekening als Volkswagen Polo (concernauto)."},
-    {"label": "Skoda Citigo automaat", "query": "skoda citigo automaat",
+    {"label": "Skoda Citigo automaat", "query": "skoda citigo automaat", "autoscout_path": "skoda/citigo",
      "risk": "Gemiddeld risico: zelfde ASG-kanttekening als Volkswagen Up! (concernauto)."},
-    {"label": "Honda Jazz automaat", "query": "honda jazz automaat",
+    {"label": "Honda Jazz automaat", "query": "honda jazz automaat", "autoscout_path": "honda/jazz",
      "risk": "Laag risico: CVT met sterke betrouwbaarheidsreputatie, populair bij oudere kopers -- stabiele vraag."},
-    {"label": "Mazda 2 automaat", "query": "mazda 2 automaat",
+    {"label": "Mazda 2 automaat", "query": "mazda 2 automaat", "autoscout_path": "mazda/2",
      "risk": "Laag-gemiddeld risico: traditionele automaat, degelijke reputatie."},
-    {"label": "Citroen C1 automaat", "query": "citroen c1 automaat",
+    {"label": "Citroen C1 automaat", "query": "citroen c1 automaat", "autoscout_path": "citroen/c1",
      "risk": "Laag risico: zelfde platform/reputatie als Toyota Aygo (samen ontwikkeld)."},
-    {"label": "Peugeot 107 automaat", "query": "peugeot 107 automaat",
+    {"label": "Peugeot 107 automaat", "query": "peugeot 107 automaat", "autoscout_path": "peugeot/107",
      "risk": "Laag risico: zelfde platform/reputatie als Toyota Aygo (samen ontwikkeld)."},
-    {"label": "Nissan Micra automaat/CVT", "query": "nissan micra automaat",
+    {"label": "Nissan Micra automaat/CVT", "query": "nissan micra automaat", "autoscout_path": "nissan/micra",
      "risk": "VERHOOGD RISICO: Jatco CVT, zelfde kanttekening als Renault Clio (gedeeld platform/bak)."},
-    {"label": "Nissan Note automaat/CVT", "query": "nissan note automaat",
+    {"label": "Nissan Note automaat/CVT", "query": "nissan note automaat", "autoscout_path": "nissan/note",
      "risk": "VERHOOGD RISICO: zelfde Jatco CVT-kanttekening als Nissan Micra."},
-    {"label": "Dacia Sandero automaat/EDC", "query": "dacia sandero edc",
+    {"label": "Dacia Sandero automaat/EDC", "query": "dacia sandero edc", "autoscout_path": "dacia/sandero",
      "risk": "VERHOOGD RISICO: EDC-dubbelkoppelingsbak (Renault-afkomstig) kent vergelijkbare problemen als bij Renault zelf. Onderhoudshistorie navragen."},
-    {"label": "Volvo V40 automaat/Geartronic", "query": "volvo v40 automaat",
+    {"label": "Volvo V40 automaat/Geartronic", "query": "volvo v40 automaat", "autoscout_path": "volvo/v40",
      "risk": "Gemiddeld risico: de automaat zelf (Geartronic, koppelomvormer) is betrouwbaar, maar algeheel onderhoud/reparaties zijn duurder dan bij de andere merken hier -- reken dit mee in de marge."},
-    {"label": "Mini (One/Cooper) automaat", "query": "mini cooper automaat",
+    {"label": "Mini (One/Cooper) automaat", "query": "mini cooper automaat", "autoscout_path": "mini/cooper",
      "risk": "Gemiddeld risico: automaat zelf doorgaans prima, maar BMW-onderdelen/onderhoud zijn relatief duur -- reken dit mee in de marge."},
-    {"label": "BMW 1-serie automaat", "query": "bmw 1 serie automaat",
+    {"label": "BMW 1-serie automaat", "query": "bmw 1 serie automaat", "autoscout_path": "bmw/1er",
      "risk": "Gemiddeld risico: Steptronic-automaat is betrouwbaar, maar onderhoud/reparaties zijn duurder dan bij de budgetmerken -- reken dit mee in de marge."},
-    {"label": "Audi A1 automaat/S tronic", "query": "audi a1 s tronic",
+    {"label": "Audi A1 automaat/S tronic", "query": "audi a1 s tronic", "autoscout_path": "audi/a1",
      "risk": "LET OP: S tronic is hetzelfde DSG-platform als Volkswagen Polo/Seat Ibiza (concern) -- zelfde koppelingskanttekening, plus duurder onderhoud."},
-    {"label": "Mercedes A-klasse automaat", "query": "mercedes a klasse automaat",
+    {"label": "Mercedes A-klasse automaat", "query": "mercedes a klasse automaat", "autoscout_path": "mercedes-benz/a-klasse",
      "risk": "VERHOOGD RISICO: 7G-DCT dubbelkoppelingsbak staat bekend om schokkerig schakelen/slijtage, en reparaties zijn duur. Onderhoudshistorie goed navragen."},
-    {"label": "Mitsubishi Space Star automaat/CVT", "query": "mitsubishi space star automaat",
+    {"label": "Mitsubishi Space Star automaat/CVT", "query": "mitsubishi space star automaat", "autoscout_path": "mitsubishi/space-star",
      "risk": "Laag-gemiddeld risico: CVT met redelijke reputatie, budgetvriendelijk."},
-    {"label": "Chevrolet Spark/Matiz automaat", "query": "chevrolet matiz automaat",
+    {"label": "Chevrolet Spark/Matiz automaat", "query": "chevrolet matiz automaat", "autoscout_path": "chevrolet/matiz",
      "risk": "Gemiddeld risico: eenvoudige, betrouwbare automaat, maar merk is uit NL vertrokken -- onderdelen/support kunnen lastiger te vinden zijn."},
 ]
 
@@ -226,6 +239,116 @@ def fetch_model_listings(model: dict) -> list:
             listing["_model_risk"] = model["risk"]
         listings.extend(page_listings)
         if len(page_listings) < PAGE_SIZE:
+            break
+    return listings
+
+
+# --- AutoScout24 -------------------------------------------------------
+#
+# GEVERIFIEERD (via scripts/probe_sources.py, handmatig gedraaid op
+# 28-9-2026): AutoScout24 rendert serverside en embedt de resultatenlijst
+# als schema.org JSON-LD (@graph -> SearchResultsPage -> ItemList). Elk
+# item bevat: name, brand.name, model, mileageFromOdometer.value,
+# vehicleTransmission, offers.price/priceCurrency/url, en
+# offers.seller.@type ("AutoDealer" voor handelaren -- dit is de
+# betrouwbare handelaar-detectie voor deze bron, in tegenstelling tot de
+# tekstheuristiek die nodig is voor Marktplaats). Alle 35 merk/model-url's
+# in MODEL_CATALOG (autoscout_path) zijn stuk voor stuk gecheckt: status
+# 200 met resultaten. GEEN bouwjaar-veld beschikbaar in deze lijst-JSON --
+# extract_year() valt terug op de titel-regex, wat vaak niets oplevert
+# voor AutoScout24 (titels bevatten zelden een jaartal). Ook geen
+# plaatsingsdatum beschikbaar, dus "vandaag geplaatst" wordt voor deze bron
+# genegeerd (elke run scant het actuele aanbod; dedup via state voorkomt
+# dat oude advertenties opnieuw gemeld worden).
+AUTOSCOUT_BASE_URL = "https://www.autoscout24.nl"
+AUTOSCOUT_MAX_PAGES = 2
+
+_LD_JSON_PATTERN = re.compile(
+    r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+    re.DOTALL | re.IGNORECASE,
+)
+
+
+def fetch_autoscout_page(path: str, page: int) -> str:
+    url = f"{AUTOSCOUT_BASE_URL}/lst/{path}?sort=age&desc=1&page={page}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "text/html"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except (urllib.error.URLError, TimeoutError):
+        return ""  # AutoScout24 is een aanvullende bron -- niet de hele run laten falen
+
+
+def parse_autoscout_items(html: str) -> list:
+    items = []
+    for block in _LD_JSON_PATTERN.findall(html):
+        try:
+            data = json.loads(block)
+        except json.JSONDecodeError:
+            continue
+        graph = data.get("@graph", [data]) if isinstance(data, dict) else data
+        for node in graph:
+            if not isinstance(node, dict):
+                continue
+            item_list = (node.get("mainEntity") or {}).get("itemListElement")
+            if not item_list:
+                continue
+            for entry in item_list:
+                item = entry.get("item")
+                if item:
+                    items.append(item)
+    return items
+
+
+def normalize_autoscout_item(item: dict, model: dict) -> dict | None:
+    offers = item.get("offers") or {}
+    price = offers.get("price")
+    url_path = offers.get("url")
+    if price is None or not url_path:
+        return None  # onbruikbaar zonder prijs/url, sla over i.p.v. crashen
+
+    seller = offers.get("seller") or {}
+    is_dealer = seller.get("@type") == "AutoDealer"
+
+    transmission = item.get("vehicleTransmission", "")
+    description = f"{item.get('vehicleConfiguration', '')} {transmission}"
+
+    address = seller.get("address") or {}
+
+    return {
+        "itemId": f"as24:{url_path}",
+        "title": item.get("name", "Auto-advertentie"),
+        "description": description,
+        "date": "Vandaag",  # geen datumveld beschikbaar, zie docstring-notitie hierboven
+        "priceInfo": {"priceType": "FIXED", "priceCents": int(round(price * 100))},
+        "location": {"cityName": address.get("addressLocality", "Onbekende locatie")},
+        "attributes": [],
+        "extendedAttributes": [],
+        "vipUrl": url_path,  # listing_url() plakt hier de base-url voor (Marktplaats-conventie)
+        "_source": "autoscout24",
+        "sellerInformation": {"isDealer": is_dealer, "companyName": seller.get("name") if is_dealer else None},
+        "_model_label": model["label"],
+        "_model_risk": model["risk"],
+    }
+
+
+def fetch_autoscout_listings(model: dict) -> list:
+    path = model.get("autoscout_path")
+    if not path:
+        return []
+    listings = []
+    for page in range(1, AUTOSCOUT_MAX_PAGES + 1):
+        html = fetch_autoscout_page(path, page)
+        if not html:
+            break
+        items = parse_autoscout_items(html)
+        if not items:
+            break
+        for item in items:
+            normalized = normalize_autoscout_item(item, model)
+            if normalized:
+                listings.append(normalized)
+        if len(items) < 20:  # aanname o.b.v. waargenomen numberOfItems, geen harde garantie
             break
     return listings
 
@@ -412,6 +535,8 @@ def fmt_euro(cents: int) -> str:
 
 
 def listing_url(listing: dict) -> str:
+    if listing.get("_source") == "autoscout24":
+        return f"{AUTOSCOUT_BASE_URL}{listing.get('vipUrl', '')}"
     return f"https://www.marktplaats.nl{listing.get('vipUrl', '')}"
 
 
@@ -500,6 +625,15 @@ def main() -> int:
         print(f"[FOUT] {exc}", file=sys.stderr)
         return 1
 
+    # AutoScout24 is een aanvullende bron (extra data voor de mediaan, en
+    # extra particuliere kansen) -- een fout hier stopt de run niet, want
+    # Marktplaats alleen is al een werkend signaal (zie fetch_autoscout_page).
+    autoscout_count = 0
+    for model in MODEL_CATALOG:
+        as24_listings = fetch_autoscout_listings(model)
+        autoscout_count += len(as24_listings)
+        all_listings.extend(as24_listings)
+
     # Referentiegroep voor de mediaan: particulier + handelaar, heel NL.
     relevant = [l for l in all_listings if is_relevant(l)]
     medians = compute_group_medians(relevant)
@@ -530,7 +664,8 @@ def main() -> int:
         )
 
     print(
-        f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen. "
+        f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen "
+        f"(waarvan {autoscout_count} via AutoScout24). "
         f"Relevant (automaat, vandaag, binnen budget): {len(relevant)}, "
         f"waarvan particulier: {len(private_relevant)}. "
         f"Prijsgroepen met genoeg data: {len(medians)}. "

@@ -43,17 +43,23 @@ en geen plaatsingsdatum (dus geen "vandaag"-filter, elke run scant het
 actuele aanbod -- dedup via state voorkomt dubbele meldingen).
 Gaspedaal.nl blokkeert met HTTP 403 en is niet meegenomen.
 
-Twee aparte groepen, bewust:
+Twee aparte groepen, bewust, met TWEE APARTE FETCHES (zie fetch_model_listings
+vs. fetch_model_listings_local):
   1. REFERENTIEGROEP (voor de mediaan): ALLE relevante advertenties, van
      zowel particulieren als handelaren, in HEEL NEDERLAND (geen
-     postcode/afstandsfilter). Meer data = een betrouwbaardere mediaan, en
-     handelaarsprijzen vormen een prima bovengrens-referentie ("dit is wat
-     de markt normaal vraagt").
-  2. MELD-GROEP (wat daadwerkelijk als kans wordt doorgestuurd): alleen
-     advertenties van PARTICULIEREN uit diezelfde referentiegroep die
-     minimaal DISCOUNT_THRESHOLD_PCT onder de groepsmediaan zitten.
-     Handelaren worden nooit gemeld -- die prijzen doorgaans op marktniveau
-     of erboven, dus zijn zelden een "kans" en zitten in de weg als koper.
+     postcode/afstandsfilter, ongeacht wat POSTCODE/DISTANCE_KM zijn). Meer
+     data = een betrouwbaardere mediaan, en handelaarsprijzen vormen een
+     prima bovengrens-referentie ("dit is wat de markt normaal vraagt").
+  2. MELD-GROEP (wat daadwerkelijk als kans wordt doorgestuurd): een APARTE,
+     LOKALE fetch -- alleen Marktplaats-advertenties van PARTICULIEREN
+     binnen DISTANCE_KM van POSTCODE (default: de gedeelde POSTCODE-secret
+     van dit account, Winschoten, straal 50 km) die minimaal
+     DISCOUNT_THRESHOLD_PCT onder de LANDELIJKE groepsmediaan zitten.
+     AutoScout24 telt wel mee voor de referentiegroep, maar nooit voor de
+     meld-groep (geen geverifieerd postcode/straal-parameter voor die
+     bron). Handelaren worden nooit gemeld -- die prijzen doorgaans op
+     marktniveau of erboven, dus zijn zelden een "kans" en zitten in de weg
+     als koper.
 De referentieprijs per advertentie komt uit een OP MAAT GEMAAKTE peergroep:
 zelfde model, km-stand binnen MAX_MILEAGE_DEVIATION_KM en bouwjaar binnen
 MAX_YEAR_DEVIATION van die specifieke advertentie (zie find_peer_prices) --
@@ -136,10 +142,13 @@ MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
 MAX_MILEAGE_KM = int(os.environ.get("MAX_MILEAGE_KM", "150000"))
 MIN_CONSTRUCTION_YEAR = int(os.environ.get("MIN_CONSTRUCTION_YEAR", "2005"))
 
-# Bewust HEEL NEDERLAND (leeg = geen locatiefilter, zie fetch_page): meer
-# data voor een betrouwbare mediaan, en de koper kan zelf op stad filteren
-# in de Discord-melding. Zet POSTCODE+DISTANCE_KM als secret/env om dit
-# alsnog lokaal te beperken.
+# Twee verschillende zoekgebieden, bewust (zie hoofd-docstring):
+#   - Referentiegroep (mediaan): HEEL NEDERLAND, altijd -- fetch_page krijgt
+#     hiervoor apply_location=False, ongeacht of POSTCODE/DISTANCE_KM
+#     ingesteld zijn. Meer data = een betrouwbaardere mediaan.
+#   - Meld-groep (kansen): alleen ROND POSTCODE, binnen DISTANCE_KM --
+#     fetch_page krijgt hiervoor apply_location=True. Dit is dezelfde
+#     POSTCODE-secret die de andere monitors in deze repo al gebruiken.
 POSTCODE = os.environ.get("POSTCODE", "").strip()
 DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
 
@@ -251,13 +260,13 @@ MANUAL_HINT_PATTERN = re.compile(r"\bhandgeschakeld\b|\bhandbak\b", re.IGNORECAS
 
 # --- Marktplaats -----------------------------------------------------------
 
-def fetch_page(query: str, offset: int) -> dict:
+def fetch_page(query: str, offset: int, apply_location: bool = False) -> dict:
     params = (
         f"query={urllib.parse.quote(query)}"
         f"&limit={PAGE_SIZE}&offset={offset}"
         f"&sortBy=SORT_INDEX&sortOrder=DECREASING"
     )
-    if POSTCODE and DISTANCE_KM:
+    if apply_location and POSTCODE and DISTANCE_KM:
         distance_meters = int(float(DISTANCE_KM) * 1000)
         params += f"&postcode={POSTCODE}&distanceMeters={distance_meters}"
     url = f"{SEARCH_URL}?{params}"
@@ -274,11 +283,11 @@ def fetch_page(query: str, offset: int) -> dict:
     raise RuntimeError(f"Kon Marktplaats niet bereiken na 3 pogingen: {last_error}")
 
 
-def fetch_model_listings(model: dict) -> list:
+def _fetch_model_listings(model: dict, apply_location: bool) -> list:
     listings = []
     for page in range(MAX_PAGES_PER_MODEL):
         try:
-            data = fetch_page(model["query"], offset=page * PAGE_SIZE)
+            data = fetch_page(model["query"], offset=page * PAGE_SIZE, apply_location=apply_location)
         except RuntimeError as exc:
             # Eén model dat blijft weigeren (bv. rate-limiting) mag niet de
             # hele run onderuit halen -- sla dit model verder over, de rest
@@ -295,6 +304,16 @@ def fetch_model_listings(model: dict) -> list:
             break
         polite_pause()
     return listings
+
+
+def fetch_model_listings(model: dict) -> list:
+    """Landelijk, voor de mediaan-referentiegroep (geen locatiefilter)."""
+    return _fetch_model_listings(model, apply_location=False)
+
+
+def fetch_model_listings_local(model: dict) -> list:
+    """Alleen rond POSTCODE binnen DISTANCE_KM, voor de meld-groep (kansen)."""
+    return _fetch_model_listings(model, apply_location=True)
 
 
 # --- AutoScout24 -------------------------------------------------------
@@ -529,8 +548,12 @@ def find_peer_prices(listing: dict, by_model: dict) -> list:
     if year is None or mileage is None:
         return []
     peers = []
+    listing_id = listing.get("itemId")
     for other in by_model.get(listing["_model_label"], []):
-        if other is listing:
+        # Op itemId i.p.v. object-identiteit uitsluiten: dezelfde advertentie
+        # kan zowel in de landelijke (referentie) als de lokale (meld-)fetch
+        # zitten, als twee aparte dict-objecten met hetzelfde itemId.
+        if other.get("itemId") == listing_id:
             continue
         other_year = extract_year(other)
         other_mileage = extract_mileage(other)
@@ -704,19 +727,28 @@ def send_discord_notifications(listings: list) -> None:
 def main() -> int:
     state = load_state()
 
-    # Fouten per model (bv. aanhoudende rate-limiting) worden binnen
-    # fetch_model_listings zelf opgevangen en overgeslagen -- één weigerend
-    # model mag de rest van de catalogus niet blokkeren. Ook tussen modellen
-    # onderling een korte pauze (niet alleen tussen pagina's binnen één
-    # model) -- met de 6-uurs cadans is daar ruim de tijd voor.
+    if not (POSTCODE and DISTANCE_KM):
+        print(
+            "[WAARSCHUWING] Geen locatiefilter actief (POSTCODE en/of "
+            "DISTANCE_KM ontbreken/leeg) -- de meld-groep wordt dan ook "
+            "over HEEL NEDERLAND bepaald i.p.v. lokaal rond POSTCODE. "
+            "Check of de 'POSTCODE'-secret bestaat onder Settings > "
+            "Secrets and variables > Actions.",
+            file=sys.stderr,
+        )
+
+    # Referentiegroep (mediaan): landelijk, particulier + handelaar, van
+    # zowel Marktplaats als AutoScout24. Fouten per model (bv. aanhoudende
+    # rate-limiting) worden binnen fetch_model_listings zelf opgevangen en
+    # overgeslagen -- één weigerend model mag de rest van de catalogus niet
+    # blokkeren. Ook tussen modellen onderling een korte pauze (niet alleen
+    # tussen pagina's binnen één model) -- met de 6-uurs cadans is daar ruim
+    # de tijd voor.
     all_listings = []
     for model in MODEL_CATALOG:
         all_listings.extend(fetch_model_listings(model))
         polite_pause()
 
-    # AutoScout24 is een aanvullende bron (extra data voor de mediaan, en
-    # extra particuliere kansen) -- een fout hier stopt de run niet, want
-    # Marktplaats alleen is al een werkend signaal (zie fetch_autoscout_page).
     autoscout_count = 0
     for model in MODEL_CATALOG:
         as24_listings = fetch_autoscout_listings(model)
@@ -724,14 +756,21 @@ def main() -> int:
         polite_pause()
         all_listings.extend(as24_listings)
 
-    # Referentiegroep voor de mediaan: particulier + handelaar, heel NL.
     relevant = [l for l in all_listings if is_relevant(l)]
     by_model = group_listings_by_model(relevant)
 
-    # Meld-groep: alleen particulieren uit diezelfde referentiegroep. Elke
-    # advertentie krijgt zijn eigen peergroep (zelfde model, vergelijkbare
-    # km-stand/bouwjaar) i.p.v. een gedeelde bouwjaar-bin -- zie find_deals.
-    private_relevant = [l for l in relevant if is_private_seller(l)]
+    # Meld-groep (kansen): een APARTE fetch, alleen rond POSTCODE binnen
+    # DISTANCE_KM -- alleen Marktplaats (AutoScout24 heeft geen geverifieerd
+    # postcode/straal-parameter, zie docstring bij fetch_autoscout_listings,
+    # en is bovendien overwegend een handelaarsplatform). De mediaan komt
+    # nog steeds uit de landelijke referentiegroep hierboven.
+    local_listings = []
+    for model in MODEL_CATALOG:
+        local_listings.extend(fetch_model_listings_local(model))
+        polite_pause()
+
+    local_relevant = [l for l in local_listings if is_relevant(l)]
+    private_relevant = [l for l in local_relevant if is_private_seller(l)]
     deals = find_deals(private_relevant, by_model)
 
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -748,12 +787,7 @@ def main() -> int:
         }
 
     if POSTCODE and DISTANCE_KM:
-        print(
-            f"[INFO] Locatiefilter actief: {DISTANCE_KM} km rond {POSTCODE}. "
-            "Dit geldt voor BEIDE groepen (referentie en meldingen) -- zet "
-            "POSTCODE/DISTANCE_KM leeg voor heel NL (het standaardgedrag).",
-            file=sys.stderr,
-        )
+        print(f"[INFO] Meld-groep beperkt tot {DISTANCE_KM} km rond {POSTCODE}. Referentiegroep blijft heel NL.")
 
     peer_counts = [len(find_peer_prices(l, by_model)) for l in private_relevant]
     evaluable_counts = [n for n in peer_counts if n >= MIN_GROUP_SIZE]
@@ -765,10 +799,11 @@ def main() -> int:
     else:
         peer_stats = "geen enkele advertentie had genoeg vergelijkbare buren"
     print(
-        f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen "
-        f"(waarvan {autoscout_count} via AutoScout24). "
-        f"Relevant (automaat, vandaag, bouwjaar/km/budget): {len(relevant)}, "
-        f"waarvan particulier: {len(private_relevant)}, "
+        f"Referentiegroep (heel NL): {len(all_listings)} advertenties opgehaald over "
+        f"{len(MODEL_CATALOG)} modellen (waarvan {autoscout_count} via AutoScout24), "
+        f"{len(relevant)} relevant (automaat, bouwjaar/km/budget). "
+        f"Meld-groep (lokaal): {len(local_listings)} advertenties opgehaald, "
+        f"{len(local_relevant)} relevant, waarvan particulier: {len(private_relevant)}, "
         f"waarvan met genoeg vergelijkbare buren om te beoordelen: {len(evaluable_counts)} ({peer_stats}). "
         f"Nieuwe kansen: {len(new_matches)}."
     )

@@ -33,11 +33,13 @@ jobs:
 
       - name: Run monitor
         env:
-          # Bewust GEEN POSTCODE/DISTANCE_KM: heel Nederland, zowel voor de
-          # mediaan-referentie als voor meldingen (zie docstring in
-          # scripts/monitor_cars.py). Zet ze hier alsnog neer om lokaal te
-          # beperken.
+          # POSTCODE (gedeelde secret, Winschoten) + DISTANCE_KM beperken
+          # ALLEEN de meld-groep (kansen) tot deze straal. De mediaan-
+          # referentiegroep blijft altijd heel Nederland, ongeacht deze
+          # instelling -- zie docstring in scripts/monitor_cars.py.
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          POSTCODE: ${{ secrets.POSTCODE }}
+          DISTANCE_KM: "50"
           MAX_PRICE_EUR: "10000"
           MIN_PRICE_EUR: "1500"
           DISCOUNT_THRESHOLD_PCT: "15"

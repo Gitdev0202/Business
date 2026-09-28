@@ -12,6 +12,7 @@ Wordt alleen handmatig gedraaid (workflow_dispatch), post niets naar
 Discord en schrijft geen state.
 """
 
+import json
 import re
 import urllib.request
 import urllib.error
@@ -88,9 +89,31 @@ def main() -> int:
                 body, re.DOTALL | re.IGNORECASE,
             )
             print(f"  aantal JSON-LD <script>-blokken gevonden: {len(ld_blocks)}")
-            for i, block in enumerate(ld_blocks[:2]):
-                print(f"  --- JSON-LD blok {i} (eerste 1500 tekens) ---")
-                print(f"  {block.strip()[:1500]}")
+
+            # Probeer één volledig listing-item te parsen en pretty-printen
+            # i.p.v. een ruwe tekst-truncatie, zodat écht alle velden
+            # (bouwjaar, verkoper, etc.) zichtbaar worden.
+            printed_item = False
+            for block in ld_blocks:
+                try:
+                    data = json.loads(block)
+                except json.JSONDecodeError:
+                    continue
+                graph = data.get("@graph", [data]) if isinstance(data, dict) else data
+                for node in graph:
+                    item_list = (node.get("mainEntity") or {}).get("itemListElement") if isinstance(node, dict) else None
+                    if item_list:
+                        first_item = item_list[0].get("item")
+                        print("  --- volledig eerste listing-item (pretty-printed) ---")
+                        print("  " + json.dumps(first_item, indent=2, ensure_ascii=False).replace("\n", "\n  "))
+                        printed_item = True
+                        break
+                if printed_item:
+                    break
+            if not printed_item:
+                for i, block in enumerate(ld_blocks[:1]):
+                    print(f"  --- JSON-LD blok {i} (eerste 1000 tekens, geen itemList gevonden) ---")
+                    print(f"  {block.strip()[:1000]}")
 
             price_match = re.search(r"\"price\"\s*:\s*\"?\d+", body)
             if price_match:

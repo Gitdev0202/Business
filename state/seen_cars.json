@@ -1,4 +1,9 @@
 {
+  "m2438989556": {
+    "firstSeen": "2026-09-28T20:59:20.174434+00:00",
+    "model": "Mini (One/Cooper) automaat",
+    "title": "Mini Mini Cabrio 1.6 Cooper S Chili; Automaat+Xenon+Harman/K"
+  },
   "m2439251520": {
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
     "model": "BMW 1-serie automaat",
@@ -119,6 +124,11 @@
     "model": "Citroen C3 automaat (EAT6)",
     "title": "Citro\u00ebn C3 Picasso 1.6 VTi Exclusive 2015 Automaat Navi Cam"
   },
+  "m2447806539": {
+    "firstSeen": "2026-09-28T20:59:20.174434+00:00",
+    "model": "Mini (One/Cooper) automaat",
+    "title": "Mini 3-Deurs 1.6 Cooper Chili 2004 Automaat Panorama dak"
+  },
   "m2447813251": {
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
     "model": "BMW 1-serie automaat",
@@ -143,5 +153,15 @@
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
     "model": "BMW 1-serie automaat",
     "title": "BMW 1-serie 118i- Automaat-zie omschrijving"
+  },
+  "m2447928410": {
+    "firstSeen": "2026-09-28T20:59:20.174434+00:00",
+    "model": "Fiat 500 automaat/Dualogic",
+    "title": "Fiat 500 1.2 Pop AUT 2011 APK 07-2027 Airco LM Zwart"
+  },
+  "m2447929237": {
+    "firstSeen": "2026-09-28T20:59:20.174434+00:00",
+    "model": "Mazda 2 automaat",
+    "title": "2.0 S-VT HB AUT 13 JAAR BEZIT! DAKJE NAVI PDC CLIMATE NAP"
   }
 }

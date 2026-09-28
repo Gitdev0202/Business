@@ -77,6 +77,27 @@ def main() -> int:
         if not has_data and not has_block and body:
             print("  -> geen duidelijk signaal; waarschijnlijk JS-rendering nodig (lege shell)")
 
+        if body:
+            block_match = BLOCK_SIGNALS.search(body)
+            if block_match:
+                ctx_start = max(0, block_match.start() - 80)
+                print(f"  context rond block-signaal: ...{body[ctx_start:block_match.start() + 120]!r}...")
+
+            ld_blocks = re.findall(
+                r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+                body, re.DOTALL | re.IGNORECASE,
+            )
+            print(f"  aantal JSON-LD <script>-blokken gevonden: {len(ld_blocks)}")
+            for i, block in enumerate(ld_blocks[:2]):
+                print(f"  --- JSON-LD blok {i} (eerste 1500 tekens) ---")
+                print(f"  {block.strip()[:1500]}")
+
+            price_match = re.search(r"\"price\"\s*:\s*\"?\d+", body)
+            if price_match:
+                ctx_start = max(0, price_match.start() - 300)
+                print(f"  --- context rond eerste 'price'-veld (600 tekens) ---")
+                print(f"  {body[ctx_start:ctx_start + 600]!r}")
+
     return 0
 
 

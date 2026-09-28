@@ -34,9 +34,12 @@ Twee aparte groepen, bewust:
      minimaal DISCOUNT_THRESHOLD_PCT onder de groepsmediaan zitten.
      Handelaren worden nooit gemeld -- die prijzen doorgaans op marktniveau
      of erboven, dus zijn zelden een "kans" en zitten in de weg als koper.
-Groepering voor de mediaan is op (model, bouwjaar-bin); zie BOUWJAAR_BIN_SIZE.
-Er wordt bewust NIET ook op km-stand gegroepeerd -- dat splitst de data te
-fijn op voor genoeg vergelijkbare advertenties per groep.
+De referentieprijs per advertentie komt uit een OP MAAT GEMAAKTE peergroep:
+zelfde model, km-stand binnen MAX_MILEAGE_DEVIATION_KM en bouwjaar binnen
+MAX_YEAR_DEVIATION van die specifieke advertentie (zie find_peer_prices) --
+preciezer dan een vast bouwjaar-bin, omdat elke auto met zijn eigen meest
+vergelijkbare buren vergeleken wordt in plaats van met een grove, gedeelde
+groep.
 
 BELANGRIJKE BEPERKINGEN (lees dit voor je op een melding afgaat):
   - De Marktplaats-categorie-ID voor "Auto's" (L1_CATEGORY_ID hieronder), de
@@ -108,7 +111,6 @@ DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
 # minimaal moeten zijn om die mediaan te vertrouwen.
 DISCOUNT_THRESHOLD_PCT = float(os.environ.get("DISCOUNT_THRESHOLD_PCT", "15"))
 MIN_GROUP_SIZE = int(os.environ.get("MIN_GROUP_SIZE", "4"))
-BOUWJAAR_BIN_SIZE = 3  # groepeer per 3 bouwjaren (2016-2018, 2019-2021, ...)
 
 # --- Curated modellenlijst --------------------------------------------------
 # Automaat-modellen die in het budgetsegment (<= ~10k) doorgaans snel
@@ -454,45 +456,66 @@ def extract_mileage(listing: dict) -> int | None:
     return None
 
 
-def bouwjaar_bin(year: int) -> str:
-    start = (year // BOUWJAAR_BIN_SIZE) * BOUWJAAR_BIN_SIZE
-    return f"{start}-{start + BOUWJAAR_BIN_SIZE - 1}"
-
-
 # --- Levende mediaan-referentie ---------------------------------------------
+#
+# Een vast bouwjaar-bin (bv. "2016-2018") is grof: een auto van begin 2016
+# met 140.000 km en eentje van eind 2018 met 60.000 km belanden in dezelfde
+# groep terwijl ze niets met elkaar te maken hebben, en een auto van eind
+# 2018 en begin 2019 (1 maand uit elkaar) belanden juist in VERSCHILLENDE
+# groepen. In plaats daarvan krijgt elke advertentie een eigen, op maat
+# gemaakte vergelijkingsgroep ("peers"): andere advertenties van HETZELFDE
+# model waarvan de km-stand binnen MAX_MILEAGE_DEVIATION_KM van déze
+# advertentie ligt, EN het bouwjaar binnen MAX_YEAR_DEVIATION -- die tweede
+# eis voorkomt dat een auto van 2007 met 60.000 km vergeleken wordt met een
+# auto van 2023 met 55.000 km (zelfde km-stand, totaal andere leeftijd/
+# generatie/uitrusting). De mediaan van die peers is de referentieprijs
+# voor precies déze advertentie.
+MAX_MILEAGE_DEVIATION_KM = int(os.environ.get("MAX_MILEAGE_DEVIATION_KM", "50000"))
+MAX_YEAR_DEVIATION = int(os.environ.get("MAX_YEAR_DEVIATION", "4"))
 
-def group_key(listing: dict) -> tuple | None:
+
+def group_listings_by_model(listings: list) -> dict:
+    by_model: dict = {}
+    for listing in listings:
+        by_model.setdefault(listing["_model_label"], []).append(listing)
+    return by_model
+
+
+def find_peer_prices(listing: dict, by_model: dict) -> list:
     year = extract_year(listing)
-    if year is None:
-        return None
-    return (listing["_model_label"], bouwjaar_bin(year))
-
-
-def compute_group_medians(listings: list) -> dict:
-    groups: dict = {}
-    for listing in listings:
-        key = group_key(listing)
-        if key is None:
+    mileage = extract_mileage(listing)
+    if year is None or mileage is None:
+        return []
+    peers = []
+    for other in by_model.get(listing["_model_label"], []):
+        if other is listing:
             continue
-        price = listing.get("priceInfo", {}).get("priceCents", 0)
-        groups.setdefault(key, []).append(price)
-    return {key: (median(prices), len(prices)) for key, prices in groups.items() if len(prices) >= MIN_GROUP_SIZE}
+        other_year = extract_year(other)
+        other_mileage = extract_mileage(other)
+        if other_year is None or other_mileage is None:
+            continue
+        if abs(other_year - year) > MAX_YEAR_DEVIATION:
+            continue
+        if abs(other_mileage - mileage) > MAX_MILEAGE_DEVIATION_KM:
+            continue
+        peers.append(other.get("priceInfo", {}).get("priceCents", 0))
+    return peers
 
 
-def find_deals(listings: list, medians: dict) -> list:
+def find_deals(candidates: list, by_model: dict) -> list:
     deals = []
-    for listing in listings:
-        key = group_key(listing)
-        if key is None or key not in medians:
-            continue
-        group_median_cents, group_size = medians[key]
+    for listing in candidates:
         price_cents = listing.get("priceInfo", {}).get("priceCents", 0)
         if price_cents <= 0:
             continue
-        discount_pct = (1 - price_cents / group_median_cents) * 100
+        peer_prices = find_peer_prices(listing, by_model)
+        if len(peer_prices) < MIN_GROUP_SIZE:
+            continue
+        reference_cents = median(peer_prices)
+        discount_pct = (1 - price_cents / reference_cents) * 100
         if discount_pct >= DISCOUNT_THRESHOLD_PCT:
-            listing["_group_median_cents"] = group_median_cents
-            listing["_group_size"] = group_size
+            listing["_group_median_cents"] = reference_cents
+            listing["_group_size"] = len(peer_prices)
             listing["_discount_pct"] = round(discount_pct, 1)
             deals.append(listing)
     return deals
@@ -659,11 +682,13 @@ def main() -> int:
 
     # Referentiegroep voor de mediaan: particulier + handelaar, heel NL.
     relevant = [l for l in all_listings if is_relevant(l)]
-    medians = compute_group_medians(relevant)
+    by_model = group_listings_by_model(relevant)
 
-    # Meld-groep: alleen particulieren uit diezelfde referentiegroep.
+    # Meld-groep: alleen particulieren uit diezelfde referentiegroep. Elke
+    # advertentie krijgt zijn eigen peergroep (zelfde model, vergelijkbare
+    # km-stand/bouwjaar) i.p.v. een gedeelde bouwjaar-bin -- zie find_deals.
     private_relevant = [l for l in relevant if is_private_seller(l)]
-    deals = find_deals(private_relevant, medians)
+    deals = find_deals(private_relevant, by_model)
 
     now_iso = datetime.now(timezone.utc).isoformat()
     new_matches = []
@@ -686,12 +711,13 @@ def main() -> int:
             file=sys.stderr,
         )
 
+    beoordeelbaar = sum(1 for l in private_relevant if len(find_peer_prices(l, by_model)) >= MIN_GROUP_SIZE)
     print(
         f"Opgehaald: {len(all_listings)} advertenties over {len(MODEL_CATALOG)} modellen "
         f"(waarvan {autoscout_count} via AutoScout24). "
-        f"Relevant (automaat, vandaag, binnen budget): {len(relevant)}, "
-        f"waarvan particulier: {len(private_relevant)}. "
-        f"Prijsgroepen met genoeg data: {len(medians)}. "
+        f"Relevant (automaat, vandaag, bouwjaar/km/budget): {len(relevant)}, "
+        f"waarvan particulier: {len(private_relevant)}, "
+        f"waarvan met genoeg vergelijkbare buren om te beoordelen: {beoordeelbaar}. "
         f"Nieuwe kansen: {len(new_matches)}."
     )
 

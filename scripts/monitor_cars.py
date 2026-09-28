@@ -90,6 +90,12 @@ MAX_PRICE_CENTS = int(MAX_PRICE_EUR * 100)
 MIN_PRICE_EUR = float(os.environ.get("MIN_PRICE_EUR", "1500"))  # weert lege carrosserieën/onderdelen-advertenties
 MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
 
+# Alleen auto's onder deze km-stand en NA dit bouwjaar (dus strikt ouder/
+# meer-km wordt geweerd, evenals advertenties waar km-stand/bouwjaar niet
+# uit te lezen is -- zie passes_age_mileage_filter).
+MAX_MILEAGE_KM = int(os.environ.get("MAX_MILEAGE_KM", "150000"))
+MIN_CONSTRUCTION_YEAR = int(os.environ.get("MIN_CONSTRUCTION_YEAR", "2005"))
+
 # Bewust HEEL NEDERLAND (leeg = geen locatiefilter, zie fetch_page): meer
 # data voor een betrouwbare mediaan, en de koper kan zelf op stad filteren
 # in de Discord-melding. Zet POSTCODE+DISTANCE_KM als secret/env om dit
@@ -314,6 +320,7 @@ def normalize_autoscout_item(item: dict, model: dict) -> dict | None:
     description = f"{item.get('vehicleConfiguration', '')} {transmission}"
 
     address = seller.get("address") or {}
+    mileage = (item.get("mileageFromOdometer") or {}).get("value")
 
     return {
         "itemId": f"as24:{url_path}",
@@ -324,6 +331,7 @@ def normalize_autoscout_item(item: dict, model: dict) -> dict | None:
         "location": {"cityName": address.get("addressLocality", "Onbekende locatie")},
         "attributes": [],
         "extendedAttributes": [],
+        "mileage": mileage,  # rechtstreeks numeriek, geëxtraheerd door extract_mileage()
         "vipUrl": url_path,  # listing_url() plakt hier de base-url voor (Marktplaats-conventie)
         "_source": "autoscout24",
         "sellerInformation": {"isDealer": is_dealer, "companyName": seller.get("name") if is_dealer else None},
@@ -490,8 +498,23 @@ def find_deals(listings: list, medians: dict) -> list:
     return deals
 
 
+def passes_age_mileage_filter(listing: dict) -> bool:
+    year = extract_year(listing)
+    if year is None or year <= MIN_CONSTRUCTION_YEAR:
+        return False  # onbekend bouwjaar telt als "voldoet niet" (veilige kant)
+    mileage = extract_mileage(listing)
+    if mileage is None or mileage >= MAX_MILEAGE_KM:
+        return False  # onbekende km-stand telt als "voldoet niet" (veilige kant)
+    return True
+
+
 def is_relevant(listing: dict) -> bool:
-    return is_posted_today(listing) and is_automatic(listing) and passes_price_filter(listing)
+    return (
+        is_posted_today(listing)
+        and is_automatic(listing)
+        and passes_price_filter(listing)
+        and passes_age_mileage_filter(listing)
+    )
 
 
 # --- State (dedup) -------------------------------------------------------

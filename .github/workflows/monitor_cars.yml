@@ -42,8 +42,8 @@ jobs:
           # Was 50 km: de run-logs van 29-9-2026 lieten zien dat 50 km rond
           # Winschoten maar 1.007 lokale advertenties opleverde (tegenover
           # 22.255 landelijk) -- veruit de grootste reden voor weinig
-          # meldingen. 75 km dekt een fors groter deel van Noord-Nederland.
-          DISTANCE_KM: "75"
+          # meldingen. 70 km dekt een fors groter deel van Noord-Nederland.
+          DISTANCE_KM: "70"
           MAX_PRICE_EUR: "10000"
           MIN_PRICE_EUR: "1500"
           # Was 15%: iets soepeler zodat ook duidelijke (maar minder extreme)

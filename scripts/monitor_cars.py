@@ -53,7 +53,9 @@ vs. fetch_model_listings_local):
   2. MELD-GROEP (wat daadwerkelijk als kans wordt doorgestuurd): een APARTE,
      LOKALE fetch -- alleen Marktplaats-advertenties van PARTICULIEREN
      binnen DISTANCE_KM van POSTCODE (default: de gedeelde POSTCODE-secret
-     van dit account, Winschoten, straal 50 km) die minimaal
+     van dit account, Winschoten, straal 75 km -- was 50 km, zie
+     run-log-analyse 29-9-2026: bij 50 km waren er te weinig lokale
+     advertenties om een redelijk aantal kansen uit te halen) die minimaal
      DISCOUNT_THRESHOLD_PCT onder de LANDELIJKE groepsmediaan zitten.
      AutoScout24 telt wel mee voor de referentiegroep, maar nooit voor de
      meld-groep (geen geverifieerd postcode/straal-parameter voor die
@@ -174,7 +176,7 @@ DISTANCE_KM = os.environ.get("DISTANCE_KM", "").strip()
 # Hoeveel procent onder de levende groepsmediaan een advertentie moet zitten
 # om als "kans" te gelden, en hoeveel vergelijkbare advertenties er
 # minimaal moeten zijn om die mediaan te vertrouwen.
-DISCOUNT_THRESHOLD_PCT = float(os.environ.get("DISCOUNT_THRESHOLD_PCT", "15"))
+DISCOUNT_THRESHOLD_PCT = float(os.environ.get("DISCOUNT_THRESHOLD_PCT", "10"))
 MIN_GROUP_SIZE = int(os.environ.get("MIN_GROUP_SIZE", "4"))
 
 # --- Curated modellenlijst --------------------------------------------------
@@ -311,8 +313,15 @@ def _fetch_model_listings(model: dict, apply_location: bool) -> list:
             # Eén model dat blijft weigeren (bv. rate-limiting) mag niet de
             # hele run onderuit halen -- sla dit model verder over, de rest
             # van de catalogus (en de vorige pagina's van dit model) blijft
-            # gewoon meetellen.
+            # gewoon meetellen. In de praktijk (zie run-logs 29-9-2026) komt
+            # zo'n 403 vaak niet geïsoleerd voor: een tijdelijke rate-limit
+            # blijft nog even hangen en laat dan meteen ook de VOLGENDE
+            # modellen in de catalogus falen, wat een paar modellen per run
+            # structureel op nul zet. Een langere afkoelpauze hier (i.p.v.
+            # alleen de normale korte polite_pause tussen modellen) geeft de
+            # eventuele blokkade tijd om te verlopen voor het volgende model.
             print(f"[WAARSCHUWING] {model['label']}: {exc}", file=sys.stderr)
+            time.sleep(30)
             break
         page_listings = data.get("listings", [])
         for listing in page_listings:
@@ -556,8 +565,8 @@ MAX_YEAR_DEVIATION = int(os.environ.get("MAX_YEAR_DEVIATION", "1"))
 # Signaal 2: "low_mileage" -- km-stand een stuk onder de mediaan-km-stand
 # van de peergroep, voor een prijs die niet (duidelijk) boven de
 # mediaanprijs zit. Zie docstring bovenin voor de redenering.
-MILEAGE_DISCOUNT_THRESHOLD_PCT = float(os.environ.get("MILEAGE_DISCOUNT_THRESHOLD_PCT", "20"))
-MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT = float(os.environ.get("MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT", "5"))
+MILEAGE_DISCOUNT_THRESHOLD_PCT = float(os.environ.get("MILEAGE_DISCOUNT_THRESHOLD_PCT", "15"))
+MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT = float(os.environ.get("MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT", "8"))
 
 
 def group_listings_by_model(listings: list) -> dict:

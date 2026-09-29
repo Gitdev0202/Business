@@ -39,17 +39,25 @@ jobs:
           # instelling -- zie docstring in scripts/monitor_cars.py.
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           POSTCODE: ${{ secrets.POSTCODE }}
-          DISTANCE_KM: "50"
+          # Was 50 km: de run-logs van 29-9-2026 lieten zien dat 50 km rond
+          # Winschoten maar 1.007 lokale advertenties opleverde (tegenover
+          # 22.255 landelijk) -- veruit de grootste reden voor weinig
+          # meldingen. 75 km dekt een fors groter deel van Noord-Nederland.
+          DISTANCE_KM: "75"
           MAX_PRICE_EUR: "10000"
           MIN_PRICE_EUR: "1500"
-          DISCOUNT_THRESHOLD_PCT: "15"
+          # Was 15%: iets soepeler zodat ook duidelijke (maar minder extreme)
+          # kansen worden gemeld, i.p.v. alleen de allergrootste uitschieters.
+          DISCOUNT_THRESHOLD_PCT: "10"
           MIN_GROUP_SIZE: "4"
           MAX_MILEAGE_KM: "150000"
           MIN_CONSTRUCTION_YEAR: "2005"
           MAX_MILEAGE_DEVIATION_KM: "50000"
           MAX_YEAR_DEVIATION: "1"
-          MILEAGE_DISCOUNT_THRESHOLD_PCT: "20"
-          MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT: "5"
+          # Beide iets soepeler dan de oorspronkelijke 20%/5% (zelfde reden
+          # als DISCOUNT_THRESHOLD_PCT hierboven).
+          MILEAGE_DISCOUNT_THRESHOLD_PCT: "15"
+          MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT: "8"
         run: python scripts/monitor_cars.py
 
       - name: Commit bijgewerkte state

@@ -4,6 +4,72 @@
     "model": "Honda Jazz automaat",
     "title": "Honda Jazz 1.4 CVT S 2013 Grijs"
   },
+  "m2396194246": {
+    "discountPct": 2.9,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 695000,
+    "medianMileage": 123447,
+    "mileage": 94792,
+    "mileageDiscountPct": 23.2,
+    "model": "Mercedes A-klasse automaat",
+    "peers": [
+      {
+        "mileage": 133610,
+        "priceCents": 449900,
+        "title": "Mercedes-Benz A-klasse 160 Business Class Avantgarde AUTOMAA",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2442606318-mercedes-benz-a-klasse-160-business-class-avantgarde-automaa",
+        "year": 2009
+      },
+      {
+        "mileage": 118302,
+        "priceCents": 545000,
+        "title": "Mercedes-Benz A-klasse 180 Classic / AUTOMAAT / AIRCO / APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2441549764-mercedes-benz-a-klasse-180-classic-automaat-airco-apk",
+        "year": 2010
+      },
+      {
+        "mileage": 123447,
+        "priceCents": 599000,
+        "title": "Mercedes-Benz A-klasse 160 2e EIG | AUTOMAAT | AIRCO | CRUIS",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2444380887-mercedes-benz-a-klasse-160-2e-eig-automaat-airco-cruis",
+        "year": 2011
+      },
+      {
+        "mileage": 138503,
+        "priceCents": 695000,
+        "title": "Mercedes-Benz A-klasse 160 Elegance 2010 Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2441400420-mercedes-benz-a-klasse-160-elegance-2010-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 101720,
+        "priceCents": 695000,
+        "title": "Mercedes-Benz A-klasse 180 Business Class Elegance automaat,",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2446174910-mercedes-benz-a-klasse-180-business-class-elegance-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 94451,
+        "priceCents": 699900,
+        "title": "Mercedes-Benz A-klasse 160 Business Class | AUTOMAAT | NAP |",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2444031121-mercedes-benz-a-klasse-160-business-class-automaat-nap",
+        "year": 2011
+      },
+      {
+        "mileage": 133359,
+        "priceCents": 794400,
+        "title": "Mercedes-Benz C-klasse 200 K Business Class Automaat|Carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2447392942-mercedes-benz-c-klasse-200-k-business-class-automaat-carplay",
+        "year": 2009
+      }
+    ],
+    "priceCents": 675000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Mercedes A160 automaat, cruise, airco,",
+    "year": 2010
+  },
   "m2402897965": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Peugeot 107 automaat",
@@ -54,6 +120,59 @@
     "model": "Hyundai i10 automaat",
     "title": "Nette Hyundai i10 1.1AUTOMAAT  2009 Nieuwe Apk Grote Beurt"
   },
+  "m2437008963": {
+    "discountPct": 57.2,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 525000,
+    "medianMileage": 135034,
+    "mileage": 100625,
+    "mileageDiscountPct": 25.5,
+    "model": "Opel Astra automaat",
+    "peers": [
+      {
+        "mileage": 139000,
+        "priceCents": 430000,
+        "title": "Opel Astra 1.6 85KW 5D AUT 2011 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2442567418-opel-astra-1-6-85kw-5d-aut-2011-grijs",
+        "year": 2011
+      },
+      {
+        "mileage": 142611,
+        "priceCents": 465000,
+        "title": "Opel Astra TwinTop 1.8 Automaat | Stoelverw 2010",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2440851625-opel-astra-twintop-1-8-automaat-stoelverw-2010",
+        "year": 2010
+      },
+      {
+        "mileage": 130296,
+        "priceCents": 525000,
+        "title": "Opel Astra 1.6 Edition | Automaat | Cruise Control | 17\u201d L",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2446828443-opel-astra-1-6-edition-automaat-cruise-control-17-l",
+        "year": 2011
+      },
+      {
+        "mileage": 104700,
+        "priceCents": 675000,
+        "title": "Opel Astra 1.6 Edition 5-deurs Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-diversen/schadeauto-s/m2446594827-opel-astra-1-6-edition-5-deurs-automaat",
+        "year": 2011
+      },
+      {
+        "mileage": 135034,
+        "priceCents": 675000,
+        "title": "Opel Astra 1.6 Sportautomaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2443510725-opel-astra-1-6-sportautomaat",
+        "year": 2010
+      }
+    ],
+    "priceCents": 224500,
+    "signals": [
+      "price_discount",
+      "low_mileage"
+    ],
+    "title": "Opel Astra 1.6 Cosmo (automaat probleem) (bj 2010)",
+    "year": 2010
+  },
   "m2437023692": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Renault Clio automaat",
@@ -68,6 +187,149 @@
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Kia Picanto automaat",
     "title": "Kia Picanto 1.1 X-tra Automaat | Airco | 5DR"
+  },
+  "m2437848768": {
+    "discountPct": 12.2,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 774450.0,
+    "medianMileage": 131410,
+    "mileage": 146819,
+    "mileageDiscountPct": -11.7,
+    "model": "Peugeot 208 automaat (EAT6/EAT8)",
+    "peers": [
+      {
+        "mileage": 148199,
+        "priceCents": 594400,
+        "title": "Peugeot 208 1.2 e-VTi Active Airco, Cruise Control, Tiptroni",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437397869-peugeot-208-1-2-e-vti-active-airco-cruise-control-tiptroni",
+        "year": 2015
+      },
+      {
+        "mileage": 136389,
+        "priceCents": 649900,
+        "title": "Peugeot 208 1.2 PureTech Allure Automaat, Pano, Navi, Cruise",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446615062-peugeot-208-1-2-puretech-allure-automaat-pano-navi-cruise",
+        "year": 2015
+      },
+      {
+        "mileage": 140648,
+        "priceCents": 655000,
+        "title": "Peugeot 208 1.2 PT 60KW 5-D, cruise control, clim, AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2418495487-peugeot-208-1-2-pt-60kw-5-d-cruise-control-clim-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 144575,
+        "priceCents": 669500,
+        "title": "Peugeot 208 1.2 PureTech Active | AUTOMAAT | AIRCO | NAVI |",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2438477033-peugeot-208-1-2-puretech-active-automaat-airco-navi",
+        "year": 2015
+      },
+      {
+        "mileage": 134000,
+        "priceCents": 694500,
+        "title": "Peugeot 208 1.2 PureTech Premi\u00e8re navi LM automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2441187897-peugeot-208-1-2-puretech-premiere-navi-lm-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 121213,
+        "priceCents": 695000,
+        "title": "Peugeot 208 1.2 PureTech Active // Automaat // Navi // PDC /",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2445664757-peugeot-208-1-2-puretech-active-automaat-navi-pdc",
+        "year": 2016
+      },
+      {
+        "mileage": 115245,
+        "priceCents": 699900,
+        "title": "Peugeot 208 1.2 VTI 5-D 2016 Grijs Automaat NwApk! Boekjes!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444387570-peugeot-208-1-2-vti-5-d-2016-grijs-automaat-nwapk-boekjes",
+        "year": 2016
+      },
+      {
+        "mileage": 145849,
+        "priceCents": 715000,
+        "title": "Peugeot 208 1.2 VTI 60KW 5-D 2-TR 2017 Grijs Automaat semi",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444090716-peugeot-208-1-2-vti-60kw-5-d-2-tr-2017-grijs-automaat-semi",
+        "year": 2017
+      },
+      {
+        "mileage": 140429,
+        "priceCents": 749900,
+        "title": "Peugeot 208 1.2 PureTech Allure |EAT.6AUT|CRUISE|NAVI|PDC",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2441460651-peugeot-208-1-2-puretech-allure-eat-6aut-cruise-navi-pdc",
+        "year": 2016
+      },
+      {
+        "mileage": 105721,
+        "priceCents": 799000,
+        "title": "Peugeot 208 RIJKAAR/APK/HISTORY/BEURT/NAP/AIRCO/3drs//DIREKT",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2439931895-peugeot-208-rijkaar-apk-history-beurt-nap-airco-3drs-direkt",
+        "year": 2015
+      },
+      {
+        "mileage": 111365,
+        "priceCents": 799900,
+        "title": "Peugeot 208 1.2 PureTech GT-line AUTOMAAT-NAVI-CRUISE-AIRCO-",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444263166-peugeot-208-1-2-puretech-gt-line-automaat-navi-cruise-airco",
+        "year": 2017
+      },
+      {
+        "mileage": 139036,
+        "priceCents": 799900,
+        "title": "Peugeot 208 1.2 e-VTi Roland Garros Automaat 2e eigenaar dea",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437424505-peugeot-208-1-2-e-vti-roland-garros-automaat-2e-eigenaar-dea",
+        "year": 2015
+      },
+      {
+        "mileage": 99461,
+        "priceCents": 825000,
+        "title": "Peugeot 208 1.2 PureTech Active Automaat Navigatie Cruise Nw",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446641588-peugeot-208-1-2-puretech-active-automaat-navigatie-cruise-nw",
+        "year": 2017
+      },
+      {
+        "mileage": 117250,
+        "priceCents": 830000,
+        "title": "Peugeot 208 1.2 Gt-Line automaat NAP!! Km stand",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437606889-peugeot-208-1-2-gt-line-automaat-nap-km-stand",
+        "year": 2015
+      },
+      {
+        "mileage": 127364,
+        "priceCents": 845000,
+        "title": "Peugeot 208 1.2 PureTech Allure!2016!Panoramadak!LM.velgen!P",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2436529295-peugeot-208-1-2-puretech-allure-2016-panoramadak-lm-velgen-p",
+        "year": 2016
+      },
+      {
+        "mileage": 135062,
+        "priceCents": 894000,
+        "title": "Peugeot 208 1.2 PureTech Allure GT-Line 140 Pk Navi Camera E",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446453183-peugeot-208-1-2-puretech-allure-gt-line-140-pk-navi-camera-e",
+        "year": 2016
+      },
+      {
+        "mileage": 100402,
+        "priceCents": 899000,
+        "title": "Peugeot 208 1.2 PureTech GT-line 110pk Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444347646-peugeot-208-1-2-puretech-gt-line-110pk-automaat",
+        "year": 2017
+      },
+      {
+        "mileage": 128821,
+        "priceCents": 899000,
+        "title": "Peugeot 208 1.2 PureTech Allure Automaat Apple carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444030643-peugeot-208-1-2-puretech-allure-automaat-apple-carplay",
+        "year": 2017
+      }
+    ],
+    "priceCents": 680000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Peugeot 208 1.2 VTI  5-D 2016 Automaat",
+    "year": 2016
   },
   "m2438548984": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
@@ -94,6 +356,121 @@
     "model": "Opel Astra automaat",
     "title": "Opel Astra GTC 1.6 bj.2007 Autom|Airco|Coupe|Nap."
   },
+  "m2438944365": {
+    "discountPct": -4.1,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 907500.0,
+    "medianMileage": 110796,
+    "mileage": 83703,
+    "mileageDiscountPct": 24.5,
+    "model": "Citroen C3 automaat (EAT6)",
+    "peers": [
+      {
+        "mileage": 94181,
+        "priceCents": 594000,
+        "title": "Citro\u00ebn C3 1.2 Puretech S&S 82pk ETG 2017 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446748127-citroen-c3-1-2-puretech-s-s-82pk-etg-2017-grijs",
+        "year": 2017
+      },
+      {
+        "mileage": 120000,
+        "priceCents": 645000,
+        "title": "Citro\u00ebn C3 1.2 Puretech, 2018 heel netjes",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445636118-citroen-c3-1-2-puretech-2018-heel-netjes",
+        "year": 2018
+      },
+      {
+        "mileage": 120000,
+        "priceCents": 790000,
+        "title": "Citro\u00ebn C3 1.2 PureTech Shine Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2406855663-citroen-c3-1-2-puretech-shine-automaat",
+        "year": 2018
+      },
+      {
+        "mileage": 70355,
+        "priceCents": 845000,
+        "title": "Citroen C3 1.2 PureTech Selection Automaat 1e Eig. +NAP NL-a",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2442361223-citroen-c3-1-2-puretech-selection-automaat-1e-eig-nap-nl-a",
+        "year": 2017
+      },
+      {
+        "mileage": 122418,
+        "priceCents": 894400,
+        "title": "Citroen C3 Aircross 1.2 PureTech S&S Feel|Cruise|Climate|Sen",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447778636-citroen-c3-aircross-1-2-puretech-s-s-feel-cruise-climate-sen",
+        "year": 2019
+      },
+      {
+        "mileage": 130306,
+        "priceCents": 894500,
+        "title": "Citroen C3 Aircross 1.2 PureTech S&S Shine Automaat - Naviga",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2440826247-citroen-c3-aircross-1-2-puretech-s-s-shine-automaat-naviga",
+        "year": 2018
+      },
+      {
+        "mileage": 89500,
+        "priceCents": 900000,
+        "title": "Citro\u00ebn C3 Aircross 1.2 Puretech, Automaat, Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443100288-citroen-c3-aircross-1-2-puretech-automaat-trekhaak",
+        "year": 2019
+      },
+      {
+        "mileage": 111605,
+        "priceCents": 915000,
+        "title": "Citroen C3 1.2 110PK S&S Shine | AUTOMAAT | 3/6 OF 12MND GAR",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443352194-citroen-c3-1-2-110pk-s-s-shine-automaat-3-6-of-12mnd-gar",
+        "year": 2017
+      },
+      {
+        "mileage": 109987,
+        "priceCents": 945000,
+        "title": "Citroen C3 1.2 PureTech S&S Shine | AUTOM | CAMERA | CRUISE",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443959356-citroen-c3-1-2-puretech-s-s-shine-autom-camera-cruise",
+        "year": 2017
+      },
+      {
+        "mileage": 119892,
+        "priceCents": 945000,
+        "title": "Citro\u00ebn C3 1.2 110PK Shine Automaat|Dealer onderh|Carplay|C",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443122099-citroen-c3-1-2-110pk-shine-automaat-dealer-onderh-carplay-c",
+        "year": 2017
+      },
+      {
+        "mileage": 74117,
+        "priceCents": 975000,
+        "title": "Citroen C3 1.2 PureTech S&S Feel AUTOMAAT 110PK | Rijklaar |",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2442595309-citroen-c3-1-2-puretech-s-s-feel-automaat-110pk-rijklaar",
+        "year": 2017
+      },
+      {
+        "mileage": 125012,
+        "priceCents": 985000,
+        "title": "Citro\u00ebn C3 1.2 PureTech Shine/ DEALER ONDERHOUDEN!/ AUTOMAA",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2444082112-citroen-c3-1-2-puretech-shine-dealer-onderhouden-automaa",
+        "year": 2018
+      },
+      {
+        "mileage": 94543,
+        "priceCents": 995000,
+        "title": "Citroen C3 1.2 PureTech Shine Airco Navi Cruise Camera Autom",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443957872-citroen-c3-1-2-puretech-shine-airco-navi-cruise-camera-autom",
+        "year": 2018
+      },
+      {
+        "mileage": 67000,
+        "priceCents": 999900,
+        "title": "Citroen C3 1.2 PureTech S&S Shine AUTOMAAT NAVI PANORAMA DAK",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447534272-citroen-c3-1-2-puretech-s-s-shine-automaat-navi-panorama-dak",
+        "year": 2018
+      }
+    ],
+    "priceCents": 945000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Citroen C3 Aircross 1.2 Automaat, Trekhaak, Carplay, Dist.vv",
+    "year": 2018
+  },
   "m2438989019": {
     "firstSeen": "2026-09-28T23:07:17.816585+00:00",
     "model": "Fiat Panda automaat",
@@ -103,6 +480,184 @@
     "firstSeen": "2026-09-28T20:59:20.174434+00:00",
     "model": "Mini (One/Cooper) automaat",
     "title": "Mini Mini Cabrio 1.6 Cooper S Chili; Automaat+Xenon+Harman/K"
+  },
+  "m2439170640": {
+    "discountPct": 5.3,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 945000,
+    "medianMileage": 90178,
+    "mileage": 70329,
+    "mileageDiscountPct": 22.0,
+    "model": "Fiat 500 automaat/Dualogic",
+    "peers": [
+      {
+        "mileage": 104882,
+        "priceCents": 765000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Popstar | Airco | Automaat | NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447808733-fiat-500-0-9-twinair-turbo-popstar-airco-automaat-nap",
+        "year": 2015
+      },
+      {
+        "mileage": 111698,
+        "priceCents": 795000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Popstar automaat , 111.000 KM",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446782495-fiat-500-0-9-twinair-turbo-popstar-automaat-111-000-km",
+        "year": 2015
+      },
+      {
+        "mileage": 92638,
+        "priceCents": 845000,
+        "title": "Fiat 500 1.2 Automaat | Panoramadak",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446959530-fiat-500-1-2-automaat-panoramadak",
+        "year": 2015
+      },
+      {
+        "mileage": 79174,
+        "priceCents": 849500,
+        "title": "Fiat 500C 0.9 TwinAir Turbo 500S AUTOMAAT (bj 2015)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442964922-fiat-500c-0-9-twinair-turbo-500s-automaat-bj-2015",
+        "year": 2015
+      },
+      {
+        "mileage": 108657,
+        "priceCents": 865000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge Automaat | pano | Airco |",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446689256-fiat-500-0-9-twinair-turbo-lounge-automaat-pano-airco",
+        "year": 2015
+      },
+      {
+        "mileage": 48599,
+        "priceCents": 894900,
+        "title": "Fiat 500 E 24kwh. Cruise. Clima! (bj 2016, automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442944132-fiat-500-e-24kwh-cruise-clima-bj-2016-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 73389,
+        "priceCents": 895000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge Automaat Clima Pano Laag K",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447000673-fiat-500-0-9-twinair-turbo-lounge-automaat-clima-pano-laag-k",
+        "year": 2016
+      },
+      {
+        "mileage": 90178,
+        "priceCents": 899500,
+        "title": "Fiat 500 0.9 TwinAir Turbo 500S | Apple CarPlay/Android Auto",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444247860-fiat-500-0-9-twinair-turbo-500s-apple-carplay-android-auto",
+        "year": 2015
+      },
+      {
+        "mileage": 71724,
+        "priceCents": 899900,
+        "title": "Fiat 500 0.9 TwinAir Turbo 500S Cult CarPlay | Panorama",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444155511-fiat-500-0-9-twinair-turbo-500s-cult-carplay-panorama",
+        "year": 2015
+      },
+      {
+        "mileage": 35249,
+        "priceCents": 924500,
+        "title": "Fiat 500 0.9 TwinAir Turbo Popstar Aut. [ Airco Stuurschakel",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439780202-fiat-500-0-9-twinair-turbo-popstar-aut-airco-stuurschakel",
+        "year": 2015
+      },
+      {
+        "mileage": 39992,
+        "priceCents": 945000,
+        "title": "Fiat 500 0.9 TwinAir Turbo 500S | Automaat | Half Leer | NW",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443766852-fiat-500-0-9-twinair-turbo-500s-automaat-half-leer-nw",
+        "year": 2015
+      },
+      {
+        "mileage": 68916,
+        "priceCents": 945000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge | Automaat | Panoramadak |",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444573222-fiat-500-0-9-twinair-turbo-lounge-automaat-panoramadak",
+        "year": 2015
+      },
+      {
+        "mileage": 94244,
+        "priceCents": 945000,
+        "title": "Fiat 500 0.9 T 80pk \"Abarth\" Leder / 17 inch / Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441186019-fiat-500-0-9-t-80pk-abarth-leder-17-inch-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 117346,
+        "priceCents": 974900,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge AUTOMAAT - PANO - NAVI - N",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444115297-fiat-500-0-9-twinair-turbo-lounge-automaat-pano-navi-n",
+        "year": 2017
+      },
+      {
+        "mileage": 98218,
+        "priceCents": 975000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Cabriolet*NL AUTO*NAP\u2705*AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443018149-fiat-500-0-9-twinair-turbo-cabriolet-nl-auto-nap-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 85311,
+        "priceCents": 990000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge nieuwstaat ! Automaat!",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445717868-fiat-500-0-9-twinair-turbo-lounge-nieuwstaat-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 92335,
+        "priceCents": 990000,
+        "title": "FIAT 500 TwinAir Turbo Automaat Lounge | Navi | Cruise Contr",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445108795-fiat-500-twinair-turbo-automaat-lounge-navi-cruise-contr",
+        "year": 2016
+      },
+      {
+        "mileage": 104459,
+        "priceCents": 990000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge Automaat | Cruise Control",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440314237-fiat-500-0-9-twinair-turbo-lounge-automaat-cruise-control",
+        "year": 2016
+      },
+      {
+        "mileage": 61343,
+        "priceCents": 993000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Automaat Popstar Orig NL 61.000km",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443966426-fiat-500-0-9-twinair-turbo-automaat-popstar-orig-nl-61-000km",
+        "year": 2016
+      },
+      {
+        "mileage": 54340,
+        "priceCents": 994500,
+        "title": "Opel ADAM 1.4 Unlimited*CRUISE*STUUR+STOELVERW*PANO",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2440326211-opel-adam-1-4-unlimited-cruise-stuur-stoelverw-pano",
+        "year": 2015
+      },
+      {
+        "mileage": 98083,
+        "priceCents": 995000,
+        "title": "Fiat 500 0.9 TwinAir Turbo Lounge",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445541036-fiat-500-0-9-twinair-turbo-lounge",
+        "year": 2017
+      },
+      {
+        "mileage": 90770,
+        "priceCents": 999500,
+        "title": "Fiat 500c Twinair 0.9 Turbo Sport",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441105377-fiat-500c-twinair-0-9-turbo-sport",
+        "year": 2017
+      },
+      {
+        "mileage": 51950,
+        "priceCents": 999900,
+        "title": "Fiat 500C Popstar Twinair Turbo 80pk 2017 Mintgroen",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2437536632-fiat-500c-popstar-twinair-turbo-80pk-2017-mintgroen",
+        "year": 2017
+      }
+    ],
+    "priceCents": 894500,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Fiat 500 TwinAir Turbo 80 Popstar Dualogic AUTOMAAT+DAB+100%",
+    "year": 2016
   },
   "m2439251520": {
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
@@ -124,10 +679,247 @@
     "model": "Chevrolet Spark/Matiz automaat",
     "title": "Chevrolet Matiz 0.8 Style AUTOMAAT *apk:09-2027*"
   },
+  "m2439471449": {
+    "discountPct": 13.4,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 859900,
+    "medianMileage": 111365,
+    "mileage": 133290,
+    "mileageDiscountPct": -19.7,
+    "model": "Peugeot 208 automaat (EAT6/EAT8)",
+    "peers": [
+      {
+        "mileage": 145849,
+        "priceCents": 715000,
+        "title": "Peugeot 208 1.2 VTI 60KW 5-D 2-TR 2017 Grijs Automaat semi",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444090716-peugeot-208-1-2-vti-60kw-5-d-2-tr-2017-grijs-automaat-semi",
+        "year": 2017
+      },
+      {
+        "mileage": 139230,
+        "priceCents": 797500,
+        "title": "Peugeot 208 1.2 PureTech Allure | Automaat + Cruise + Camera",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446936555-peugeot-208-1-2-puretech-allure-automaat-cruise-camera",
+        "year": 2018
+      },
+      {
+        "mileage": 99496,
+        "priceCents": 799800,
+        "title": "Peugeot 208 1.2 PureTech Active | Automaat | CarPlay | Cruis",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446597900-peugeot-208-1-2-puretech-active-automaat-carplay-cruis",
+        "year": 2018
+      },
+      {
+        "mileage": 111365,
+        "priceCents": 799900,
+        "title": "Peugeot 208 1.2 PureTech GT-line AUTOMAAT-NAVI-CRUISE-AIRCO-",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444263166-peugeot-208-1-2-puretech-gt-line-automaat-navi-cruise-airco",
+        "year": 2017
+      },
+      {
+        "mileage": 124946,
+        "priceCents": 815000,
+        "title": "Peugeot 208 1.2 PureTech GT-line|Automaat|Cruise contr| Eco|",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444000368-peugeot-208-1-2-puretech-gt-line-automaat-cruise-contr-eco",
+        "year": 2018
+      },
+      {
+        "mileage": 99461,
+        "priceCents": 825000,
+        "title": "Peugeot 208 1.2 PureTech Active Automaat Navigatie Cruise Nw",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446641588-peugeot-208-1-2-puretech-active-automaat-navigatie-cruise-nw",
+        "year": 2017
+      },
+      {
+        "mileage": 143895,
+        "priceCents": 850000,
+        "title": "Peugeot 108 1.0 e-VTi Active Automaat Airco -RIJKLAAR -",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2443973307-peugeot-108-1-0-e-vti-active-automaat-airco-rijklaar",
+        "year": 2019
+      },
+      {
+        "mileage": 149649,
+        "priceCents": 859900,
+        "title": "Peugeot 108 1.0 e-VTi Active|GARANTIE|AUTOMAAT|NAP|BLUETOOTH",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2440014720-peugeot-108-1-0-e-vti-active-garantie-automaat-nap-bluetooth",
+        "year": 2019
+      },
+      {
+        "mileage": 142969,
+        "priceCents": 895000,
+        "title": "Peugeot 208 PANORAMADAK AUTOMAAT NAVI TEL LM CAMERA",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2440464347-peugeot-208-panoramadak-automaat-navi-tel-lm-camera",
+        "year": 2019
+      },
+      {
+        "mileage": 100402,
+        "priceCents": 899000,
+        "title": "Peugeot 208 1.2 PureTech GT-line 110pk Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444347646-peugeot-208-1-2-puretech-gt-line-110pk-automaat",
+        "year": 2017
+      },
+      {
+        "mileage": 128821,
+        "priceCents": 899000,
+        "title": "Peugeot 208 1.2 PureTech Allure Automaat Apple carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444030643-peugeot-208-1-2-puretech-allure-automaat-apple-carplay",
+        "year": 2017
+      },
+      {
+        "mileage": 88700,
+        "priceCents": 949900,
+        "title": "Peugeot 208 1.2 PureTech GT-Line 5DR AUTOMAAT PANO NAVI !",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2447643120-peugeot-208-1-2-puretech-gt-line-5dr-automaat-pano-navi",
+        "year": 2019
+      },
+      {
+        "mileage": 93337,
+        "priceCents": 959900,
+        "title": "Peugeot 208 1.2 PureTech Tech Edition Camera Aut. Clima Crui",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2447399105-peugeot-208-1-2-puretech-tech-edition-camera-aut-clima-crui",
+        "year": 2018
+      },
+      {
+        "mileage": 88380,
+        "priceCents": 989900,
+        "title": "Peugeot 208 BWJ 2019 1.2 111 PK PureTech GT-Line AUTOMAAT |",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2443281589-peugeot-208-bwj-2019-1-2-111-pk-puretech-gt-line-automaat",
+        "year": 2019
+      },
+      {
+        "mileage": 86581,
+        "priceCents": 995000,
+        "title": "Peugeot 208 1.2 PureTech Active TEL AUTOMAAT PDC CC",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2447728869-peugeot-208-1-2-puretech-active-tel-automaat-pdc-cc",
+        "year": 2017
+      }
+    ],
+    "priceCents": 745000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Peugeot 208 1.2 PureTech GT-line AUTOMAAT, 133Dkm, Apple Car",
+    "year": 2018
+  },
   "m2439962107": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Nissan Micra automaat/CVT",
     "title": "Nissan Micra 1.2 Connect Edition N-TEC AUTOMAAT I GEARBOX NO"
+  },
+  "m2439975052": {
+    "discountPct": 6.3,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 634950.0,
+    "medianMileage": 92643,
+    "mileage": 78291,
+    "mileageDiscountPct": 15.5,
+    "model": "Citroen C3 automaat (EAT6)",
+    "peers": [
+      {
+        "mileage": 89221,
+        "priceCents": 275000,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTI AUT 2012 Rood",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446615246-citroen-c3-picasso-1-6-vti-aut-2012-rood",
+        "year": 2012
+      },
+      {
+        "mileage": 101731,
+        "priceCents": 499900,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTi Automaat (bj 2012)",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445366657-citroen-c3-picasso-1-6-vti-automaat-bj-2012",
+        "year": 2012
+      },
+      {
+        "mileage": 120019,
+        "priceCents": 575000,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTI AUTOMAAT 2014 Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2439388262-citroen-c3-picasso-1-6-vti-automaat-2014-trekhaak",
+        "year": 2014
+      },
+      {
+        "mileage": 119789,
+        "priceCents": 588800,
+        "title": "Citroen C3 1.2 VTi ETG 82pk Airdream Collection Automaat / C",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446901537-citroen-c3-1-2-vti-etg-82pk-airdream-collection-automaat-c",
+        "year": 2014
+      },
+      {
+        "mileage": 114520,
+        "priceCents": 599900,
+        "title": "Citroen C3 1.4 e-HDi Collection EGS/AUTOMAAT/LEDER/PANO/CLIM",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445909558-citroen-c3-1-4-e-hdi-collection-egs-automaat-leder-pano-clim",
+        "year": 2012
+      },
+      {
+        "mileage": 119500,
+        "priceCents": 599900,
+        "title": "Citroen C3 Picasso 1.6 VTi Collection AUTOMAAT/airco/CRUISE",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443925825-citroen-c3-picasso-1-6-vti-collection-automaat-airco-cruise",
+        "year": 2013
+      },
+      {
+        "mileage": 96065,
+        "priceCents": 610000,
+        "title": "Citroen C3 1.2 VTi ETG Airdream Collection",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443034757-citroen-c3-1-2-vti-etg-airdream-collection",
+        "year": 2014
+      },
+      {
+        "mileage": 111165,
+        "priceCents": 659900,
+        "title": "Citroen C3 1.2 VTi ETG Airdream Collection*Automaat*Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2438059997-citroen-c3-1-2-vti-etg-airdream-collection-automaat-trekhaak",
+        "year": 2014
+      },
+      {
+        "mileage": 53340,
+        "priceCents": 684500,
+        "title": "Citroen C3 1.2 VTi Collection Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445028991-citroen-c3-1-2-vti-collection-automaat",
+        "year": 2014
+      },
+      {
+        "mileage": 53841,
+        "priceCents": 795000,
+        "title": "Citroen C3 1.2 VTi ETG Airdream Collection Automaat*Cruise*C",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447623657-citroen-c3-1-2-vti-etg-airdream-collection-automaat-cruise-c",
+        "year": 2014
+      },
+      {
+        "mileage": 29456,
+        "priceCents": 795000,
+        "title": "Citroen C3 1.2 VTi Collection | Automaat | Cruise control |",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441531365-citroen-c3-1-2-vti-collection-automaat-cruise-control",
+        "year": 2013
+      },
+      {
+        "mileage": 77682,
+        "priceCents": 795000,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTi Exclusive Automaat Trekhaak Clim",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2439328338-citroen-c3-picasso-1-6-vti-exclusive-automaat-trekhaak-clim",
+        "year": 2012
+      },
+      {
+        "mileage": 50524,
+        "priceCents": 895000,
+        "title": "Citroen C3 1.2VTi 82PK AUTOMAAT : NAVI/LED/PANO-VOORRUIT/ CL",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2436522510-citroen-c3-1-2vti-82pk-automaat-navi-led-pano-voorruit-cl",
+        "year": 2014
+      },
+      {
+        "mileage": 55734,
+        "priceCents": 925000,
+        "title": "Citroen C3 Picasso 1.6 VTI EXCLUSIVE",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447668935-citroen-c3-picasso-1-6-vti-exclusive",
+        "year": 2013
+      }
+    ],
+    "priceCents": 595000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Citro\u00ebn C3 1.2 VTi Collection 78Dkm.NAP AUTOMAAT, Clima, Na",
+    "year": 2013
   },
   "m2440046816": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
@@ -138,6 +930,201 @@
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "smart fortwo automaat",
     "title": "Smart Fortwo coup\u00e9 1.0 mhd Pure - Airco"
+  },
+  "m2440185229": {
+    "discountPct": -6.3,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 870000,
+    "medianMileage": 137895,
+    "mileage": 113906,
+    "mileageDiscountPct": 17.4,
+    "model": "Mini (One/Cooper) automaat",
+    "peers": [
+      {
+        "mileage": 142857,
+        "priceCents": 625000,
+        "title": "Mini 3-Deurs 1.6 Cooper Mayfair | Automaat | Airco | Leder |",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2447620235-mini-3-deurs-1-6-cooper-mayfair-automaat-airco-leder",
+        "year": 2010
+      },
+      {
+        "mileage": 102112,
+        "priceCents": 649900,
+        "title": "MINI Clubman 1.6 Cooper Chili (bj 2010, automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2447873624-mini-clubman-1-6-cooper-chili-bj-2010-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 147652,
+        "priceCents": 675000,
+        "title": "Mini Mini Clubman 1.6 Cooper Chili",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2443879032-mini-mini-clubman-1-6-cooper-chili",
+        "year": 2010
+      },
+      {
+        "mileage": 132000,
+        "priceCents": 750000,
+        "title": "MINI Countryman 1.6 Cooper AUT | CarPlay | Camera | Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2447104770-mini-countryman-1-6-cooper-aut-carplay-camera-trekhaak",
+        "year": 2011
+      },
+      {
+        "mileage": 137895,
+        "priceCents": 795000,
+        "title": "Mini 3-Deurs 1.6 Cooper S 10 Years IIPano|Stoelverw|Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2443737586-mini-3-deurs-1-6-cooper-s-10-years-iipano-stoelverw-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 123676,
+        "priceCents": 845000,
+        "title": "Mini Countryman 1.6 Cooper S ALL4 Chili Automaat met Led ! L",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2446670543-mini-countryman-1-6-cooper-s-all4-chili-automaat-met-led-l",
+        "year": 2012
+      },
+      {
+        "mileage": 149098,
+        "priceCents": 849900,
+        "title": "Mini Mini Countryman 1.6 Cooper Edition Automaat NL-Auto, Ge",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2442625717-mini-mini-countryman-1-6-cooper-edition-automaat-nl-auto-ge",
+        "year": 2012
+      },
+      {
+        "mileage": 146064,
+        "priceCents": 870000,
+        "title": "MINI Countryman 1.6 Cooper S Pepper Automaat | Climate Contr",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2444657968-mini-countryman-1-6-cooper-s-pepper-automaat-climate-contr",
+        "year": 2011
+      },
+      {
+        "mileage": 148865,
+        "priceCents": 885000,
+        "title": "Mini 3-Deurs 1.6 Cooper 10 Years II AUTOMAAT | 3/6 OF 12 MND",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2443352418-mini-3-deurs-1-6-cooper-10-years-ii-automaat-3-6-of-12-mnd",
+        "year": 2012
+      },
+      {
+        "mileage": 124800,
+        "priceCents": 890000,
+        "title": "Mini Countryman 1.6 Cooper Business Line Automaat Navi NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2446635785-mini-countryman-1-6-cooper-business-line-automaat-navi-nap",
+        "year": 2012
+      },
+      {
+        "mileage": 130617,
+        "priceCents": 895000,
+        "title": "Mini Mini Clubman 1.6 Cooper S 184 PK! Automaat Schuifdak Na",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2444018660-mini-mini-clubman-1-6-cooper-s-184-pk-automaat-schuifdak-na",
+        "year": 2011
+      },
+      {
+        "mileage": 113660,
+        "priceCents": 899500,
+        "title": "MINI Cooper Automaat | Pano | Stoelverw. | Leder | Historie",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2436952698-mini-cooper-automaat-pano-stoelverw-leder-historie",
+        "year": 2011
+      },
+      {
+        "mileage": 149928,
+        "priceCents": 945000,
+        "title": "MINI Countryman 1.6 Cooper Edition Automaat, Leder, Panorama",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2440496593-mini-countryman-1-6-cooper-edition-automaat-leder-panorama",
+        "year": 2012
+      },
+      {
+        "mileage": 129618,
+        "priceCents": 945000,
+        "title": "Mini 3-Deurs 1.6 Cooper S Westminster|Airco|Pano|Navi|Leder|",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2441523024-mini-3-deurs-1-6-cooper-s-westminster-airco-pano-navi-leder",
+        "year": 2012
+      },
+      {
+        "mileage": 142695,
+        "priceCents": 995000,
+        "title": "MINI Cabrio 1.6 Cooper Chili Automaat | Stoelverwarming | Le",
+        "url": "https://www.marktplaats.nl/v/auto-s/mini/m2441359267-mini-cabrio-1-6-cooper-chili-automaat-stoelverwarming-le",
+        "year": 2011
+      }
+    ],
+    "priceCents": 925000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Mini Countryman 1.6 Cooper S 184pk ALL4 Automaat Full Black",
+    "year": 2011
+  },
+  "m2440302216": {
+    "discountPct": 22.7,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 647000.0,
+    "medianMileage": 128403,
+    "mileage": 141864,
+    "mileageDiscountPct": -10.5,
+    "model": "Mercedes A-klasse automaat",
+    "peers": [
+      {
+        "mileage": 147285,
+        "priceCents": 395000,
+        "title": "Mercedes-Benz A-Klasse 160 Avantgarde Automaat 3-deurs 147.2",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2447709291-mercedes-benz-a-klasse-160-avantgarde-automaat-3-deurs-147-2",
+        "year": 2009
+      },
+      {
+        "mileage": 133610,
+        "priceCents": 449900,
+        "title": "Mercedes-Benz A-klasse 160 Business Class Avantgarde AUTOMAA",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2442606318-mercedes-benz-a-klasse-160-business-class-avantgarde-automaa",
+        "year": 2009
+      },
+      {
+        "mileage": 118302,
+        "priceCents": 545000,
+        "title": "Mercedes-Benz A-klasse 180 Classic / AUTOMAAT / AIRCO / APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2441549764-mercedes-benz-a-klasse-180-classic-automaat-airco-apk",
+        "year": 2010
+      },
+      {
+        "mileage": 123447,
+        "priceCents": 599000,
+        "title": "Mercedes-Benz A-klasse 160 2e EIG | AUTOMAAT | AIRCO | CRUIS",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2444380887-mercedes-benz-a-klasse-160-2e-eig-automaat-airco-cruis",
+        "year": 2011
+      },
+      {
+        "mileage": 138503,
+        "priceCents": 695000,
+        "title": "Mercedes-Benz A-klasse 160 Elegance 2010 Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2441400420-mercedes-benz-a-klasse-160-elegance-2010-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 101720,
+        "priceCents": 695000,
+        "title": "Mercedes-Benz A-klasse 180 Business Class Elegance automaat,",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2446174910-mercedes-benz-a-klasse-180-business-class-elegance-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 94451,
+        "priceCents": 699900,
+        "title": "Mercedes-Benz A-klasse 160 Business Class | AUTOMAAT | NAP |",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2444031121-mercedes-benz-a-klasse-160-business-class-automaat-nap",
+        "year": 2011
+      },
+      {
+        "mileage": 133359,
+        "priceCents": 794400,
+        "title": "Mercedes-Benz C-klasse 200 K Business Class Automaat|Carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2447392942-mercedes-benz-c-klasse-200-k-business-class-automaat-carplay",
+        "year": 2009
+      }
+    ],
+    "priceCents": 499900,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Mercedes-Benz A-klasse 160 Business Class Automaat",
+    "year": 2010
   },
   "m2440307762": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
@@ -241,6 +1228,519 @@
     "model": "smart fortwo automaat",
     "title": "Smart Fortwo Coup\u00e9 1.0 mhd Passion (bj 2012, automaat)"
   },
+  "m2441068097": {
+    "discountPct": -6.9,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 795000,
+    "medianMileage": 50524,
+    "mileage": 32691,
+    "mileageDiscountPct": 35.3,
+    "model": "Citroen C3 automaat (EAT6)",
+    "peers": [
+      {
+        "mileage": 38047,
+        "priceCents": 595000,
+        "title": "Citro\u00ebn C3 1.2 PureT Feel Ed. (bj 2016, semi-automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2444272996-citroen-c3-1-2-puret-feel-ed-bj-2016-semi-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 53340,
+        "priceCents": 684500,
+        "title": "Citroen C3 1.2 VTi Collection Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445028991-citroen-c3-1-2-vti-collection-automaat",
+        "year": 2014
+      },
+      {
+        "mileage": 53841,
+        "priceCents": 795000,
+        "title": "Citroen C3 1.2 VTi ETG Airdream Collection Automaat*Cruise*C",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447623657-citroen-c3-1-2-vti-etg-airdream-collection-automaat-cruise-c",
+        "year": 2014
+      },
+      {
+        "mileage": 43286,
+        "priceCents": 799900,
+        "title": "Citro\u00ebn C3 1.2 PureTech Exclusive | Automaat | Navigatie |",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446273424-citroen-c3-1-2-puretech-exclusive-automaat-navigatie",
+        "year": 2015
+      },
+      {
+        "mileage": 50524,
+        "priceCents": 895000,
+        "title": "Citroen C3 1.2VTi 82PK AUTOMAAT : NAVI/LED/PANO-VOORRUIT/ CL",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2436522510-citroen-c3-1-2vti-82pk-automaat-navi-led-pano-voorruit-cl",
+        "year": 2014
+      }
+    ],
+    "priceCents": 850000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Citroen C3 1.2 PureTech Collection Automaat, Airco Nette aut",
+    "year": 2015
+  },
+  "m2441225344": {
+    "discountPct": 0.7,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 649750.0,
+    "medianMileage": 116562,
+    "mileage": 92654,
+    "mileageDiscountPct": 20.5,
+    "model": "Fiat 500 automaat/Dualogic",
+    "peers": [
+      {
+        "mileage": 135305,
+        "priceCents": 494400,
+        "title": "Fiat 500C 0.9 TwinAir Lounge Automaat Airco, Stuurbekrachtig",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441899552-fiat-500c-0-9-twinair-lounge-automaat-airco-stuurbekrachtig",
+        "year": 2011
+      },
+      {
+        "mileage": 109643,
+        "priceCents": 495000,
+        "title": "Fiat 500 1.2 Lounge automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443851588-fiat-500-1-2-lounge-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 108881,
+        "priceCents": 495000,
+        "title": "Fiat 500 1.2 Pop Automaat Leder Airco",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439311302-fiat-500-1-2-pop-automaat-leder-airco",
+        "year": 2010
+      },
+      {
+        "mileage": 139271,
+        "priceCents": 499500,
+        "title": "Fiat 500 1.2 Lounge (bj 2012, semi-automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2437360659-fiat-500-1-2-lounge-bj-2012-semi-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 103998,
+        "priceCents": 529500,
+        "title": "Fiat 500 1.2 Sport|AUT|AIRCO|LMV|LAGE KM|NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445158518-fiat-500-1-2-sport-aut-airco-lmv-lage-km-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 137823,
+        "priceCents": 540000,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge AUTOMAAT nap CABRIO airco LEDE",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440121663-fiat-500-c-0-9-twinair-lounge-automaat-nap-cabrio-airco-lede",
+        "year": 2012
+      },
+      {
+        "mileage": 132109,
+        "priceCents": 545000,
+        "title": "Fiat 500 1.2 Pop",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447721480-fiat-500-1-2-pop",
+        "year": 2011
+      },
+      {
+        "mileage": 127442,
+        "priceCents": 545000,
+        "title": "Fiat 500 1.2 automaat/panoramadak/airco/4 cilinder",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442620137-fiat-500-1-2-automaat-panoramadak-airco-4-cilinder",
+        "year": 2011
+      },
+      {
+        "mileage": 140519,
+        "priceCents": 549900,
+        "title": "Fiat 500 1.2 Automaat | NAP | Android | Airco | D-riem verv",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442469325-fiat-500-1-2-automaat-nap-android-airco-d-riem-verv",
+        "year": 2010
+      },
+      {
+        "mileage": 133884,
+        "priceCents": 549900,
+        "title": "Fiat 500 1.2 Lounge Automaat/Airco/Nwe apk/Nap/",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441873565-fiat-500-1-2-lounge-automaat-airco-nwe-apk-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 139000,
+        "priceCents": 550000,
+        "title": "Fiat 500 1.2 AUT 2010 Donkerblauw",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2408100263-fiat-500-1-2-aut-2010-donkerblauw",
+        "year": 2010
+      },
+      {
+        "mileage": 114458,
+        "priceCents": 565000,
+        "title": "Fiat 500 1.2 Lounge AUTOMAA 114 DKMT BJ 2010 ! (bj 2010)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445717106-fiat-500-1-2-lounge-automaa-114-dkmt-bj-2010-bj-2010",
+        "year": 2010
+      },
+      {
+        "mileage": 83588,
+        "priceCents": 574900,
+        "title": "Fiat 500 C 1.2 Pop 2012 AUTOMAAT NAP CABRIOLET",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445083878-fiat-500-c-1-2-pop-2012-automaat-nap-cabriolet",
+        "year": 2010
+      },
+      {
+        "mileage": 121161,
+        "priceCents": 574900,
+        "title": "Fiat 500 1.2 Sport PANO AUTOMAAT PARELMOER DISTR VERVANGEN",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442646974-fiat-500-1-2-sport-pano-automaat-parelmoer-distr-vervangen",
+        "year": 2010
+      },
+      {
+        "mileage": 121571,
+        "priceCents": 575000,
+        "title": "Fiat 500 1.2 Lounge Nap Automaat Airco Bluetooth Pano 16 Inc",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446717273-fiat-500-1-2-lounge-nap-automaat-airco-bluetooth-pano-16-inc",
+        "year": 2010
+      },
+      {
+        "mileage": 131239,
+        "priceCents": 595000,
+        "title": "Fiat 500 C 1.2 Lounge cabriolet automaat / bj.2011 / kleur:",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446615371-fiat-500-c-1-2-lounge-cabriolet-automaat-bj-2011-kleur",
+        "year": 2011
+      },
+      {
+        "mileage": 140925,
+        "priceCents": 595000,
+        "title": "Fiat 500 1.2 Pop Xenon | Leer | Automaat (bj 2011)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446525890-fiat-500-1-2-pop-xenon-leer-automaat-bj-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 128567,
+        "priceCents": 595000,
+        "title": "Fiat 500 0.9 TwinAir Lounge |NIEUW APK|AIRCO|LM VLGN |LUXE U",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443960634-fiat-500-0-9-twinair-lounge-nieuw-apk-airco-lm-vlgn-luxe-u",
+        "year": 2012
+      },
+      {
+        "mileage": 108087,
+        "priceCents": 599900,
+        "title": "Fiat 500 1.2 Pop |AUTOMAAT|1EIG|Nw.D.RIEM|NAP|Airco|APK27",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447713494-fiat-500-1-2-pop-automaat-1eig-nw-d-riem-nap-airco-apk27",
+        "year": 2010
+      },
+      {
+        "mileage": 116669,
+        "priceCents": 625000,
+        "title": "Fiat 500 C ROCK 1.2 AUTOMAAT 2011",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440530190-fiat-500-c-rock-1-2-automaat-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 140860,
+        "priceCents": 645000,
+        "title": "Fiat 500C 1.2 Rock NL AUTO/AUTOMAAT/PARELMOER WIT (bj 2011)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445884096-fiat-500c-1-2-rock-nl-auto-automaat-parelmoer-wit-bj-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 112053,
+        "priceCents": 645000,
+        "title": "Fiat 500 C 1.2 Lounge/Cabrio/1eigenaar/Automaat/Airco/Elek-p",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444126996-fiat-500-c-1-2-lounge-cabrio-1eigenaar-automaat-airco-elek-p",
+        "year": 2011
+      },
+      {
+        "mileage": 111567,
+        "priceCents": 649500,
+        "title": "Fiat 500 C 0.9 TwinAir CABRIO ABARTH SCHAALSTOELEN NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440069161-fiat-500-c-0-9-twinair-cabrio-abarth-schaalstoelen-nap",
+        "year": 2012
+      },
+      {
+        "mileage": 130000,
+        "priceCents": 650000,
+        "title": "Fiat 500 Cabrio 0.9 TwinAir Turbo by Gucci automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444950658-fiat-500-cabrio-0-9-twinair-turbo-by-gucci-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 90000,
+        "priceCents": 650000,
+        "title": "Fiat 500 1.2 bj 2010 semi-automaat 94000 km",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2439933191-fiat-500-1-2-bj-2010-semi-automaat-94000-km",
+        "year": 2011
+      },
+      {
+        "mileage": 134705,
+        "priceCents": 665000,
+        "title": "Fiat 500 C 1.2 Rock , CABRIO..LEDER..CLIMAAUDIO",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2438455680-fiat-500-c-1-2-rock-cabrio-leder-climaaudio",
+        "year": 2010
+      },
+      {
+        "mileage": 72000,
+        "priceCents": 674500,
+        "title": "Fiat 500 1.2 Lounge automaat LM panoramadak org NL",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446189923-fiat-500-1-2-lounge-automaat-lm-panoramadak-org-nl",
+        "year": 2011
+      },
+      {
+        "mileage": 123261,
+        "priceCents": 675000,
+        "title": "Fiat 500 C 1.2 Lounge automaat nieuwe distributie en banden",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439623163-fiat-500-c-1-2-lounge-automaat-nieuwe-distributie-en-banden",
+        "year": 2010
+      },
+      {
+        "mileage": 123014,
+        "priceCents": 679500,
+        "title": "Fiat 500 C 1.2 4 cilinder | Cabrio | Pop | AUTOMAAT | 100% O",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440006924-fiat-500-c-1-2-4-cilinder-cabrio-pop-automaat-100-o",
+        "year": 2011
+      },
+      {
+        "mileage": 112745,
+        "priceCents": 689500,
+        "title": "Fiat 500C 1.2 Pop (bj 2010, automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443169660-fiat-500c-1-2-pop-bj-2010-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 119717,
+        "priceCents": 689500,
+        "title": "Fiat 500 C 1.2 Lounge | AUTOMAAT | Cabrio | Nette Staat | NL",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445284803-fiat-500-c-1-2-lounge-automaat-cabrio-nette-staat-nl",
+        "year": 2011
+      },
+      {
+        "mileage": 134368,
+        "priceCents": 695000,
+        "title": "Fiat 500 1.2 Lounge/Automaat/Cabrio/Airco/Lichtmetaal/",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444992011-fiat-500-1-2-lounge-automaat-cabrio-airco-lichtmetaal",
+        "year": 2011
+      },
+      {
+        "mileage": 63015,
+        "priceCents": 695000,
+        "title": "Fiat 500 1.2 Lounge | Apple Carplay | Pano | Automaat | Orig",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443511043-fiat-500-1-2-lounge-apple-carplay-pano-automaat-orig",
+        "year": 2010
+      },
+      {
+        "mileage": 59203,
+        "priceCents": 695000,
+        "title": "Fiat 500 C 1.2 Rock Cabriolet",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439306666-fiat-500-c-1-2-rock-cabriolet",
+        "year": 2010
+      },
+      {
+        "mileage": 62051,
+        "priceCents": 715000,
+        "title": "Fiat 500 C TwinAir Automaat | 2011 | 62.051 km | Cabrio | 2e",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445165559-fiat-500-c-twinair-automaat-2011-62-051-km-cabrio-2e",
+        "year": 2011
+      },
+      {
+        "mileage": 133000,
+        "priceCents": 725000,
+        "title": "Fiat 500C 1.2 CABRIO | AUTOMAAT | LEDER | XENON | PARELMOER",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2414044592-fiat-500c-1-2-cabrio-automaat-leder-xenon-parelmoer",
+        "year": 2010
+      },
+      {
+        "mileage": 76207,
+        "priceCents": 744500,
+        "title": "Fiat 500C 1.2 Lounge Cabriolet AUTOMAAT | Bluetooth | 16\"",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441474395-fiat-500c-1-2-lounge-cabriolet-automaat-bluetooth-16",
+        "year": 2011
+      },
+      {
+        "mileage": 77273,
+        "priceCents": 749900,
+        "title": "Fiat 500 C 1.2 Lounge automaat/ weinig km.",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440302545-fiat-500-c-1-2-lounge-automaat-weinig-km",
+        "year": 2011
+      },
+      {
+        "mileage": 44742,
+        "priceCents": 764500,
+        "title": "Fiat 500 1.2 Pop | Automaat! | Airconditioning | Elektrische",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445137768-fiat-500-1-2-pop-automaat-airconditioning-elektrische",
+        "year": 2010
+      },
+      {
+        "mileage": 100641,
+        "priceCents": 788000,
+        "title": "Fiat 500 1.2 Lounge",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444385679-fiat-500-1-2-lounge",
+        "year": 2012
+      },
+      {
+        "mileage": 79724,
+        "priceCents": 790000,
+        "title": "Fiat 500 1.2 Lounge Airco Automaat Parkeersensoren Lm Velgen",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446486174-fiat-500-1-2-lounge-airco-automaat-parkeersensoren-lm-velgen",
+        "year": 2010
+      },
+      {
+        "mileage": 65734,
+        "priceCents": 795000,
+        "title": "Fiat 500 C 1.2 Rock Cabrio | automaat | Bianco Gioioso | led",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439834066-fiat-500-c-1-2-rock-cabrio-automaat-bianco-gioioso-led",
+        "year": 2010
+      },
+      {
+        "mileage": 68848,
+        "priceCents": 799000,
+        "title": "Fiat 500 C 1.2 Lounge AUTOMAAT NAP!",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440361091-fiat-500-c-1-2-lounge-automaat-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 58116,
+        "priceCents": 840000,
+        "title": "Fiat 500 1.2 Lounge | Automaat | Schuif-kanteldak | Airco",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445098940-fiat-500-1-2-lounge-automaat-schuif-kanteldak-airco",
+        "year": 2010
+      },
+      {
+        "mileage": 138976,
+        "priceCents": 949500,
+        "title": "Fiat 500 Abarth 1.4 T-Jet Competizione 161 PK / CABRIO / CLI",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444285327-fiat-500-abarth-1-4-t-jet-competizione-161-pk-cabrio-cli",
+        "year": 2011
+      },
+      {
+        "mileage": 116455,
+        "priceCents": 999000,
+        "title": "Abarth 500 C 1.4 T-Jet 140PK - Leder - Xenon - Automaat - Cl",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440326255-abarth-500-c-1-4-t-jet-140pk-leder-xenon-automaat-cl",
+        "year": 2011
+      }
+    ],
+    "priceCents": 645000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Fiat 500C 0.9 TwinAir Lounge CABRIO /LEER/AIRCO/AUTOMAAT/ 92",
+    "year": 2011
+  },
+  "m2441295372": {
+    "discountPct": 25.2,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 695000,
+    "medianMileage": 134981,
+    "mileage": 127054,
+    "mileageDiscountPct": 5.9,
+    "model": "Peugeot 208 automaat (EAT6/EAT8)",
+    "peers": [
+      {
+        "mileage": 146360,
+        "priceCents": 425000,
+        "title": "Peugeot 208 1.6 VTi Allure AUTOMAAT REST BPM \u20ac700,-!",
+        "url": "https://www.marktplaats.nl/v/auto-diversen/schadeauto-s/m2446492074-peugeot-208-1-6-vti-allure-automaat-rest-bpm-700",
+        "year": 2013
+      },
+      {
+        "mileage": 141000,
+        "priceCents": 499900,
+        "title": "Peugeot 208 AUT 1.2 VTI 5-D 2014 Grijs cruise parksensor",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2408613228-peugeot-208-aut-1-2-vti-5-d-2014-grijs-cruise-parksensor",
+        "year": 2014
+      },
+      {
+        "mileage": 148199,
+        "priceCents": 594400,
+        "title": "Peugeot 208 1.2 e-VTi Active Airco, Cruise Control, Tiptroni",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437397869-peugeot-208-1-2-e-vti-active-airco-cruise-control-tiptroni",
+        "year": 2015
+      },
+      {
+        "mileage": 134981,
+        "priceCents": 639500,
+        "title": "Peugeot 208 1.6 VTi Allure|5DRS|AUTOMAAT|NAVI|CLIMA|GOED-OND",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2441813050-peugeot-208-1-6-vti-allure-5drs-automaat-navi-clima-goed-ond",
+        "year": 2013
+      },
+      {
+        "mileage": 136389,
+        "priceCents": 649900,
+        "title": "Peugeot 208 1.2 PureTech Allure Automaat, Pano, Navi, Cruise",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446615062-peugeot-208-1-2-puretech-allure-automaat-pano-navi-cruise",
+        "year": 2015
+      },
+      {
+        "mileage": 98000,
+        "priceCents": 650000,
+        "title": "Peugeot 208 1.6 VTi 120PK AUT 5D 2013 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2438390536-peugeot-208-1-6-vti-120pk-aut-5d-2013-grijs",
+        "year": 2013
+      },
+      {
+        "mileage": 144575,
+        "priceCents": 669500,
+        "title": "Peugeot 208 1.2 PureTech Active | AUTOMAAT | AIRCO | NAVI |",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2438477033-peugeot-208-1-2-puretech-active-automaat-airco-navi",
+        "year": 2015
+      },
+      {
+        "mileage": 114474,
+        "priceCents": 695000,
+        "title": "Peugeot 208 1.6 VTi Allure Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2439688902-peugeot-208-1-6-vti-allure-automaat",
+        "year": 2013
+      },
+      {
+        "mileage": 91722,
+        "priceCents": 745000,
+        "title": "Peugeot 208 1.6 VTi Allure Automaat! Clima! PDC! LM velgen!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444333570-peugeot-208-1-6-vti-allure-automaat-clima-pdc-lm-velgen",
+        "year": 2014
+      },
+      {
+        "mileage": 147314,
+        "priceCents": 765000,
+        "title": "Peugeot 208 1.2 PureTech Roland Garros | Pano | AUTOMAAT! |",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2436611053-peugeot-208-1-2-puretech-roland-garros-pano-automaat",
+        "year": 2014
+      },
+      {
+        "mileage": 105721,
+        "priceCents": 799000,
+        "title": "Peugeot 208 RIJKAAR/APK/HISTORY/BEURT/NAP/AIRCO/3drs//DIREKT",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2439931895-peugeot-208-rijkaar-apk-history-beurt-nap-airco-3drs-direkt",
+        "year": 2015
+      },
+      {
+        "mileage": 139036,
+        "priceCents": 799900,
+        "title": "Peugeot 208 1.2 e-VTi Roland Garros Automaat 2e eigenaar dea",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437424505-peugeot-208-1-2-e-vti-roland-garros-automaat-2e-eigenaar-dea",
+        "year": 2015
+      },
+      {
+        "mileage": 117250,
+        "priceCents": 830000,
+        "title": "Peugeot 208 1.2 Gt-Line automaat NAP!! Km stand",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437606889-peugeot-208-1-2-gt-line-automaat-nap-km-stand",
+        "year": 2015
+      },
+      {
+        "mileage": 93498,
+        "priceCents": 950000,
+        "title": "Peugeot 208 1.2 PureTech Allure 2015 AUT NAVI CLIMA LM NAP!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446531782-peugeot-208-1-2-puretech-allure-2015-aut-navi-clima-lm-nap",
+        "year": 2015
+      },
+      {
+        "mileage": 96170,
+        "priceCents": 974000,
+        "title": "Peugeot 208 1.2 PureTech Allure!Automaat!Navi!PDC!Clima!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2442614997-peugeot-208-1-2-puretech-allure-automaat-navi-pdc-clima",
+        "year": 2015
+      }
+    ],
+    "priceCents": 520000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Peugeot 208 1.2 Automaat 60KW 5-D 2-TR 2014 Grijs",
+    "year": 2014
+  },
   "m2441490840": {
     "firstSeen": "2026-09-28T23:07:17.816585+00:00",
     "model": "Opel Corsa automaat",
@@ -301,6 +1801,86 @@
     "model": "BMW 1-serie automaat",
     "title": "BMW 3-serie 2.0 318d 143PK AUTOMAAT|CARPLAY|FULLOPTION|XENON"
   },
+  "m2443026701": {
+    "discountPct": -5.5,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 894500,
+    "medianMileage": 86671,
+    "mileage": 69421,
+    "mileageDiscountPct": 19.9,
+    "model": "Volkswagen Up! automaat",
+    "peers": [
+      {
+        "mileage": 99178,
+        "priceCents": 747500,
+        "title": "Volkswagen Up! 1.0 high up! Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445069193-volkswagen-up-1-0-high-up-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 80621,
+        "priceCents": 795000,
+        "title": "Volkswagen UP! Groove up! 1.0 Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445526475-volkswagen-up-groove-up-1-0-automaat",
+        "year": 2013
+      },
+      {
+        "mileage": 86671,
+        "priceCents": 845000,
+        "title": "Volkswagen Up! 1.0 Automaat | Black on Black | Cruise",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2441633634-volkswagen-up-1-0-automaat-black-on-black-cruise",
+        "year": 2013
+      },
+      {
+        "mileage": 97890,
+        "priceCents": 894500,
+        "title": "Volkswagen Up! 1.0 Cheer up! \u2013 Automaat \u2013 Navigatie \u2013",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2441157672-volkswagen-up-1-0-cheer-up-automaat-navigatie",
+        "year": 2013
+      },
+      {
+        "mileage": 76593,
+        "priceCents": 894500,
+        "title": "Volkswagen Up! 1.0 move up! | Automaat |stoelverwarming | Ai",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2441079401-volkswagen-up-1-0-move-up-automaat-stoelverwarming-ai",
+        "year": 2013
+      },
+      {
+        "mileage": 49108,
+        "priceCents": 895000,
+        "title": "Volkswagen Up! 1.0 high up!| Automaat| Stoelverw|Airco|Pano|",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443651196-volkswagen-up-1-0-high-up-automaat-stoelverw-airco-pano",
+        "year": 2012
+      },
+      {
+        "mileage": 102562,
+        "priceCents": 895000,
+        "title": "Volkswagen Up! 1.0 move up! |NIEUW APK|LUXE|LEDER|AUT|LM VLG",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2439962054-volkswagen-up-1-0-move-up-nieuw-apk-luxe-leder-aut-lm-vlg",
+        "year": 2012
+      },
+      {
+        "mileage": 72142,
+        "priceCents": 925000,
+        "title": "Volkswagen Up! 1.0 move up! |AUTOMAAT |2E EIGENAAR | 3/6 OF",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443352445-volkswagen-up-1-0-move-up-automaat-2e-eigenaar-3-6-of",
+        "year": 2013
+      },
+      {
+        "mileage": 88490,
+        "priceCents": 925000,
+        "title": "Volkswagen Up! 1.0 high up! AUTOMAAT | PANO | NAVI | CRUISE",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2439263921-volkswagen-up-1-0-high-up-automaat-pano-navi-cruise",
+        "year": 2013
+      }
+    ],
+    "priceCents": 944000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Volkswagen up! 1.0 Move Up! Automaat Airco Elektrisch Pakket",
+    "year": 2013
+  },
   "m2443062906": {
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
     "model": "Fiat 500 automaat/Dualogic",
@@ -325,6 +1905,408 @@
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Peugeot 107 automaat",
     "title": "Peugeot 107 1.0-12V XS 68pk Automaat | 96.628km"
+  },
+  "m2443851588": {
+    "discountPct": 17.5,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 599900,
+    "medianMileage": 119389,
+    "mileage": 109643,
+    "mileageDiscountPct": 8.2,
+    "model": "Fiat 500 automaat/Dualogic",
+    "peers": [
+      {
+        "mileage": 139644,
+        "priceCents": 395000,
+        "title": "Fiat 500 1.2 Lounge Automaat - Panorama Dak",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446341645-fiat-500-1-2-lounge-automaat-panorama-dak",
+        "year": 2009
+      },
+      {
+        "mileage": 86332,
+        "priceCents": 399900,
+        "title": "Fiat 500 1.2 Pop AUTOMAAT | 86.332 KM  | 2e SLEUTELS",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2438320406-fiat-500-1-2-pop-automaat-86-332-km-2e-sleutels",
+        "year": 2009
+      },
+      {
+        "mileage": 144500,
+        "priceCents": 449500,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge CABRIO AUTOMAAT CLIMA",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2438331398-fiat-500-c-0-9-twinair-lounge-cabrio-automaat-clima",
+        "year": 2011
+      },
+      {
+        "mileage": 146849,
+        "priceCents": 474900,
+        "title": "Fiat 500 1.2 Lounge|1e Eigenaar|Distributie vv in 2021|Autom",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443526317-fiat-500-1-2-lounge-1e-eigenaar-distributie-vv-in-2021-autom",
+        "year": 2010
+      },
+      {
+        "mileage": 111207,
+        "priceCents": 475000,
+        "title": "Fiat 500 1.2 Pop/AUTOMAAT/CARPLAY/AIRCO/CAMERA/",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445054645-fiat-500-1-2-pop-automaat-carplay-airco-camera",
+        "year": 2009
+      },
+      {
+        "mileage": 147593,
+        "priceCents": 479500,
+        "title": "Fiat 500 1.2 Pop Pano |Automaat |Airco |Apk",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446650252-fiat-500-1-2-pop-pano-automaat-airco-apk",
+        "year": 2009
+      },
+      {
+        "mileage": 135305,
+        "priceCents": 494400,
+        "title": "Fiat 500C 0.9 TwinAir Lounge Automaat Airco, Stuurbekrachtig",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441899552-fiat-500c-0-9-twinair-lounge-automaat-airco-stuurbekrachtig",
+        "year": 2011
+      },
+      {
+        "mileage": 92293,
+        "priceCents": 495000,
+        "title": "Fiat 500 1.2 Pop bj.2009 Autom|Airco|Nap.",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2437491781-fiat-500-1-2-pop-bj-2009-autom-airco-nap",
+        "year": 2009
+      },
+      {
+        "mileage": 108881,
+        "priceCents": 495000,
+        "title": "Fiat 500 1.2 Pop Automaat Leder Airco",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439311302-fiat-500-1-2-pop-automaat-leder-airco",
+        "year": 2010
+      },
+      {
+        "mileage": 144987,
+        "priceCents": 497500,
+        "title": "Fiat 500C 1.2 AUTOMAAT CABRIOLET 2010 | AIRCO | HALF LEER |",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446631502-fiat-500c-1-2-automaat-cabriolet-2010-airco-half-leer",
+        "year": 2010
+      },
+      {
+        "mileage": 147175,
+        "priceCents": 499500,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge Org NL/NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445407693-fiat-500-c-0-9-twinair-lounge-org-nl-nap",
+        "year": 2011
+      },
+      {
+        "mileage": 119389,
+        "priceCents": 500000,
+        "title": "Fiat 500 1.2 Lounge *Nw. Distr. | Pano | Airco | Automaat |",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443640732-fiat-500-1-2-lounge-nw-distr-pano-airco-automaat",
+        "year": 2009
+      },
+      {
+        "mileage": 103998,
+        "priceCents": 529500,
+        "title": "Fiat 500 1.2 Sport|AUT|AIRCO|LMV|LAGE KM|NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445158518-fiat-500-1-2-sport-aut-airco-lmv-lage-km-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 117046,
+        "priceCents": 544400,
+        "title": "Fiat 500 1.2 Pop/AUTOMAAT/AIRCO/117046 KM NAP/NIEUWE APK 07-",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442765059-fiat-500-1-2-pop-automaat-airco-117046-km-nap-nieuwe-apk-07",
+        "year": 2009
+      },
+      {
+        "mileage": 132109,
+        "priceCents": 545000,
+        "title": "Fiat 500 1.2 Pop",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447721480-fiat-500-1-2-pop",
+        "year": 2011
+      },
+      {
+        "mileage": 127442,
+        "priceCents": 545000,
+        "title": "Fiat 500 1.2 automaat/panoramadak/airco/4 cilinder",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442620137-fiat-500-1-2-automaat-panoramadak-airco-4-cilinder",
+        "year": 2011
+      },
+      {
+        "mileage": 140519,
+        "priceCents": 549900,
+        "title": "Fiat 500 1.2 Automaat | NAP | Android | Airco | D-riem verv",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442469325-fiat-500-1-2-automaat-nap-android-airco-d-riem-verv",
+        "year": 2010
+      },
+      {
+        "mileage": 133884,
+        "priceCents": 549900,
+        "title": "Fiat 500 1.2 Lounge Automaat/Airco/Nwe apk/Nap/",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441873565-fiat-500-1-2-lounge-automaat-airco-nwe-apk-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 139000,
+        "priceCents": 550000,
+        "title": "Fiat 500 1.2 AUT 2010 Donkerblauw",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2408100263-fiat-500-1-2-aut-2010-donkerblauw",
+        "year": 2010
+      },
+      {
+        "mileage": 114458,
+        "priceCents": 565000,
+        "title": "Fiat 500 1.2 Lounge AUTOMAA 114 DKMT BJ 2010 ! (bj 2010)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445717106-fiat-500-1-2-lounge-automaa-114-dkmt-bj-2010-bj-2010",
+        "year": 2010
+      },
+      {
+        "mileage": 83588,
+        "priceCents": 574900,
+        "title": "Fiat 500 C 1.2 Pop 2012 AUTOMAAT NAP CABRIOLET",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445083878-fiat-500-c-1-2-pop-2012-automaat-nap-cabriolet",
+        "year": 2010
+      },
+      {
+        "mileage": 121161,
+        "priceCents": 574900,
+        "title": "Fiat 500 1.2 Sport PANO AUTOMAAT PARELMOER DISTR VERVANGEN",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442646974-fiat-500-1-2-sport-pano-automaat-parelmoer-distr-vervangen",
+        "year": 2010
+      },
+      {
+        "mileage": 121571,
+        "priceCents": 575000,
+        "title": "Fiat 500 1.2 Lounge Nap Automaat Airco Bluetooth Pano 16 Inc",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446717273-fiat-500-1-2-lounge-nap-automaat-airco-bluetooth-pano-16-inc",
+        "year": 2010
+      },
+      {
+        "mileage": 126537,
+        "priceCents": 575000,
+        "title": "Fiat 500 1.2 Sport Automaat Nap Airco Pano Climate Parkeerse",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441218712-fiat-500-1-2-sport-automaat-nap-airco-pano-climate-parkeerse",
+        "year": 2009
+      },
+      {
+        "mileage": 131239,
+        "priceCents": 595000,
+        "title": "Fiat 500 C 1.2 Lounge cabriolet automaat / bj.2011 / kleur:",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446615371-fiat-500-c-1-2-lounge-cabriolet-automaat-bj-2011-kleur",
+        "year": 2011
+      },
+      {
+        "mileage": 140925,
+        "priceCents": 595000,
+        "title": "Fiat 500 1.2 Pop Xenon | Leer | Automaat (bj 2011)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446525890-fiat-500-1-2-pop-xenon-leer-automaat-bj-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 136423,
+        "priceCents": 595000,
+        "title": "Fiat 500 1.2 Lounge AUTOMAAT|Airco|Panorama|NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439938959-fiat-500-1-2-lounge-automaat-airco-panorama-nap",
+        "year": 2009
+      },
+      {
+        "mileage": 108087,
+        "priceCents": 599900,
+        "title": "Fiat 500 1.2 Pop |AUTOMAAT|1EIG|Nw.D.RIEM|NAP|Airco|APK27",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447713494-fiat-500-1-2-pop-automaat-1eig-nw-d-riem-nap-airco-apk27",
+        "year": 2010
+      },
+      {
+        "mileage": 101283,
+        "priceCents": 599900,
+        "title": "Fiat 500 1.2 Lounge |AUTOMAAT|CARPLAY|NAP|PANO|AIRCO|NW.Apk|",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444340696-fiat-500-1-2-lounge-automaat-carplay-nap-pano-airco-nw-apk",
+        "year": 2009
+      },
+      {
+        "mileage": 131900,
+        "priceCents": 599900,
+        "title": "Fiat 500 1.2 AUTOMAAT Rood",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443122487-fiat-500-1-2-automaat-rood",
+        "year": 2009
+      },
+      {
+        "mileage": 110355,
+        "priceCents": 599900,
+        "title": "Fiat 500 1.2 Lounge|Automaat|Pano|Airco|Apk|Elektr.Pakket",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440497919-fiat-500-1-2-lounge-automaat-pano-airco-apk-elektr-pakket",
+        "year": 2009
+      },
+      {
+        "mileage": 116669,
+        "priceCents": 625000,
+        "title": "Fiat 500 C ROCK 1.2 AUTOMAAT 2011",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440530190-fiat-500-c-rock-1-2-automaat-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 111205,
+        "priceCents": 635000,
+        "title": "Fiat 500 1.2 Lounge/AUTOMAAT/PANO/NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447661375-fiat-500-1-2-lounge-automaat-pano-nap",
+        "year": 2009
+      },
+      {
+        "mileage": 140860,
+        "priceCents": 645000,
+        "title": "Fiat 500C 1.2 Rock NL AUTO/AUTOMAAT/PARELMOER WIT (bj 2011)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445884096-fiat-500c-1-2-rock-nl-auto-automaat-parelmoer-wit-bj-2011",
+        "year": 2011
+      },
+      {
+        "mileage": 112053,
+        "priceCents": 645000,
+        "title": "Fiat 500 C 1.2 Lounge/Cabrio/1eigenaar/Automaat/Airco/Elek-p",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444126996-fiat-500-c-1-2-lounge-cabrio-1eigenaar-automaat-airco-elek-p",
+        "year": 2011
+      },
+      {
+        "mileage": 92654,
+        "priceCents": 645000,
+        "title": "Fiat 500C 0.9 TwinAir Lounge CABRIO /LEER/AIRCO/AUTOMAAT/ 92",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441225344-fiat-500c-0-9-twinair-lounge-cabrio-leer-airco-automaat-92",
+        "year": 2011
+      },
+      {
+        "mileage": 90000,
+        "priceCents": 650000,
+        "title": "Fiat 500 1.2 bj 2010 semi-automaat 94000 km",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2439933191-fiat-500-1-2-bj-2010-semi-automaat-94000-km",
+        "year": 2011
+      },
+      {
+        "mileage": 134705,
+        "priceCents": 665000,
+        "title": "Fiat 500 C 1.2 Rock , CABRIO..LEDER..CLIMAAUDIO",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2438455680-fiat-500-c-1-2-rock-cabrio-leder-climaaudio",
+        "year": 2010
+      },
+      {
+        "mileage": 72000,
+        "priceCents": 674500,
+        "title": "Fiat 500 1.2 Lounge automaat LM panoramadak org NL",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446189923-fiat-500-1-2-lounge-automaat-lm-panoramadak-org-nl",
+        "year": 2011
+      },
+      {
+        "mileage": 123261,
+        "priceCents": 675000,
+        "title": "Fiat 500 C 1.2 Lounge automaat nieuwe distributie en banden",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439623163-fiat-500-c-1-2-lounge-automaat-nieuwe-distributie-en-banden",
+        "year": 2010
+      },
+      {
+        "mileage": 123014,
+        "priceCents": 679500,
+        "title": "Fiat 500 C 1.2 4 cilinder | Cabrio | Pop | AUTOMAAT | 100% O",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440006924-fiat-500-c-1-2-4-cilinder-cabrio-pop-automaat-100-o",
+        "year": 2011
+      },
+      {
+        "mileage": 112745,
+        "priceCents": 689500,
+        "title": "Fiat 500C 1.2 Pop (bj 2010, automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443169660-fiat-500c-1-2-pop-bj-2010-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 119717,
+        "priceCents": 689500,
+        "title": "Fiat 500 C 1.2 Lounge | AUTOMAAT | Cabrio | Nette Staat | NL",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445284803-fiat-500-c-1-2-lounge-automaat-cabrio-nette-staat-nl",
+        "year": 2011
+      },
+      {
+        "mileage": 134368,
+        "priceCents": 695000,
+        "title": "Fiat 500 1.2 Lounge/Automaat/Cabrio/Airco/Lichtmetaal/",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444992011-fiat-500-1-2-lounge-automaat-cabrio-airco-lichtmetaal",
+        "year": 2011
+      },
+      {
+        "mileage": 63015,
+        "priceCents": 695000,
+        "title": "Fiat 500 1.2 Lounge | Apple Carplay | Pano | Automaat | Orig",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443511043-fiat-500-1-2-lounge-apple-carplay-pano-automaat-orig",
+        "year": 2010
+      },
+      {
+        "mileage": 62051,
+        "priceCents": 715000,
+        "title": "Fiat 500 C TwinAir Automaat | 2011 | 62.051 km | Cabrio | 2e",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445165559-fiat-500-c-twinair-automaat-2011-62-051-km-cabrio-2e",
+        "year": 2011
+      },
+      {
+        "mileage": 133000,
+        "priceCents": 725000,
+        "title": "Fiat 500C 1.2 CABRIO | AUTOMAAT | LEDER | XENON | PARELMOER",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2414044592-fiat-500c-1-2-cabrio-automaat-leder-xenon-parelmoer",
+        "year": 2010
+      },
+      {
+        "mileage": 74857,
+        "priceCents": 744000,
+        "title": "Fiat 500 1.2 Lounge 1e eig AUTOMAAT LEER NAP!",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444023200-fiat-500-1-2-lounge-1e-eig-automaat-leer-nap",
+        "year": 2009
+      },
+      {
+        "mileage": 76207,
+        "priceCents": 744500,
+        "title": "Fiat 500C 1.2 Lounge Cabriolet AUTOMAAT | Bluetooth | 16\"",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441474395-fiat-500c-1-2-lounge-cabriolet-automaat-bluetooth-16",
+        "year": 2011
+      },
+      {
+        "mileage": 77273,
+        "priceCents": 749900,
+        "title": "Fiat 500 C 1.2 Lounge automaat/ weinig km.",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440302545-fiat-500-c-1-2-lounge-automaat-weinig-km",
+        "year": 2011
+      },
+      {
+        "mileage": 79724,
+        "priceCents": 790000,
+        "title": "Fiat 500 1.2 Lounge Airco Automaat Parkeersensoren Lm Velgen",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446486174-fiat-500-1-2-lounge-airco-automaat-parkeersensoren-lm-velgen",
+        "year": 2010
+      },
+      {
+        "mileage": 65734,
+        "priceCents": 795000,
+        "title": "Fiat 500 C 1.2 Rock Cabrio | automaat | Bianco Gioioso | led",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439834066-fiat-500-c-1-2-rock-cabrio-automaat-bianco-gioioso-led",
+        "year": 2010
+      },
+      {
+        "mileage": 68848,
+        "priceCents": 799000,
+        "title": "Fiat 500 C 1.2 Lounge AUTOMAAT NAP!",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440361091-fiat-500-c-1-2-lounge-automaat-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 138976,
+        "priceCents": 949500,
+        "title": "Fiat 500 Abarth 1.4 T-Jet Competizione 161 PK / CABRIO / CLI",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444285327-fiat-500-abarth-1-4-t-jet-competizione-161-pk-cabrio-cli",
+        "year": 2011
+      },
+      {
+        "mileage": 116455,
+        "priceCents": 999000,
+        "title": "Abarth 500 C 1.4 T-Jet 140PK - Leder - Xenon - Automaat - Cl",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440326255-abarth-500-c-1-4-t-jet-140pk-leder-xenon-automaat-cl",
+        "year": 2011
+      }
+    ],
+    "priceCents": 495000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Fiat 500 1.2 Lounge automaat",
+    "year": 2010
   },
   "m2443937528": {
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
@@ -376,6 +2358,205 @@
     "model": "Citroen C3 automaat (EAT6)",
     "title": "Citroen C3 1.2 PURETECH AUTOMAAT AIRCO ECC NIEUWSTAAT"
   },
+  "m2444558072": {
+    "discountPct": -7.7,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 742500.0,
+    "medianMileage": 108091,
+    "mileage": 90792,
+    "mileageDiscountPct": 16.0,
+    "model": "Fiat 500 automaat/Dualogic",
+    "peers": [
+      {
+        "mileage": 139271,
+        "priceCents": 499500,
+        "title": "Fiat 500 1.2 Lounge (bj 2012, semi-automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2437360659-fiat-500-1-2-lounge-bj-2012-semi-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 137823,
+        "priceCents": 540000,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge AUTOMAAT nap CABRIO airco LEDE",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440121663-fiat-500-c-0-9-twinair-lounge-automaat-nap-cabrio-airco-lede",
+        "year": 2012
+      },
+      {
+        "mileage": 93000,
+        "priceCents": 545000,
+        "title": "Fiat 500 automaat lounge parelmoer (bj 2013)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441956161-fiat-500-automaat-lounge-parelmoer-bj-2013",
+        "year": 2013
+      },
+      {
+        "mileage": 128567,
+        "priceCents": 595000,
+        "title": "Fiat 500 0.9 TwinAir Lounge |NIEUW APK|AIRCO|LM VLGN |LUXE U",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443960634-fiat-500-0-9-twinair-lounge-nieuw-apk-airco-lm-vlgn-luxe-u",
+        "year": 2012
+      },
+      {
+        "mileage": 137897,
+        "priceCents": 645000,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge leder - Automaat - nieuw APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442948847-fiat-500-c-0-9-twinair-lounge-leder-automaat-nieuw-apk",
+        "year": 2013
+      },
+      {
+        "mileage": 111567,
+        "priceCents": 649500,
+        "title": "Fiat 500 C 0.9 TwinAir CABRIO ABARTH SCHAALSTOELEN NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440069161-fiat-500-c-0-9-twinair-cabrio-abarth-schaalstoelen-nap",
+        "year": 2012
+      },
+      {
+        "mileage": 125190,
+        "priceCents": 650000,
+        "title": "Fiat 500 C 2014 * CABRIO * 0.9 TwinAir Turbo Lounge * Automa",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444406143-fiat-500-c-2014-cabrio-0-9-twinair-turbo-lounge-automa",
+        "year": 2014
+      },
+      {
+        "mileage": 130000,
+        "priceCents": 650000,
+        "title": "Fiat 500 Cabrio 0.9 TwinAir Turbo by Gucci automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444950658-fiat-500-cabrio-0-9-twinair-turbo-by-gucci-automaat",
+        "year": 2012
+      },
+      {
+        "mileage": 125250,
+        "priceCents": 675000,
+        "title": "Fiat 500 0.9 TwinAir Lounge/ automaat/airco/Panorama/ LM vel",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441660583-fiat-500-0-9-twinair-lounge-automaat-airco-panorama-lm-vel",
+        "year": 2013
+      },
+      {
+        "mileage": 104615,
+        "priceCents": 689900,
+        "title": "Fiat 500C 0.9 TwinAir Lounge AUTOMAAT/NL AUTO/AIRCO/NW APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445411819-fiat-500c-0-9-twinair-lounge-automaat-nl-auto-airco-nw-apk",
+        "year": 2013
+      },
+      {
+        "mileage": 113003,
+        "priceCents": 690000,
+        "title": "Fiat 500C 0.9 TwinAir Turbo Lounge Automaat (bj 2014)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447749837-fiat-500c-0-9-twinair-turbo-lounge-automaat-bj-2014",
+        "year": 2014
+      },
+      {
+        "mileage": 139326,
+        "priceCents": 695000,
+        "title": "Fiat 500 0.9 TwinAir Lounge-Airco-LMV-Pano-PDC-",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440337379-fiat-500-0-9-twinair-lounge-airco-lmv-pano-pdc",
+        "year": 2013
+      },
+      {
+        "mileage": 77810,
+        "priceCents": 740000,
+        "title": "Fiat 500 C 0.9 TwinAir Lounge",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445867309-fiat-500-c-0-9-twinair-lounge",
+        "year": 2013
+      },
+      {
+        "mileage": 98641,
+        "priceCents": 745000,
+        "title": "Fiat 500 0.9 TwinAir 500S , Leer , Airco , Lmv",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441725688-fiat-500-0-9-twinair-500s-leer-airco-lmv",
+        "year": 2013
+      },
+      {
+        "mileage": 100641,
+        "priceCents": 788000,
+        "title": "Fiat 500 1.2 Lounge",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2444385679-fiat-500-1-2-lounge",
+        "year": 2012
+      },
+      {
+        "mileage": 120514,
+        "priceCents": 794000,
+        "title": "Fiat 500 0.9 TwinAir 500S Automaat NAP Apple Carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2439301152-fiat-500-0-9-twinair-500s-automaat-nap-apple-carplay",
+        "year": 2013
+      },
+      {
+        "mileage": 79764,
+        "priceCents": 799000,
+        "title": "Fiat 500C Automaat  leer  Xenon  cabrio  lichtmetaal",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2446815715-fiat-500c-automaat-leer-xenon-cabrio-lichtmetaal",
+        "year": 2014
+      },
+      {
+        "mileage": 127892,
+        "priceCents": 799500,
+        "title": "Fiat 500 0.9 TwinAir Lounge AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2440373556-fiat-500-0-9-twinair-lounge-automaat",
+        "year": 2013
+      },
+      {
+        "mileage": 130291,
+        "priceCents": 825000,
+        "title": "Fiat 500 0.9 TWINAIR T 500S  AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442842625-fiat-500-0-9-twinair-t-500s-automaat",
+        "year": 2014
+      },
+      {
+        "mileage": 68118,
+        "priceCents": 849500,
+        "title": "Fiat 500 Automaat  2013 Grijs 68.118 KM-NAP\ufe0f PanoDak | Nette",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2438980395-fiat-500-automaat-2013-grijs-68-118-km-nap-panodak-nette",
+        "year": 2013
+      },
+      {
+        "mileage": 82424,
+        "priceCents": 854500,
+        "title": "Fiat 500 TwinAir Turbo 85 Lounge Dualogic Automaat METALLIC",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442178379-fiat-500-twinair-turbo-85-lounge-dualogic-automaat-metallic",
+        "year": 2014
+      },
+      {
+        "mileage": 56058,
+        "priceCents": 865000,
+        "title": "Fiat 500 C 0.9 TwinAir Turbo Cult Automaat Leder Nap Pdc",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2447719810-fiat-500-c-0-9-twinair-turbo-cult-automaat-leder-nap-pdc",
+        "year": 2014
+      },
+      {
+        "mileage": 87500,
+        "priceCents": 874000,
+        "title": "Fiat 500C 1.2 Pop | Automaat | Cabrio | Velgen (bj 2013)",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2442904876-fiat-500c-1-2-pop-automaat-cabrio-velgen-bj-2013",
+        "year": 2013
+      },
+      {
+        "mileage": 92487,
+        "priceCents": 894500,
+        "title": "Fiat 500 0.9 TwinAir Turbo Cult Automaat Panoramadak Leder C",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2445825293-fiat-500-0-9-twinair-turbo-cult-automaat-panoramadak-leder-c",
+        "year": 2014
+      },
+      {
+        "mileage": 65472,
+        "priceCents": 895000,
+        "title": "Fiat 500 AUTOMAAT SPORT TWIN AIR*PANO*CLIMA*LEER*MOOI.",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2441490525-fiat-500-automaat-sport-twin-air-pano-clima-leer-mooi",
+        "year": 2014
+      },
+      {
+        "mileage": 89128,
+        "priceCents": 899500,
+        "title": "Fiat 500 C 1.2 Lounge automaat cabriolet, 1e eigenaar 89.000",
+        "url": "https://www.marktplaats.nl/v/auto-s/fiat/m2443375484-fiat-500-c-1-2-lounge-automaat-cabriolet-1e-eigenaar-89-000",
+        "year": 2014
+      }
+    ],
+    "priceCents": 799900,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Fiat 500 C 0.9 TwinAir Lounge automaat",
+    "year": 2013
+  },
   "m2444569704": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Opel Corsa automaat",
@@ -390,6 +2571,72 @@
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Opel Astra automaat",
     "title": "Opel Astra 1.0 Edition Aut NAP (bj 2016, automaat)"
+  },
+  "m2444744134": {
+    "discountPct": -6.4,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 544400,
+    "medianMileage": 134028,
+    "mileage": 98756,
+    "mileageDiscountPct": 26.3,
+    "model": "Citroen C3 automaat (EAT6)",
+    "peers": [
+      {
+        "mileage": 139952,
+        "priceCents": 494400,
+        "title": "Citro\u00ebn C3 1.6 VTi Exclusive Automaat Airco, Cruise Control",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441539765-citroen-c3-1-6-vti-exclusive-automaat-airco-cruise-control",
+        "year": 2010
+      },
+      {
+        "mileage": 138306,
+        "priceCents": 495000,
+        "title": "Citroen C3 1.6 VTi Exclusive",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2447032281-citroen-c3-1-6-vti-exclusive",
+        "year": 2010
+      },
+      {
+        "mileage": 134028,
+        "priceCents": 525000,
+        "title": "Citroen C3 1.6 VTi Exclusive AUTOMAAT/NAP/CRUISE/CLIMA/PDC/A",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2442544438-citroen-c3-1-6-vti-exclusive-automaat-nap-cruise-clima-pdc-a",
+        "year": 2011
+      },
+      {
+        "mileage": 117425,
+        "priceCents": 544400,
+        "title": "Citro\u00ebn C3 1.6 VTi Exclusive Automaat Airco, Cruise Control",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2438830689-citroen-c3-1-6-vti-exclusive-automaat-airco-cruise-control",
+        "year": 2011
+      },
+      {
+        "mileage": 135546,
+        "priceCents": 545000,
+        "title": "Citroen C3 1.6 VTi Exclusive automaat Panoramadak",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2442954003-citroen-c3-1-6-vti-exclusive-automaat-panoramadak",
+        "year": 2010
+      },
+      {
+        "mileage": 108000,
+        "priceCents": 649900,
+        "title": "Citroen C3 1.6 VTi Exclusive AUTOMAAT CLIMA CRUISE",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441167175-citroen-c3-1-6-vti-exclusive-automaat-clima-cruise",
+        "year": 2011
+      },
+      {
+        "mileage": 97424,
+        "priceCents": 690000,
+        "title": "Citroen C3 1.6 VTi Exclusive AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2440744196-citroen-c3-1-6-vti-exclusive-automaat",
+        "year": 2011
+      }
+    ],
+    "priceCents": 579500,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Citroen C3 1.6 VTi Exclusive Automaat | Trekhaak",
+    "year": 2010
   },
   "m2444790853": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
@@ -531,6 +2778,51 @@
     "model": "smart fortwo automaat",
     "title": "Smart Fortwo coup\u00e9 1.0 mhd Pure"
   },
+  "m2446400800": {
+    "discountPct": -2.7,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 919750.0,
+    "medianMileage": 66281,
+    "mileage": 40250,
+    "mileageDiscountPct": 39.3,
+    "model": "Mitsubishi Space Star automaat/CVT",
+    "peers": [
+      {
+        "mileage": 66500,
+        "priceCents": 850000,
+        "title": "Mitsubishi Space Star 1.2 Mivec 80PK Cleartec As&g 2019",
+        "url": "https://www.marktplaats.nl/v/auto-s/mitsubishi/m2443345254-mitsubishi-space-star-1-2-mivec-80pk-cleartec-as-g-2019",
+        "year": 2019
+      },
+      {
+        "mileage": 52817,
+        "priceCents": 919500,
+        "title": "Mitsubishi Space Star 1.0 Intense I AUTOMAAT I ORG NL AUTO",
+        "url": "https://www.marktplaats.nl/v/auto-s/mitsubishi/m2446892478-mitsubishi-space-star-1-0-intense-i-automaat-i-org-nl-auto",
+        "year": 2018
+      },
+      {
+        "mileage": 66062,
+        "priceCents": 920000,
+        "title": "Mitsubishi Space Star 1.0 Cool+ | Automaat | Airco | Radio C",
+        "url": "https://www.marktplaats.nl/v/auto-s/mitsubishi/m2446564277-mitsubishi-space-star-1-0-cool-automaat-airco-radio-c",
+        "year": 2018
+      },
+      {
+        "mileage": 84045,
+        "priceCents": 950000,
+        "title": "Mitsubishi Space Star 1.0 Intense AUTOMAAT (bj 2018)",
+        "url": "https://www.marktplaats.nl/v/auto-s/mitsubishi/m2445431091-mitsubishi-space-star-1-0-intense-automaat-bj-2018",
+        "year": 2018
+      }
+    ],
+    "priceCents": 945000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Mitsubishi Space Star 1.2 Mivec 80PK Auto Stop & Go CVT 2019",
+    "year": 2019
+  },
   "m2446418495": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Renault Clio automaat",
@@ -665,6 +2957,86 @@
     "firstSeen": "2026-09-28T20:52:06.685685+00:00",
     "model": "Opel Corsa automaat",
     "title": "Opel Corsa 1.2-16V Cosmo IJSKOUDE AIRCO!APK2027!AUTOMAAT!NAV"
+  },
+  "m2447674224": {
+    "discountPct": 0.1,
+    "firstSeen": "2026-09-29T09:36:29.964151+00:00",
+    "medianCents": 945000,
+    "medianMileage": 86536,
+    "mileage": 56562,
+    "mileageDiscountPct": 34.6,
+    "model": "Renault Clio automaat",
+    "peers": [
+      {
+        "mileage": 105384,
+        "priceCents": 649900,
+        "title": "Renault Clio 1.2 Expression AUTOMAAT,Pdc,Cruise",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2446418495-renault-clio-1-2-expression-automaat-pdc-cruise",
+        "year": 2015
+      },
+      {
+        "mileage": 35000,
+        "priceCents": 750000,
+        "title": "Renault Clio Estate 1.2 TCe Stationwagon AUTOMAAT NAVI AIRCO",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2439148017-renault-clio-estate-1-2-tce-stationwagon-automaat-navi-airco",
+        "year": 2016
+      },
+      {
+        "mileage": 94930,
+        "priceCents": 899400,
+        "title": "Renault Clio 1.2T Dynamique Automaat Navigatie Parkeerhulp M",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2438892659-renault-clio-1-2t-dynamique-automaat-navigatie-parkeerhulp-m",
+        "year": 2014
+      },
+      {
+        "mileage": 71049,
+        "priceCents": 925000,
+        "title": "Renault Clio 1.2 Dynamique Automaat, Trekhaak, Weinig km, Te",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2444297298-renault-clio-1-2-dynamique-automaat-trekhaak-weinig-km-te",
+        "year": 2014
+      },
+      {
+        "mileage": 86536,
+        "priceCents": 945000,
+        "title": "Renault Clio DYNAMIQUE-AUTOMAAT-NAVI-TREKHAAK 86.536 km",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2446704728-renault-clio-dynamique-automaat-navi-trekhaak-86-536-km",
+        "year": 2015
+      },
+      {
+        "mileage": 83505,
+        "priceCents": 975000,
+        "title": "Renault CLIO 1.2 Dynamique-GT-Sport Line*automaat*leer*cruis",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2445660269-renault-clio-1-2-dynamique-gt-sport-line-automaat-leer-cruis",
+        "year": 2016
+      },
+      {
+        "mileage": 92684,
+        "priceCents": 975000,
+        "title": "Renault Clio 1.2 TCe Intens/automaat/cruise/Trekhaa/airco/NA",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2441654691-renault-clio-1-2-tce-intens-automaat-cruise-trekhaa-airco-na",
+        "year": 2016
+      },
+      {
+        "mileage": 98220,
+        "priceCents": 995000,
+        "title": "Renault CLIO 1.2 GT automaat navi/stoelverwarming/ecc/cruise",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2442887014-renault-clio-1-2-gt-automaat-navi-stoelverwarming-ecc-cruise",
+        "year": 2016
+      },
+      {
+        "mileage": 67000,
+        "priceCents": 999900,
+        "title": "Renault Clio Estate 1.2 AUTOMAAT NAVIGATIE AIRCO 67.000KM! C",
+        "url": "https://www.marktplaats.nl/v/auto-s/renault/m2444929791-renault-clio-estate-1-2-automaat-navigatie-airco-67-000km-c",
+        "year": 2016
+      }
+    ],
+    "priceCents": 944000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Renault Clio 1.2 Dynamique Automaat Airco Navigatie Cruise C",
+    "year": 2015
   },
   "m2447691187": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",

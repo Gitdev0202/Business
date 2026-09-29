@@ -174,6 +174,53 @@
     "model": "Peugeot 107 automaat",
     "title": "Peugeot 107 1.0-12V XR/ AUTOMAAT/ AIRCO"
   },
+  "m2440587490": {
+    "discountPct": 15.8,
+    "firstSeen": "2026-09-29T08:32:59.973824+00:00",
+    "medianCents": 475000,
+    "mileage": 136426,
+    "model": "Citroen C1 automaat",
+    "peers": [
+      {
+        "mileage": 134338,
+        "priceCents": 275000,
+        "title": "Citro\u00ebn C1 1.0 5-DRS Sensodrive 2007 Geel",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2412463967-citroen-c1-1-0-5-drs-sensodrive-2007-geel",
+        "year": 2007
+      },
+      {
+        "mileage": 123369,
+        "priceCents": 399000,
+        "title": "Citroen C1 1.0-12V Ambiance|Nap|Airco|Automaat|",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441509849-citroen-c1-1-0-12v-ambiance-nap-airco-automaat",
+        "year": 2007
+      },
+      {
+        "mileage": 109951,
+        "priceCents": 475000,
+        "title": "Citroen C1 Automaat 5dr - Airco - 2e eig. - Goed onderhouden",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446699534-citroen-c1-automaat-5dr-airco-2e-eig-goed-onderhouden",
+        "year": 2007
+      },
+      {
+        "mileage": 91417,
+        "priceCents": 475000,
+        "title": "Citroen C1 1.0-12V Ambiance Automaat 5 Drs",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2443636665-citroen-c1-1-0-12v-ambiance-automaat-5-drs",
+        "year": 2007
+      },
+      {
+        "mileage": 113043,
+        "priceCents": 489500,
+        "title": "Citroen C1 1.0|NAP|AUTOMAAT|AIRCO|1EIGENAAR|5DEURS|NIEUWEAPK",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441488919-citroen-c1-1-0-nap-automaat-airco-1eigenaar-5deurs-nieuweapk",
+        "year": 2007
+      }
+    ],
+    "priceCents": 399800,
+    "title": "Citroen C1 1.0-12V Ambiance | automaat | vijfdeurs",
+    "year": 2006
+  },
   "m2440589856": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Opel Astra automaat",

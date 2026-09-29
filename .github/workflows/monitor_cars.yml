@@ -48,6 +48,8 @@ jobs:
           MIN_CONSTRUCTION_YEAR: "2005"
           MAX_MILEAGE_DEVIATION_KM: "50000"
           MAX_YEAR_DEVIATION: "1"
+          MILEAGE_DISCOUNT_THRESHOLD_PCT: "20"
+          MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT: "5"
         run: python scripts/monitor_cars.py
 
       - name: Commit bijgewerkte state

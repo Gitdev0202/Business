@@ -67,6 +67,25 @@ preciezer dan een vast bouwjaar-bin, omdat elke auto met zijn eigen meest
 vergelijkbare buren vergeleken wordt in plaats van met een grove, gedeelde
 groep.
 
+Een advertentie kan op MEERDERE, onafhankelijke manieren als "kans" gelden
+(zie find_deals, lijst _signals per advertentie -- uitbreidbaar met verdere
+signaaltypes):
+  1. "price_discount" (bestaand): vraagprijs ligt minimaal DISCOUNT_THRESHOLD_PCT
+     onder de levende mediaanprijs van de peergroep.
+  2. "low_mileage" (nieuw): km-stand ligt minimaal MILEAGE_DISCOUNT_THRESHOLD_PCT
+     onder de mediaan-km-stand van de peergroep, TERWIJL de vraagprijs niet
+     meer dan MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT boven de mediaanprijs
+     zit. Dat laatste is de vertaling van "prijs (ongeveer) gelijk aan de
+     mediaan": zonder die eis zou elke lage-km-auto met een torenhoge
+     vraagprijs ook worden gemeld, terwijl de markt die lage km-stand dan al
+     inprijst -- pas wanneer een auto duidelijk minder km heeft dan
+     vergelijkbare buren VOOR een normale/marktconforme prijs is dat een
+     kans die de pure prijsvergelijking zou missen.
+Beide signalen kunnen tegelijk afgaan op dezelfde advertentie (dan staan
+beide in de Discord-melding) -- dat is geen bug, gewoon een extra sterke
+kans. Toekomstige signaaltypes kunnen op dezelfde manier worden toegevoegd
+aan find_deals zonder de bestaande signalen te hoeven aanpassen.
+
 BELANGRIJKE BEPERKINGEN (lees dit voor je op een melding afgaat):
   - De Marktplaats-categorie-ID voor "Auto's" (L1_CATEGORY_ID hieronder), de
     veldnamen voor bouwjaar/km-stand/transmissie, EN het veld waarmee
@@ -534,6 +553,12 @@ def extract_mileage(listing: dict) -> int | None:
 MAX_MILEAGE_DEVIATION_KM = int(os.environ.get("MAX_MILEAGE_DEVIATION_KM", "50000"))
 MAX_YEAR_DEVIATION = int(os.environ.get("MAX_YEAR_DEVIATION", "1"))
 
+# Signaal 2: "low_mileage" -- km-stand een stuk onder de mediaan-km-stand
+# van de peergroep, voor een prijs die niet (duidelijk) boven de
+# mediaanprijs zit. Zie docstring bovenin voor de redenering.
+MILEAGE_DISCOUNT_THRESHOLD_PCT = float(os.environ.get("MILEAGE_DISCOUNT_THRESHOLD_PCT", "20"))
+MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT = float(os.environ.get("MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT", "5"))
+
 
 def group_listings_by_model(listings: list) -> dict:
     by_model: dict = {}
@@ -583,6 +608,10 @@ def peer_summary(peer: dict) -> dict:
     }
 
 
+def fmt_km(km: int) -> str:
+    return f"{km:,} km".replace(",", ".")
+
+
 def find_deals(candidates: list, by_model: dict) -> list:
     deals = []
     for listing in candidates:
@@ -592,19 +621,55 @@ def find_deals(candidates: list, by_model: dict) -> list:
         peers = find_peers(listing, by_model)
         if len(peers) < MIN_GROUP_SIZE:
             continue
+
         peer_prices = [p.get("priceInfo", {}).get("priceCents", 0) for p in peers]
         reference_cents = median(peer_prices)
         discount_pct = (1 - price_cents / reference_cents) * 100
+
+        signals = []
         if discount_pct >= DISCOUNT_THRESHOLD_PCT:
-            listing["_group_median_cents"] = reference_cents
-            listing["_group_size"] = len(peers)
-            listing["_discount_pct"] = round(discount_pct, 1)
-            # Gesorteerd op prijs -- makkelijker te lezen in de melding.
-            listing["_peers"] = sorted(
-                (peer_summary(p) for p in peers),
-                key=lambda p: p["priceCents"],
-            )
-            deals.append(listing)
+            signals.append({
+                "type": "price_discount",
+                "label": f"€ ligt ~{round(discount_pct, 1)}% onder de levende mediaanprijs",
+            })
+
+        mileage = extract_mileage(listing)
+        peer_mileages = [m for m in (extract_mileage(p) for p in peers) if m is not None]
+        mileage_discount_pct = None
+        reference_mileage = None
+        if mileage is not None and peer_mileages:
+            reference_mileage = median(peer_mileages)
+            if reference_mileage > 0:
+                mileage_discount_pct = (1 - mileage / reference_mileage) * 100
+                price_premium_pct = (price_cents / reference_cents - 1) * 100
+                if (
+                    mileage_discount_pct >= MILEAGE_DISCOUNT_THRESHOLD_PCT
+                    and price_premium_pct <= MAX_PRICE_PREMIUM_FOR_MILEAGE_SIGNAL_PCT
+                ):
+                    signals.append({
+                        "type": "low_mileage",
+                        "label": (
+                            f"km-stand ligt ~{round(mileage_discount_pct, 1)}% onder de mediaan "
+                            f"({fmt_km(mileage)} vs. mediaan {fmt_km(int(reference_mileage))}), "
+                            f"voor een normale/marktconforme prijs"
+                        ),
+                    })
+
+        if not signals:
+            continue
+
+        listing["_group_median_cents"] = reference_cents
+        listing["_group_median_mileage"] = int(reference_mileage) if reference_mileage is not None else None
+        listing["_group_size"] = len(peers)
+        listing["_discount_pct"] = round(discount_pct, 1)
+        listing["_mileage_discount_pct"] = round(mileage_discount_pct, 1) if mileage_discount_pct is not None else None
+        listing["_signals"] = signals
+        # Gesorteerd op prijs -- makkelijker te lezen in de melding.
+        listing["_peers"] = sorted(
+            (peer_summary(p) for p in peers),
+            key=lambda p: p["priceCents"],
+        )
+        deals.append(listing)
     return deals
 
 
@@ -719,10 +784,11 @@ def build_embed(listing: dict) -> dict:
     year_str = str(year) if year else "onbekend bouwjaar"
     mileage_str = f"{mileage:,} km".replace(",", ".") if mileage else "km onbekend"
 
+    signal_lines = "\n".join(f"🔹 {s['label']}" for s in listing["_signals"])
     description = (
         f"{fmt_euro(price_cents)} — {year_str}, {mileage_str} — {city}\n"
-        f"~{listing['_discount_pct']}% onder de levende mediaan "
-        f"({fmt_euro(listing['_group_median_cents'])}, n={listing['_group_size']})\n"
+        f"{signal_lines}\n"
+        f"(mediaan {fmt_euro(listing['_group_median_cents'])}, n={listing['_group_size']})\n"
         f"⚠️ {listing['_model_risk']}"
     )
 
@@ -841,6 +907,12 @@ def main() -> int:
             "priceCents": listing.get("priceInfo", {}).get("priceCents", 0),
             "discountPct": listing["_discount_pct"],
             "medianCents": listing["_group_median_cents"],
+            "mileageDiscountPct": listing["_mileage_discount_pct"],
+            "medianMileage": listing["_group_median_mileage"],
+            # Welke signaaltype(s) deze kans triggerden (zie find_deals) --
+            # zo blijft herleidbaar of het om een prijskans, een lage-km-
+            # kans, of allebei ging.
+            "signals": [s["type"] for s in listing["_signals"]],
             # Bewaard voor herleidbaarheid: welke advertenties vormden de
             # mediaan waartegen deze kans is afgezet.
             "peers": listing["_peers"],
@@ -871,9 +943,10 @@ def main() -> int:
     if new_matches:
         send_discord_notifications(new_matches)
         for listing in new_matches:
+            signal_types = ", ".join(s["type"] for s in listing["_signals"])
             print(
                 f"  -> {listing.get('title')} | {fmt_euro(listing['priceInfo']['priceCents'])} "
-                f"| -{listing['_discount_pct']}% (vs {listing['_group_size']} vergelijkbare buren) "
+                f"| signalen: {signal_types} (vs {listing['_group_size']} vergelijkbare buren) "
                 f"| {listing_url(listing)}"
             )
 

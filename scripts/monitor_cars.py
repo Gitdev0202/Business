@@ -53,7 +53,7 @@ vs. fetch_model_listings_local):
   2. MELD-GROEP (wat daadwerkelijk als kans wordt doorgestuurd): een APARTE,
      LOKALE fetch -- alleen Marktplaats-advertenties van PARTICULIEREN
      binnen DISTANCE_KM van POSTCODE (default: de gedeelde POSTCODE-secret
-     van dit account, Winschoten, straal 75 km -- was 50 km, zie
+     van dit account, Winschoten, straal 70 km -- was 50 km, zie
      run-log-analyse 29-9-2026: bij 50 km waren er te weinig lokale
      advertenties om een redelijk aantal kansen uit te halen) die minimaal
      DISCOUNT_THRESHOLD_PCT onder de LANDELIJKE groepsmediaan zitten.

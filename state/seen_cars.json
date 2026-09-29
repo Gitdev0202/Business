@@ -1756,6 +1756,51 @@
     "model": "BMW 1-serie automaat",
     "title": "BMW 5-serie Touring 530 X drive - Pano - Automaat - Navi- ge"
   },
+  "m2441737587": {
+    "discountPct": -3.9,
+    "firstSeen": "2026-09-29T19:23:30.416897+00:00",
+    "medianCents": 620000.0,
+    "medianMileage": 125830,
+    "mileage": 85369,
+    "mileageDiscountPct": 32.2,
+    "model": "Mercedes A-klasse automaat",
+    "peers": [
+      {
+        "mileage": 133610,
+        "priceCents": 449900,
+        "title": "Mercedes-Benz A-klasse 160 Business Class Avantgarde AUTOMAA",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2442606318-mercedes-benz-a-klasse-160-business-class-avantgarde-automaa",
+        "year": 2009
+      },
+      {
+        "mileage": 118302,
+        "priceCents": 545000,
+        "title": "Mercedes-Benz A-klasse 180 Classic / AUTOMAAT / AIRCO / APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2441549764-mercedes-benz-a-klasse-180-classic-automaat-airco-apk",
+        "year": 2010
+      },
+      {
+        "mileage": 101720,
+        "priceCents": 695000,
+        "title": "Mercedes-Benz A-klasse 180 Business Class Elegance automaat,",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2446174910-mercedes-benz-a-klasse-180-business-class-elegance-automaat",
+        "year": 2010
+      },
+      {
+        "mileage": 133359,
+        "priceCents": 794400,
+        "title": "Mercedes-Benz C-klasse 200 K Business Class Automaat|Carplay",
+        "url": "https://www.marktplaats.nl/v/auto-s/mercedes-benz/m2447392942-mercedes-benz-c-klasse-200-k-business-class-automaat-carplay",
+        "year": 2009
+      }
+    ],
+    "priceCents": 644000,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Mercedes-Benz A-Klasse 180 Business Class Automaat Airco Tre",
+    "year": 2009
+  },
   "m2441836690": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Citroen C1 automaat",

@@ -62,7 +62,7 @@ vs. fetch_model_listings_local):
      als koper.
 De referentieprijs per advertentie komt uit een OP MAAT GEMAAKTE peergroep:
 zelfde model, km-stand binnen MAX_MILEAGE_DEVIATION_KM en bouwjaar binnen
-MAX_YEAR_DEVIATION van die specifieke advertentie (zie find_peer_prices) --
+MAX_YEAR_DEVIATION van die specifieke advertentie (zie find_peers) --
 preciezer dan een vast bouwjaar-bin, omdat elke auto met zijn eigen meest
 vergelijkbare buren vergeleken wordt in plaats van met een grove, gedeelde
 groep.
@@ -542,7 +542,10 @@ def group_listings_by_model(listings: list) -> dict:
     return by_model
 
 
-def find_peer_prices(listing: dict, by_model: dict) -> list:
+def find_peers(listing: dict, by_model: dict) -> list:
+    """Geeft de volledige vergelijkbare advertenties terug (niet alleen de
+    prijs), zodat ze zowel voor de mediaanberekening als voor een
+    herleidbare Discord-melding/state-opslag gebruikt kunnen worden."""
     year = extract_year(listing)
     mileage = extract_mileage(listing)
     if year is None or mileage is None:
@@ -563,8 +566,21 @@ def find_peer_prices(listing: dict, by_model: dict) -> list:
             continue
         if abs(other_mileage - mileage) > MAX_MILEAGE_DEVIATION_KM:
             continue
-        peers.append(other.get("priceInfo", {}).get("priceCents", 0))
+        peers.append(other)
     return peers
+
+
+def peer_summary(peer: dict) -> dict:
+    """Compact, JSON-vriendelijk snapshot van een vergelijkingsadvertentie
+    -- voor in de Discord-melding en state/seen_cars.json, zodat een
+    melding achteraf herleidbaar blijft (welke auto's vormden de mediaan)."""
+    return {
+        "title": peer.get("title", ""),
+        "year": extract_year(peer),
+        "mileage": extract_mileage(peer),
+        "priceCents": peer.get("priceInfo", {}).get("priceCents", 0),
+        "url": listing_url(peer),
+    }
 
 
 def find_deals(candidates: list, by_model: dict) -> list:
@@ -573,15 +589,21 @@ def find_deals(candidates: list, by_model: dict) -> list:
         price_cents = listing.get("priceInfo", {}).get("priceCents", 0)
         if price_cents <= 0:
             continue
-        peer_prices = find_peer_prices(listing, by_model)
-        if len(peer_prices) < MIN_GROUP_SIZE:
+        peers = find_peers(listing, by_model)
+        if len(peers) < MIN_GROUP_SIZE:
             continue
+        peer_prices = [p.get("priceInfo", {}).get("priceCents", 0) for p in peers]
         reference_cents = median(peer_prices)
         discount_pct = (1 - price_cents / reference_cents) * 100
         if discount_pct >= DISCOUNT_THRESHOLD_PCT:
             listing["_group_median_cents"] = reference_cents
-            listing["_group_size"] = len(peer_prices)
+            listing["_group_size"] = len(peers)
             listing["_discount_pct"] = round(discount_pct, 1)
+            # Gesorteerd op prijs -- makkelijker te lezen in de melding.
+            listing["_peers"] = sorted(
+                (peer_summary(p) for p in peers),
+                key=lambda p: p["priceCents"],
+            )
             deals.append(listing)
     return deals
 
@@ -660,6 +682,35 @@ def listing_image(listing: dict) -> str | None:
     return url
 
 
+def peer_line(peer: dict) -> str:
+    year_s = str(peer["year"]) if peer["year"] else "onbekend jaar"
+    km_s = f"{peer['mileage']:,} km".replace(",", ".") if peer["mileage"] else "km onbekend"
+    return f"{year_s} • {km_s} • {fmt_euro(peer['priceCents'])}"
+
+
+def peers_field(listing: dict) -> dict:
+    """Discord-embed-field met de vergelijkingsadvertenties die de mediaan
+    vormden (bouwjaar/km-stand/prijs) -- maakt elke melding herleidbaar.
+    Discord staat max. 1024 tekens per field-value toe, dus bij een grote
+    peergroep worden de duurste (minst informatieve) regels weggelaten."""
+    lines = [peer_line(p) for p in listing["_peers"]]
+    value = "\n".join(lines)
+    if len(value) > 1024:
+        kept = []
+        total_len = 0
+        for line in lines:
+            if total_len + len(line) + 1 > 1000:  # marge voor de "en X meer"-regel
+                break
+            kept.append(line)
+            total_len += len(line) + 1
+        value = "\n".join(kept) + f"\n… en {len(lines) - len(kept)} meer"
+    return {
+        "name": f"Vergelijkingsadvertenties (n={listing['_group_size']})",
+        "value": value,
+        "inline": False,
+    }
+
+
 def build_embed(listing: dict) -> dict:
     city = listing.get("location", {}).get("cityName", "Onbekende locatie")
     price_cents = listing.get("priceInfo", {}).get("priceCents", 0)
@@ -679,6 +730,7 @@ def build_embed(listing: dict) -> dict:
         "title": listing.get("title", "Auto-advertentie")[:256],
         "url": listing_url(listing),
         "description": description[:4096],
+        "fields": [peers_field(listing)] if listing.get("_peers") else [],
         "color": 0x2ECC71,
     }
     image = listing_image(listing)
@@ -784,12 +836,20 @@ def main() -> int:
             "firstSeen": now_iso,
             "title": listing.get("title", ""),
             "model": listing["_model_label"],
+            "year": extract_year(listing),
+            "mileage": extract_mileage(listing),
+            "priceCents": listing.get("priceInfo", {}).get("priceCents", 0),
+            "discountPct": listing["_discount_pct"],
+            "medianCents": listing["_group_median_cents"],
+            # Bewaard voor herleidbaarheid: welke advertenties vormden de
+            # mediaan waartegen deze kans is afgezet.
+            "peers": listing["_peers"],
         }
 
     if POSTCODE and DISTANCE_KM:
         print(f"[INFO] Meld-groep beperkt tot {DISTANCE_KM} km rond {POSTCODE}. Referentiegroep blijft heel NL.")
 
-    peer_counts = [len(find_peer_prices(l, by_model)) for l in private_relevant]
+    peer_counts = [len(find_peers(l, by_model)) for l in private_relevant]
     evaluable_counts = [n for n in peer_counts if n >= MIN_GROUP_SIZE]
     if evaluable_counts:
         peer_stats = (

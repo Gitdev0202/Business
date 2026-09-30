@@ -1946,6 +1946,121 @@
     "model": "smart fortwo automaat",
     "title": "Smart FORTWO COUPE Orgineel Brabus uitgevoerd"
   },
+  "m2443664035": {
+    "discountPct": 15.8,
+    "firstSeen": "2026-09-30T13:26:25.641849+00:00",
+    "medianCents": 885000.0,
+    "medianMileage": 123750,
+    "mileage": 138010,
+    "mileageDiscountPct": -11.5,
+    "model": "Volkswagen Polo DSG",
+    "peers": [
+      {
+        "mileage": 123000,
+        "priceCents": 650000,
+        "title": "Volkswagen Polo 1.4 16V 63KW DSG 2010 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2447075252-volkswagen-polo-1-4-16v-63kw-dsg-2010-grijs",
+        "year": 2010
+      },
+      {
+        "mileage": 134000,
+        "priceCents": 695000,
+        "title": "Volkswagen Polo 1.4 2010, automaat,  D-riem+ V-bak vervangen",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443047906-volkswagen-polo-1-4-2010-automaat-d-riem-v-bak-vervangen",
+        "year": 2010
+      },
+      {
+        "mileage": 145169,
+        "priceCents": 699500,
+        "title": "Volkswagen POLO 1.2 TSI Highline DSG AUTOMAAT-PANO-XENON-CRU",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2438154957-volkswagen-polo-1-2-tsi-highline-dsg-automaat-pano-xenon-cru",
+        "year": 2011
+      },
+      {
+        "mileage": 139354,
+        "priceCents": 700000,
+        "title": "Volkswagen Polo 1.4 Highline DSG | Automaat | CarPlay",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446283063-volkswagen-polo-1-4-highline-dsg-automaat-carplay",
+        "year": 2010
+      },
+      {
+        "mileage": 143080,
+        "priceCents": 750000,
+        "title": "Volkswagen Polo 1.4 DSG / GARANTIE DSG Mechatronica",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2362510706-volkswagen-polo-1-4-dsg-garantie-dsg-mechatronica",
+        "year": 2009
+      },
+      {
+        "mileage": 122334,
+        "priceCents": 875000,
+        "title": "Volkswagen Polo 1.4-16V Cross DSG Navi/Airco/Cruise Control",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445079809-volkswagen-polo-1-4-16v-cross-dsg-navi-airco-cruise-control",
+        "year": 2011
+      },
+      {
+        "mileage": 116511,
+        "priceCents": 875000,
+        "title": "Volkswagen Polo 1.4-16V Dsg CROSS XENON | STOELVERW | NAVI |",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445492608-volkswagen-polo-1-4-16v-dsg-cross-xenon-stoelverw-navi",
+        "year": 2011
+      },
+      {
+        "mileage": 141643,
+        "priceCents": 895000,
+        "title": "Volkswagen Polo 1.4 TSI GTI DSG Pano, Carplay, Stoelverwarmi",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446912178-volkswagen-polo-1-4-tsi-gti-dsg-pano-carplay-stoelverwarmi",
+        "year": 2011
+      },
+      {
+        "mileage": 141438,
+        "priceCents": 895000,
+        "title": "Volkswagen Polo 1.2 TSI Highline 105PK/PANO/DSG/NAVI/PDC/17'",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443442296-volkswagen-polo-1-2-tsi-highline-105pk-pano-dsg-navi-pdc-17",
+        "year": 2011
+      },
+      {
+        "mileage": 114255,
+        "priceCents": 899500,
+        "title": "Volkswagen Polo 1.2 TSI DSG | ClimateC | CruiseC | 17 velgen",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2440839598-volkswagen-polo-1-2-tsi-dsg-climatec-cruisec-17-velgen",
+        "year": 2011
+      },
+      {
+        "mileage": 124500,
+        "priceCents": 900000,
+        "title": "Volkswagen Polo Highline 1.2 TSI 77KW DSG 2011 Zwart",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446022962-volkswagen-polo-highline-1-2-tsi-77kw-dsg-2011-zwart",
+        "year": 2011
+      },
+      {
+        "mileage": 106864,
+        "priceCents": 949500,
+        "title": "Volkswagen Polo 1.4-16V Highline | DSG | CRUISE | CARPLAY |",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2441472771-volkswagen-polo-1-4-16v-highline-dsg-cruise-carplay",
+        "year": 2010
+      },
+      {
+        "mileage": 89293,
+        "priceCents": 994900,
+        "title": "Volkswagen Polo 1.4 TSI GTI|DSG|XENON|CRUISE CONTR|",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2437282340-volkswagen-polo-1-4-tsi-gti-dsg-xenon-cruise-contr",
+        "year": 2010
+      },
+      {
+        "mileage": 89293,
+        "priceCents": 994900,
+        "title": "Volkswagen Polo 1.4 TSI GTI|DSG|XENON|CRUISE CONTR|",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2437282340-volkswagen-polo-1-4-tsi-gti-dsg-xenon-cruise-contr",
+        "year": 2010
+      }
+    ],
+    "priceCents": 745000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Volkswagen Polo Highline Automaat Uitvoering / 138.Dkm Nap",
+    "year": 2010
+  },
   "m2443714836": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Peugeot 107 automaat",
@@ -2718,6 +2833,72 @@
     "model": "Volkswagen Up! automaat",
     "title": "Volkswagen Up! 1.0 high up! Automaat"
   },
+  "m2445103321": {
+    "discountPct": 10.3,
+    "firstSeen": "2026-09-30T13:26:25.641849+00:00",
+    "medianCents": 775000,
+    "medianMileage": 78843,
+    "mileage": 83015,
+    "mileageDiscountPct": -5.3,
+    "model": "Nissan Micra automaat/CVT",
+    "peers": [
+      {
+        "mileage": 96217,
+        "priceCents": 349900,
+        "title": "Nissan Micra 1.2 Connect Edition N-TEC AUTOMAAT I GEARBOX NO",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2439962107-nissan-micra-1-2-connect-edition-n-tec-automaat-i-gearbox-no",
+        "year": 2015
+      },
+      {
+        "mileage": 116207,
+        "priceCents": 524900,
+        "title": "Nissan Micra 1.2 Acenta Automaat, Apk, Nap Inruil mogelijk.",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2443960504-nissan-micra-1-2-acenta-automaat-apk-nap-inruil-mogelijk",
+        "year": 2014
+      },
+      {
+        "mileage": 124767,
+        "priceCents": 745000,
+        "title": "Nissan Micra 1.2 Connect Edition N-TEC AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2445053135-nissan-micra-1-2-connect-edition-n-tec-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 62755,
+        "priceCents": 775000,
+        "title": "Nissan Micra 1.2 VISIA PACK AUTOMAAT|ELEC.PAKKET|BLUE TOOTH|",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2438698411-nissan-micra-1-2-visia-pack-automaat-elec-pakket-blue-tooth",
+        "year": 2014
+      },
+      {
+        "mileage": 60799,
+        "priceCents": 794900,
+        "title": "Nissan Micra 1.2 DIG-S Connect Edition | AUTOMAAT | EERSTE E",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2448347607-nissan-micra-1-2-dig-s-connect-edition-automaat-eerste-e",
+        "year": 2014
+      },
+      {
+        "mileage": 42288,
+        "priceCents": 909900,
+        "title": "Nissan Micra 1.2 Acenta| AUTOMAAT| NAP| CAMERA| NEW APK",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2445514035-nissan-micra-1-2-acenta-automaat-nap-camera-new-apk",
+        "year": 2015
+      },
+      {
+        "mileage": 78843,
+        "priceCents": 944400,
+        "title": "Nissan Micra 1.2 TEKNA Edition AUTOMAAT CRUISECONTROL AIRCO",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2444199731-nissan-micra-1-2-tekna-edition-automaat-cruisecontrol-airco",
+        "year": 2016
+      }
+    ],
+    "priceCents": 695000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Nissan Micra 1.2 Connect Edition AUTOMAAT 83.000KM",
+    "year": 2015
+  },
   "m2445120246": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Citroen C3 automaat (EAT6)",
@@ -3423,5 +3604,65 @@
     "firstSeen": "2026-09-28T20:59:20.174434+00:00",
     "model": "Mazda 2 automaat",
     "title": "2.0 S-VT HB AUT 13 JAAR BEZIT! DAKJE NAVI PDC CLIMATE NAP"
+  },
+  "m2448470575": {
+    "discountPct": 54.6,
+    "firstSeen": "2026-09-30T13:26:25.641849+00:00",
+    "medianCents": 495000.0,
+    "medianMileage": 132665,
+    "mileage": 100625,
+    "mileageDiscountPct": 24.2,
+    "model": "Opel Astra automaat",
+    "peers": [
+      {
+        "mileage": 100625,
+        "priceCents": 224500,
+        "title": "Opel Astra 1.6 Cosmo (automaat probleem) (bj 2010)",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2437008963-opel-astra-1-6-cosmo-automaat-probleem-bj-2010",
+        "year": 2010
+      },
+      {
+        "mileage": 139000,
+        "priceCents": 430000,
+        "title": "Opel Astra 1.6 85KW 5D AUT 2011 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2442567418-opel-astra-1-6-85kw-5d-aut-2011-grijs",
+        "year": 2011
+      },
+      {
+        "mileage": 142611,
+        "priceCents": 465000,
+        "title": "Opel Astra TwinTop 1.8 Automaat | Stoelverw 2010",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2440851625-opel-astra-twintop-1-8-automaat-stoelverw-2010",
+        "year": 2010
+      },
+      {
+        "mileage": 130296,
+        "priceCents": 525000,
+        "title": "Opel Astra 1.6 Edition | Automaat | Cruise Control | 17\u201d L",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2446828443-opel-astra-1-6-edition-automaat-cruise-control-17-l",
+        "year": 2011
+      },
+      {
+        "mileage": 104700,
+        "priceCents": 675000,
+        "title": "Opel Astra 1.6 Edition 5-deurs Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-diversen/schadeauto-s/m2446594827-opel-astra-1-6-edition-5-deurs-automaat",
+        "year": 2011
+      },
+      {
+        "mileage": 135034,
+        "priceCents": 675000,
+        "title": "Opel Astra 1.6 Sportautomaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2443510725-opel-astra-1-6-sportautomaat",
+        "year": 2010
+      }
+    ],
+    "priceCents": 224500,
+    "signals": [
+      "price_discount",
+      "low_mileage"
+    ],
+    "title": "Opel Astra 1.6 Cosmo (automaat probleem) (bj 2010)",
+    "year": 2010
   }
 }

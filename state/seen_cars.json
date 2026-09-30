@@ -3664,5 +3664,57 @@
     ],
     "title": "Opel Astra 1.6 Cosmo (automaat probleem) (bj 2010)",
     "year": 2010
+  },
+  "m2448572622": {
+    "discountPct": 79.3,
+    "firstSeen": "2026-09-30T19:18:53.134402+00:00",
+    "medianCents": 794900,
+    "medianMileage": 60799,
+    "mileage": 66001,
+    "mileageDiscountPct": -8.6,
+    "model": "Nissan Micra automaat/CVT",
+    "peers": [
+      {
+        "mileage": 61610,
+        "priceCents": 245000,
+        "title": "Nissan Micra 1.2 DIG-S Connect Edition / AUTOMAATPROBLEEM /",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2445029037-nissan-micra-1-2-dig-s-connect-edition-automaatprobleem",
+        "year": 2013
+      },
+      {
+        "mileage": 62755,
+        "priceCents": 775000,
+        "title": "Nissan Micra 1.2 VISIA PACK AUTOMAAT|ELEC.PAKKET|BLUE TOOTH|",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2438698411-nissan-micra-1-2-visia-pack-automaat-elec-pakket-blue-tooth",
+        "year": 2014
+      },
+      {
+        "mileage": 60799,
+        "priceCents": 794900,
+        "title": "Nissan Micra 1.2 DIG-S Connect Edition | AUTOMAAT | EERSTE E",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2448347607-nissan-micra-1-2-dig-s-connect-edition-automaat-eerste-e",
+        "year": 2014
+      },
+      {
+        "mileage": 46407,
+        "priceCents": 899500,
+        "title": "Nissan Micra 1.2 DIG-S Acenta|Airco|Automaat|5-drs|Pdc|",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2443662848-nissan-micra-1-2-dig-s-acenta-airco-automaat-5-drs-pdc",
+        "year": 2013
+      },
+      {
+        "mileage": 30936,
+        "priceCents": 975000,
+        "title": "Nissan Micra 1.2 Connect Edition|1eig|deale|automaat|30936km",
+        "url": "https://www.marktplaats.nl/v/auto-s/nissan/m2422446966-nissan-micra-1-2-connect-edition-1eig-deale-automaat-30936km",
+        "year": 2014
+      }
+    ],
+    "priceCents": 164500,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Nissan Micra 1.2 DIG-S Acenta (automaat probleem) (bj 2013)",
+    "year": 2013
   }
 }

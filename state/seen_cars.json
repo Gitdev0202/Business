@@ -3890,5 +3890,229 @@
     ],
     "title": "Nissan Micra 1.2 DIG-S Acenta (automaat probleem) (bj 2013)",
     "year": 2013
+  },
+  "m2448834173": {
+    "discountPct": 50.1,
+    "firstSeen": "2026-10-01T19:23:16.499483+00:00",
+    "medianCents": 599900,
+    "medianMileage": 98756,
+    "mileage": 80601,
+    "mileageDiscountPct": 18.4,
+    "model": "Citroen C3 automaat (EAT6)",
+    "peers": [
+      {
+        "mileage": 89221,
+        "priceCents": 275000,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTI AUT 2012 Rood",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2446615246-citroen-c3-picasso-1-6-vti-aut-2012-rood",
+        "year": 2012
+      },
+      {
+        "mileage": 101731,
+        "priceCents": 499900,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTi Automaat (bj 2012)",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445366657-citroen-c3-picasso-1-6-vti-automaat-bj-2012",
+        "year": 2012
+      },
+      {
+        "mileage": 98756,
+        "priceCents": 579500,
+        "title": "Citroen C3 1.6 VTi Exclusive Automaat | Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2444744134-citroen-c3-1-6-vti-exclusive-automaat-trekhaak",
+        "year": 2010
+      },
+      {
+        "mileage": 114520,
+        "priceCents": 599900,
+        "title": "Citroen C3 1.4 e-HDi Collection EGS/AUTOMAAT/LEDER/PANO/CLIM",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2445909558-citroen-c3-1-4-e-hdi-collection-egs-automaat-leder-pano-clim",
+        "year": 2012
+      },
+      {
+        "mileage": 108000,
+        "priceCents": 649900,
+        "title": "Citroen C3 1.6 VTi Exclusive AUTOMAAT CLIMA CRUISE",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2441167175-citroen-c3-1-6-vti-exclusive-automaat-clima-cruise",
+        "year": 2011
+      },
+      {
+        "mileage": 97424,
+        "priceCents": 690000,
+        "title": "Citroen C3 1.6 VTi Exclusive AUTOMAAT",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2440744196-citroen-c3-1-6-vti-exclusive-automaat",
+        "year": 2011
+      },
+      {
+        "mileage": 77682,
+        "priceCents": 795000,
+        "title": "Citro\u00ebn C3 Picasso 1.6 VTi Exclusive Automaat Trekhaak Clim",
+        "url": "https://www.marktplaats.nl/v/auto-s/citroen/m2439328338-citroen-c3-picasso-1-6-vti-exclusive-automaat-trekhaak-clim",
+        "year": 2012
+      }
+    ],
+    "priceCents": 299500,
+    "signals": [
+      "price_discount",
+      "low_mileage"
+    ],
+    "title": "Citroen C3 Pluriel 1.6i-16V Sensodrive Soleil Trekhaak Autom",
+    "year": 2011
+  },
+  "m2448849342": {
+    "discountPct": 16.5,
+    "firstSeen": "2026-10-01T19:23:16.499483+00:00",
+    "medianCents": 892500.0,
+    "medianMileage": 133048,
+    "mileage": 113381,
+    "mileageDiscountPct": 14.8,
+    "model": "Volkswagen Polo DSG",
+    "peers": [
+      {
+        "mileage": 123000,
+        "priceCents": 650000,
+        "title": "Volkswagen Polo 1.4 16V 63KW DSG 2010 Grijs",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2447075252-volkswagen-polo-1-4-16v-63kw-dsg-2010-grijs",
+        "year": 2010
+      },
+      {
+        "mileage": 134000,
+        "priceCents": 695000,
+        "title": "Volkswagen Polo 1.4 2010, automaat,  D-riem+ V-bak vervangen",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443047906-volkswagen-polo-1-4-2010-automaat-d-riem-v-bak-vervangen",
+        "year": 2010
+      },
+      {
+        "mileage": 145169,
+        "priceCents": 699500,
+        "title": "Volkswagen POLO 1.2 TSI Highline DSG AUTOMAAT-PANO-XENON-CRU",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2438154957-volkswagen-polo-1-2-tsi-highline-dsg-automaat-pano-xenon-cru",
+        "year": 2011
+      },
+      {
+        "mileage": 139354,
+        "priceCents": 700000,
+        "title": "Volkswagen Polo 1.4 Highline DSG | Automaat | CarPlay",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446283063-volkswagen-polo-1-4-highline-dsg-automaat-carplay",
+        "year": 2010
+      },
+      {
+        "mileage": 138010,
+        "priceCents": 745000,
+        "title": "Volkswagen Polo Highline Automaat Uitvoering / 138.Dkm Nap",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443664035-volkswagen-polo-highline-automaat-uitvoering-138-dkm-nap",
+        "year": 2010
+      },
+      {
+        "mileage": 137582,
+        "priceCents": 825000,
+        "title": "Volkswagen Polo 1.2 TSI Cross DSG Automaat Navi | All season",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2440108785-volkswagen-polo-1-2-tsi-cross-dsg-automaat-navi-all-season",
+        "year": 2012
+      },
+      {
+        "mileage": 122334,
+        "priceCents": 875000,
+        "title": "Volkswagen Polo 1.4-16V Cross DSG Navi/Airco/Cruise Control",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445079809-volkswagen-polo-1-4-16v-cross-dsg-navi-airco-cruise-control",
+        "year": 2011
+      },
+      {
+        "mileage": 116511,
+        "priceCents": 875000,
+        "title": "Volkswagen Polo 1.4-16V Dsg CROSS XENON | STOELVERW | NAVI |",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2445492608-volkswagen-polo-1-4-16v-dsg-cross-xenon-stoelverw-navi",
+        "year": 2011
+      },
+      {
+        "mileage": 113380,
+        "priceCents": 885000,
+        "title": "Volkswagen Polo 1.2 TSI 66KW DSG 2012 Beige.",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2421287823-volkswagen-polo-1-2-tsi-66kw-dsg-2012-beige",
+        "year": 2012
+      },
+      {
+        "mileage": 132901,
+        "priceCents": 890000,
+        "title": "Volkswagen Polo 1.2 TSI Cross DSG / NAV /",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2440629565-volkswagen-polo-1-2-tsi-cross-dsg-nav",
+        "year": 2012
+      },
+      {
+        "mileage": 134000,
+        "priceCents": 895000,
+        "title": "Volkswagen Polo GTI 1.4 TSI 200pk DSG 2012 Zwart",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2439753896-volkswagen-polo-gti-1-4-tsi-200pk-dsg-2012-zwart",
+        "year": 2012
+      },
+      {
+        "mileage": 141643,
+        "priceCents": 895000,
+        "title": "Volkswagen Polo 1.4 TSI GTI DSG Pano, Carplay, Stoelverwarmi",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446912178-volkswagen-polo-1-4-tsi-gti-dsg-pano-carplay-stoelverwarmi",
+        "year": 2011
+      },
+      {
+        "mileage": 141438,
+        "priceCents": 895000,
+        "title": "Volkswagen Polo 1.2 TSI Highline 105PK/PANO/DSG/NAVI/PDC/17'",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2443442296-volkswagen-polo-1-2-tsi-highline-105pk-pano-dsg-navi-pdc-17",
+        "year": 2011
+      },
+      {
+        "mileage": 114255,
+        "priceCents": 899500,
+        "title": "Volkswagen Polo 1.2 TSI DSG | ClimateC | CruiseC | 17 velgen",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2440839598-volkswagen-polo-1-2-tsi-dsg-climatec-cruisec-17-velgen",
+        "year": 2011
+      },
+      {
+        "mileage": 133196,
+        "priceCents": 899900,
+        "title": "Volkswagen Polo GTI 1.4 TSI 132KW DSG 2012 Wit",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2427268305-volkswagen-polo-gti-1-4-tsi-132kw-dsg-2012-wit",
+        "year": 2012
+      },
+      {
+        "mileage": 124500,
+        "priceCents": 900000,
+        "title": "Volkswagen Polo Highline 1.2 TSI 77KW DSG 2011 Zwart",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446022962-volkswagen-polo-highline-1-2-tsi-77kw-dsg-2011-zwart",
+        "year": 2011
+      },
+      {
+        "mileage": 130802,
+        "priceCents": 940000,
+        "title": "Volkswagen Polo 1.2 TSI Cross DSG Clima PDC Cruise control L",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2446113435-volkswagen-polo-1-2-tsi-cross-dsg-clima-pdc-cruise-control-l",
+        "year": 2012
+      },
+      {
+        "mileage": 106864,
+        "priceCents": 949500,
+        "title": "Volkswagen Polo 1.4-16V Highline | DSG | CRUISE | CARPLAY |",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2441472771-volkswagen-polo-1-4-16v-highline-dsg-cruise-carplay",
+        "year": 2010
+      },
+      {
+        "mileage": 89293,
+        "priceCents": 994900,
+        "title": "Volkswagen Polo 1.4 TSI GTI|DSG|XENON|CRUISE CONTR|",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2448777356-volkswagen-polo-1-4-tsi-gti-dsg-xenon-cruise-contr",
+        "year": 2010
+      },
+      {
+        "mileage": 143526,
+        "priceCents": 999900,
+        "title": "Volkswagen Polo 1.4 TSI GTI DSG Pano LED Stoelvw. Alcantara",
+        "url": "https://www.marktplaats.nl/v/auto-s/volkswagen/m2447812973-volkswagen-polo-1-4-tsi-gti-dsg-pano-led-stoelvw-alcantara",
+        "year": 2012
+      }
+    ],
+    "priceCents": 745000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Volkswagen Polo 1.4-16V Highline DSG 113DKM! Nette auto!",
+    "year": 2011
   }
 }

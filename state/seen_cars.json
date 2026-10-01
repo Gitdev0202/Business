@@ -356,6 +356,135 @@
     "model": "Opel Astra automaat",
     "title": "Opel Astra GTC 1.6 bj.2007 Autom|Airco|Coupe|Nap."
   },
+  "m2438856007": {
+    "discountPct": 5.3,
+    "firstSeen": "2026-10-01T13:28:14.633285+00:00",
+    "medianCents": 844750.0,
+    "medianMileage": 77630,
+    "mileage": 63709,
+    "mileageDiscountPct": 17.9,
+    "model": "Peugeot 208 automaat (EAT6/EAT8)",
+    "peers": [
+      {
+        "mileage": 48896,
+        "priceCents": 674000,
+        "title": "Peugeot 208 1.2 110 PK - Airco - Vol Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2445140920-peugeot-208-1-2-110-pk-airco-vol-automaat",
+        "year": 2016
+      },
+      {
+        "mileage": 60302,
+        "priceCents": 720000,
+        "title": "Peugeot 208 1.6 VTi 120PK AUT 5D 2014 Zwart",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2441480259-peugeot-208-1-6-vti-120pk-aut-5d-2014-zwart",
+        "year": 2014
+      },
+      {
+        "mileage": 91722,
+        "priceCents": 745000,
+        "title": "Peugeot 208 1.6 VTi Allure Automaat! Clima! PDC! LM velgen!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2444333570-peugeot-208-1-6-vti-allure-automaat-clima-pdc-lm-velgen",
+        "year": 2014
+      },
+      {
+        "mileage": 91239,
+        "priceCents": 745000,
+        "title": "Peugeot 208 1.2 PureTech Active Automaat NAP",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2440348719-peugeot-208-1-2-puretech-active-automaat-nap",
+        "year": 2016
+      },
+      {
+        "mileage": 105721,
+        "priceCents": 799000,
+        "title": "Peugeot 208 RIJKAAR/APK/HISTORY/BEURT/NAP/AIRCO/3drs//DIREKT",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2439931895-peugeot-208-rijkaar-apk-history-beurt-nap-airco-3drs-direkt",
+        "year": 2015
+      },
+      {
+        "mileage": 82132,
+        "priceCents": 799900,
+        "title": "Peugeot 208 1.2 PureTech Active Automaat | 110PK | Trekhaak",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2443025288-peugeot-208-1-2-puretech-active-automaat-110pk-trekhaak",
+        "year": 2016
+      },
+      {
+        "mileage": 89837,
+        "priceCents": 840000,
+        "title": "Peugeot 208 1.2 AUTOMAAT CLIMA NAVI CRUISE CARPLAY",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2438407525-peugeot-208-1-2-automaat-clima-navi-cruise-carplay",
+        "year": 2016
+      },
+      {
+        "mileage": 68245,
+        "priceCents": 844500,
+        "title": "Peugeot 208 1.2 e-VTi Executive Automaat | Dealer oh, trekha",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2445495628-peugeot-208-1-2-e-vti-executive-automaat-dealer-oh-trekha",
+        "year": 2014
+      },
+      {
+        "mileage": 73129,
+        "priceCents": 845000,
+        "title": "Peugeot 208 1.2 PureTech Premi\u00e8re Automaat",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2437747834-peugeot-208-1-2-puretech-premiere-automaat",
+        "year": 2015
+      },
+      {
+        "mileage": 68480,
+        "priceCents": 849500,
+        "title": "Peugeot 208 1.2 PureTech Active GARANTIE ! AIRCO ! NAVIGATIE",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2440834275-peugeot-208-1-2-puretech-active-garantie-airco-navigatie",
+        "year": 2016
+      },
+      {
+        "mileage": 89002,
+        "priceCents": 879500,
+        "title": "PEUGEOT 208 1.2 Puretech 110pk 5D EAT6 Automaat Allure (1ste",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2439077206-peugeot-208-1-2-puretech-110pk-5d-eat6-automaat-allure-1ste",
+        "year": 2016
+      },
+      {
+        "mileage": 43470,
+        "priceCents": 895000,
+        "title": "Peugeot 208 1.2 e-VTi Envy Semi Automaat, Parkeersensoren Ac",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2442283902-peugeot-208-1-2-e-vti-envy-semi-automaat-parkeersensoren-ac",
+        "year": 2014
+      },
+      {
+        "mileage": 93498,
+        "priceCents": 950000,
+        "title": "Peugeot 208 1.2 PureTech Allure 2015 AUT NAVI CLIMA LM NAP!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2446531782-peugeot-208-1-2-puretech-allure-2015-aut-navi-clima-lm-nap",
+        "year": 2015
+      },
+      {
+        "mileage": 96170,
+        "priceCents": 974000,
+        "title": "Peugeot 208 1.2 PureTech Allure!Automaat!Navi!PDC!Clima!",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2442614997-peugeot-208-1-2-puretech-allure-automaat-navi-pdc-clima",
+        "year": 2015
+      },
+      {
+        "mileage": 33598,
+        "priceCents": 992500,
+        "title": "Peugeot 208 1.2 PureTech Allure 110pk Automaat - Noir Perla",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2447696177-peugeot-208-1-2-puretech-allure-110pk-automaat-noir-perla",
+        "year": 2016
+      },
+      {
+        "mileage": 52646,
+        "priceCents": 999500,
+        "title": "Peugeot 208 1.2 PureTech GT-line Automaat|Clima|Navi|PDC|Car",
+        "url": "https://www.marktplaats.nl/v/auto-s/peugeot/m2441115792-peugeot-208-1-2-puretech-gt-line-automaat-clima-navi-pdc-car",
+        "year": 2016
+      }
+    ],
+    "priceCents": 799900,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Peugeot 208 1.2 PureTech Active",
+    "year": 2015
+  },
   "m2438944365": {
     "discountPct": -4.1,
     "firstSeen": "2026-09-29T09:36:29.964151+00:00",
@@ -1212,6 +1341,51 @@
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "Opel Astra automaat",
     "title": "Opel Astra GTC 1.4 Turbo 140pk Sport Automaat Nieuwe APK"
+  },
+  "m2440652950": {
+    "discountPct": 11.7,
+    "firstSeen": "2026-10-01T13:28:14.633285+00:00",
+    "medianCents": 832500.0,
+    "medianMileage": 113182,
+    "mileage": 121659,
+    "mileageDiscountPct": -7.5,
+    "model": "Kia Picanto automaat",
+    "peers": [
+      {
+        "mileage": 131666,
+        "priceCents": 775000,
+        "title": "Kia Picanto 1.2 CVVT Comfort Pack automaat/airco/top conditi",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2448699170-kia-picanto-1-2-cvvt-comfort-pack-automaat-airco-top-conditi",
+        "year": 2012
+      },
+      {
+        "mileage": 140810,
+        "priceCents": 790000,
+        "title": "Kia Picanto 1.2 CVVT Super Pack / Clima / AUT / NAP / 5DRS /",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2445170566-kia-picanto-1-2-cvvt-super-pack-clima-aut-nap-5drs",
+        "year": 2013
+      },
+      {
+        "mileage": 94699,
+        "priceCents": 875000,
+        "title": "Kia Picanto 1.2 CVVT Comfort Automaat | Airco | Rijklaar",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2443314272-kia-picanto-1-2-cvvt-comfort-automaat-airco-rijklaar",
+        "year": 2012
+      },
+      {
+        "mileage": 73239,
+        "priceCents": 895000,
+        "title": "Kia Picanto 1.2 CVVT Comfort Pack | Automaat | Airco",
+        "url": "https://www.marktplaats.nl/v/auto-s/kia/m2443542193-kia-picanto-1-2-cvvt-comfort-pack-automaat-airco",
+        "year": 2012
+      }
+    ],
+    "priceCents": 735000,
+    "signals": [
+      "price_discount"
+    ],
+    "title": "Kia Picanto 1.2 CVVT Comfort Pack Afneembare Trekhaak",
+    "year": 2012
   },
   "m2440774824": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",

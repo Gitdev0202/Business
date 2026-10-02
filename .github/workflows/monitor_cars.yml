@@ -1,12 +1,17 @@
 name: Auto-inkoop Monitor
 
 on:
-  # 1x per 6 uur (bewust niet op het hele of halve uur, zie CLAUDE-conventie
-  # elders in dit account). Dit is een bewust LANGE, grondige run (tot 20
-  # pagina's per model per bron, met beleefde pauzes) -- vandaar de lage
-  # frequentie i.p.v. de 5-minuten-cadans van de andere monitors.
-  schedule:
-    - cron: "17 */6 * * *"
+  # GEPAUZEERD (2-10-2026): cron-trigger tijdelijk uitgezet op verzoek --
+  # workflow_dispatch blijft actief, dus handmatig draaien kan nog steeds.
+  # Om te hervatten: haal het "#" weer weg bij "schedule:"/"- cron: ...".
+  #
+  # Normaal 1x per 6 uur (bewust niet op het hele of halve uur, zie
+  # CLAUDE-conventie elders in dit account). Dit is een bewust LANGE,
+  # grondige run (tot 20 pagina's per model per bron, met beleefde pauzes)
+  # -- vandaar de lage frequentie i.p.v. de 5-minuten-cadans van de andere
+  # monitors.
+  # schedule:
+  #   - cron: "17 */6 * * *"
   workflow_dispatch: {}
 
 permissions:

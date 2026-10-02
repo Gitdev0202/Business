@@ -3351,6 +3351,51 @@
     "title": "Peugeot 107 1.0 12V 5DR 2-TRONIC 2011 Rood",
     "year": 2011
   },
+  "m2446318363": {
+    "discountPct": 1.5,
+    "firstSeen": "2026-10-02T19:25:53.575425+00:00",
+    "medianCents": 547500.0,
+    "medianMileage": 69246,
+    "mileage": 46603,
+    "mileageDiscountPct": 32.7,
+    "model": "Opel Corsa automaat",
+    "peers": [
+      {
+        "mileage": 73290,
+        "priceCents": 394400,
+        "title": "Opel Corsa 1.2-16V Enjoy 1e eigen. ! (bj 2008, automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2449240601-opel-corsa-1-2-16v-enjoy-1e-eigen-bj-2008-automaat",
+        "year": 2008
+      },
+      {
+        "mileage": 76900,
+        "priceCents": 500000,
+        "title": "Opel Corsa 1.2 16V 3D Easytronic 2010 Airco Automaat APK!",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2441490840-opel-corsa-1-2-16v-3d-easytronic-2010-airco-automaat-apk",
+        "year": 2010
+      },
+      {
+        "mileage": 65202,
+        "priceCents": 595000,
+        "title": "Opel Corsa 1.4-16V Cosmo AUTOMAAT // Climate control, stuur/",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2445385421-opel-corsa-1-4-16v-cosmo-automaat-climate-control-stuur",
+        "year": 2009
+      },
+      {
+        "mileage": 56047,
+        "priceCents": 720000,
+        "title": "Opel Corsa 1.2-16V 111 Edition (bj 2010, semi-automaat)",
+        "url": "https://www.marktplaats.nl/v/auto-s/opel/m2440359207-opel-corsa-1-2-16v-111-edition-bj-2010-semi-automaat",
+        "year": 2010
+      }
+    ],
+    "priceCents": 539500,
+    "signals": [
+      "low_mileage"
+    ],
+    "title": "Opel Corsa 1.2-16V Edition|Automaat|Cruise|Airco|46DKM|NAP",
+    "year": 2009
+  },
   "m2446332433": {
     "firstSeen": "2026-09-28T21:34:17.802485+00:00",
     "model": "smart fortwo automaat",

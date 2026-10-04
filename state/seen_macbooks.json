@@ -1,24 +1,4 @@
 {
-  "m2424127305": {
-    "firstSeen": "2026-09-13T09:03:49.731166+00:00",
-    "title": "MacBook Pro 2018"
-  },
-  "m2442107243": {
-    "firstSeen": "2026-09-13T08:37:26.111269+00:00",
-    "title": "MacBook Air M2 2022 - Zo goed als nieuw"
-  },
-  "m2442229374": {
-    "firstSeen": "2026-09-13T12:14:55.344285+00:00",
-    "title": "MacBook Air M3 2024 - 13.6 inch, 16GB RAM, 256GB SSD"
-  },
-  "m2442232601": {
-    "firstSeen": "2026-09-13T12:14:55.344285+00:00",
-    "title": "MacBook Air M2 (2022) - 16GB RAM, 1TB SSD, 13.6 inch"
-  },
-  "m2442318742": {
-    "firstSeen": "2026-09-13T14:48:13.907793+00:00",
-    "title": "Macbook air M2 2022"
-  },
   "m2442650586": {
     "firstSeen": "2026-09-14T16:24:44.756274+00:00",
     "title": "MacBook Air M4 10-core CPU/GPU, 16GB RAM, 256GB SSD"
@@ -238,5 +218,9 @@
   "m2449591969": {
     "firstSeen": "2026-10-03T18:38:58.730199+00:00",
     "title": "MacBook Air M1 2020 - 8GB RAM, 13 inch scherm"
+  },
+  "m2449986388": {
+    "firstSeen": "2026-10-04T15:04:30.329259+00:00",
+    "title": "MacBook Air 2020 (a2197)"
   }
 }

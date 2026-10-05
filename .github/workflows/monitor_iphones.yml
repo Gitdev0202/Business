@@ -1,15 +1,12 @@
 name: iPhone Marktplaats Monitor
 
 on:
-  # GEPAUZEERD (5-10-2026): GitHub Actions' eigen runner-wachtrij liep vast
-  # (jobs kregen geen runner toegewezen en werden na 15 min automatisch
-  # geannuleerd door GitHub zelf, niet door dit script) -- dit gaf continu
-  # mislukte-run-meldingen. Cron tijdelijk uit, workflow_dispatch blijft
-  # staan. Wordt automatisch weer aangezet zodra GitHub's runners hersteld
-  # zijn bevestigd (zie sessie-notitie); handmatig hervatten kan ook door
-  # het "#" bij "schedule:"/"- cron: ..." weg te halen.
-  # schedule:
-  #   - cron: "*/5 * * * *"
+  # Hervat (5-10-2026, ~22:49 UTC): GitHub Actions' runner-wachtrij was
+  # ~3,5 uur vastgelopen (19:00-22:48 UTC) -- jobs kregen geen runner en
+  # werden na 15 min door GitHub zelf geannuleerd. Bevestigd hersteld met
+  # een testrun die direct een runner kreeg en in 14s succesvol doorliep.
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 permissions:

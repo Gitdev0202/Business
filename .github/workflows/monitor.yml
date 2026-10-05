@@ -1,8 +1,15 @@
 name: PS5 Marktplaats Monitor
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  # GEPAUZEERD (5-10-2026): GitHub Actions' eigen runner-wachtrij liep vast
+  # (jobs kregen geen runner toegewezen en werden na 15 min automatisch
+  # geannuleerd door GitHub zelf, niet door dit script) -- dit gaf continu
+  # mislukte-run-meldingen. Cron tijdelijk uit, workflow_dispatch blijft
+  # staan. Wordt automatisch weer aangezet zodra GitHub's runners hersteld
+  # zijn bevestigd (zie sessie-notitie); handmatig hervatten kan ook door
+  # het "#" bij "schedule:"/"- cron: ..." weg te halen.
+  # schedule:
+  #   - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 permissions:

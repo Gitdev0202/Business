@@ -1,9 +1,4 @@
 {
-  "m2443190252": {
-    "firstSeen": "2026-09-16T08:19:17.948642+00:00",
-    "model": "iPhone 15 Pro Max",
-    "title": "iPhone 15 Pro Max 256gb Zwart"
-  },
   "m2443206151": {
     "firstSeen": "2026-09-16T09:15:28.077648+00:00",
     "model": "iPhone 16",
@@ -1278,5 +1273,10 @@
     "firstSeen": "2026-10-07T07:53:53.601613+00:00",
     "model": "iPhone 15 Pro",
     "title": "iPhone 15 Pro 128GB Zwart - Zo goed als nieuw"
+  },
+  "m2450933488": {
+    "firstSeen": "2026-10-07T08:26:46.310328+00:00",
+    "model": "iPhone 16 Pro Max",
+    "title": "iPhone 16 Pro Max 512GB \u2013 Desert Titanium"
   }
 }

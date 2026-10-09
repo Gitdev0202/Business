@@ -1,9 +1,4 @@
 {
-  "m2443879051": {
-    "firstSeen": "2026-09-18T08:19:27.704723+00:00",
-    "model": "iPhone 16 Pro Max",
-    "title": "iPhone 16 Pro Max - Goud 256GB"
-  },
   "m2443897407": {
     "firstSeen": "2026-09-18T09:12:01.018131+00:00",
     "model": "iPhone 15 Pro",
@@ -1234,6 +1229,11 @@
     "model": "iPhone 15 Plus",
     "title": "iPhone 15 plus 97% (inruil mogelijk)"
   },
+  "m2451313290": {
+    "firstSeen": "2026-10-09T08:34:59.121685+00:00",
+    "model": "iPhone 16",
+    "title": "Apple Iphone 16 | Nette staat | Batterij 90% | DS Telecom"
+  },
   "m2451359430": {
     "firstSeen": "2026-10-08T11:19:55.581949+00:00",
     "model": "iPhone 16",
@@ -1283,5 +1283,15 @@
     "firstSeen": "2026-10-09T07:42:41.905277+00:00",
     "model": "iPhone 16",
     "title": "Apple Iphone 16 | Nette staat | Batterij 90% | DS Telecom"
+  },
+  "m2451648062": {
+    "firstSeen": "2026-10-09T08:34:59.121685+00:00",
+    "model": "iPhone 15 Pro",
+    "title": "iPhone 15 Pro Zwart Titanium 256GB - Zo goed als nieuw"
+  },
+  "m2451648977": {
+    "firstSeen": "2026-10-09T08:34:59.121685+00:00",
+    "model": "iPhone 15 Plus",
+    "title": "iPhone 15 plus 97% (inruil mogelijk)"
   }
 }

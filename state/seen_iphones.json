@@ -1,14 +1,4 @@
 {
-  "m2443846522": {
-    "firstSeen": "2026-09-18T06:27:55.752797+00:00",
-    "model": "iPhone 15 Pro Max",
-    "title": "Apple iPhone 15 Pro Max 256GB (inruil mogelijk)"
-  },
-  "m2443850420": {
-    "firstSeen": "2026-09-18T06:45:25.536672+00:00",
-    "model": "iPhone 16",
-    "title": "Apple iPhone 16 Zwart - Nieuw in doos"
-  },
   "m2443879051": {
     "firstSeen": "2026-09-18T08:19:27.704723+00:00",
     "model": "iPhone 16 Pro Max",
@@ -1283,5 +1273,10 @@
     "firstSeen": "2026-10-08T20:04:28.143114+00:00",
     "model": "iPhone 16",
     "title": "iPhone 16 128GB Zwart"
+  },
+  "m2451614713": {
+    "firstSeen": "2026-10-09T06:47:40.820060+00:00",
+    "model": "iPhone 16 Pro Max",
+    "title": "Iphone 16 Pro max - 256GB"
   }
 }

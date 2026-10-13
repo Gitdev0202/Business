@@ -1,19 +1,23 @@
-name: iPhone Marktplaats Monitor
+name: Nintendo Switch 2 Marktplaats Monitor
 
 on:
-  # Gespreid (13-10-2026): minuut-offset 1 (:01/:06/:11/...) i.p.v. 0, zodat
+  # Hernoemd van monitor_switch2.yml naar monitor_switch2_v2.yml (13-10-2026):
+  # zie monitor_v2.yml voor de volledige uitleg (verse workflow-ID-registratie
+  # omdat GitHub's schedule-trigger was vastgelopen; disable/enable hielp niet).
+  #
+  # Gespreid (13-10-2026): minuut-offset 3 (:03/:08/:13/...) i.p.v. 0, zodat
   # deze monitor niet meer gelijktijdig met de andere 4 een runner opeist --
   # zie monitor.yml voor de volledige uitleg (GitHub's "some queued jobs
   # may be dropped" bij hoge belasting op het schedule-event).
   schedule:
-    - cron: "1-59/5 * * * *"
+    - cron: "3-59/5 * * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 concurrency:
-  group: iphone-monitor
+  group: switch2-monitor
   cancel-in-progress: false
 
 jobs:
@@ -31,17 +35,18 @@ jobs:
       - name: Run monitor
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          MIN_PRICE_EUR: "300"
           POSTCODE: ${{ secrets.POSTCODE }}
           DISTANCE_KM: "28"
-        run: python scripts/monitor_iphones.py
+        run: python scripts/monitor_switch2.py
 
       - name: Commit bijgewerkte state
         run: |
-          git config user.name "iphone-monitor-bot"
+          git config user.name "switch2-monitor-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state/seen_iphones.json
-          git diff --cached --quiet || git commit -m "Update seen listings (iPhones)"
-                   for i in 1 2 3 4 5; do
+          git add state/seen_switch2.json
+          git diff --cached --quiet || git commit -m "Update seen listings (Switch 2)"
+          for i in 1 2 3 4 5; do
             git push && break
             echo "Push mislukt (poging $i), opnieuw proberen na rebase..."
             git fetch origin main

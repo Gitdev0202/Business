@@ -1,6 +1,14 @@
 name: PS5 Marktplaats Monitor
 
 on:
+  # Hernoemd van monitor.yml naar monitor_v2.yml (13-10-2026): GitHub's
+  # schedule-trigger voor deze 5 workflows registreerde zichzelf niet
+  # meer betrouwbaar (vanaf 9-10, vermoedelijk nasleep van het brede
+  # GitHub-incident van 7-10) -- disable/enable via de API hielp niet.
+  # Een workflow-ID is gekoppeld aan het bestandspad, dus een nieuwe
+  # bestandsnaam dwingt een verse registratie af, zonder secrets/state/
+  # geschiedenis kwijt te raken.
+  #
   # Gespreid (13-10-2026): alle 5 monitors in dit account stonden op
   # exact dezelfde "*/5 * * * *" en botsten daardoor elke 5 minuten
   # gelijktijdig -- GitHub's eigen documentatie over het schedule-event

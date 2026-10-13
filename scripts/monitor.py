@@ -1,16 +1,29 @@
 """
 PS5 Marktplaats monitor.
 
-Haalt nieuwe advertenties op uit de Marktplaats-categorie
-"Spelcomputers | Sony PlayStation 5" (id 2954) EN de Games-categorie
-(id 2952, waar verkopers hun console geregeld per ongeluk in plaatsen),
-filtert op vandaag geplaatst + minimumprijs, weert losse spellen en
-accessoires (controllers, playseats, racestuur e.d.), en stuurt alleen
-nog-niet-eerder-geziene advertenties naar Discord via een webhook.
-Gereserveerde advertenties worden WEL getoond (de reservering kan nog
-afvallen), maar met een duidelijk "Gereserveerd"-label erbij.
+Haalt advertenties op uit de Marktplaats-categorie "Spelcomputers | Sony
+PlayStation 5" (id 2954) EN de Games-categorie (id 2952, waar verkopers hun
+console geregeld per ongeluk in plaatsen), filtert op minimumprijs, weert
+losse spellen en accessoires (controllers, playseats, racestuur e.d.), en
+stuurt alleen nog-niet-eerder-geziene advertenties naar Discord via een
+webhook. Gereserveerde advertenties worden WEL getoond (de reservering kan
+nog afvallen), maar met een duidelijk "Gereserveerd"-label erbij.
 Gezien-ids worden bijgehouden in state/seen_ps5.json zodat elke run alleen de
 incrementele (nieuwe) advertenties meldt.
+
+Filtert BEWUST NIET meer op "vandaag geplaatst": de cron staat op elke 5
+minuten, maar GitHub Actions' eigen schedule-trigger blijkt in de praktijk
+de meeste van die geplande runs stil te houden (gemeten: runs komen soms
+pas na 3-10 uur in plaats van na 5 minuten, en dit geldt evengoed voor de
+andere monitors in dit account -- dus geen bug in dit script, maar iets wat
+GitHub zelf doet). Bij zulke onregelmatige, schaarse runs valt een
+advertentie die 's avonds of 's nachts geplaatst is al snel van "Vandaag"
+naar "Gisteren" voordat de eerstvolgende run draait, en werd dan nooit
+gemeld. Omdat dubbele meldingen toch al voorkomen worden via
+state/seen_ps5.json (dedup op advertentie-id), beschermt het datumfilter
+niet tegen iets dat de dedup niet al afdekt -- het beperkte alleen
+onnodig welke advertenties een kans kregen. Elke run bekijkt nu het hele
+actuele aanbod in de twee categorieën, ongeacht wanneer het geplaatst is.
 """
 
 import json
@@ -36,7 +49,7 @@ L2_CATEGORY_IDS = [L2_CONSOLE_CATEGORY_ID, 2952]
 
 SEARCH_URL = "https://www.marktplaats.nl/lrp/api/search"
 PAGE_SIZE = 100
-MAX_PAGES_PER_CATEGORY = 5  # ruim genoeg voor een dag vol advertenties
+MAX_PAGES_PER_CATEGORY = 10  # heel het actuele aanbod, niet meer beperkt tot "vandaag"
 
 MIN_PRICE_EUR = float(os.environ.get("MIN_PRICE_EUR", "250"))
 MIN_PRICE_CENTS = int(MIN_PRICE_EUR * 100)
@@ -108,10 +121,6 @@ def fetch_all_listings() -> list:
 
 
 # --- Filtering ---------------------------------------------------------
-
-def is_posted_today(listing: dict) -> bool:
-    return listing.get("date") == "Vandaag"
-
 
 def _levenshtein(a: str, b: str) -> int:
     """Edit-afstand tussen twee strings (aantal invoegingen/verwijderingen/
@@ -295,7 +304,6 @@ def is_reserved(listing: dict) -> bool:
 def is_relevant(listing: dict) -> bool:
     return (
         is_relevant_by_category(listing)
-        and is_posted_today(listing)
         and matches_title(listing)
         and passes_price_filter(listing)
     )

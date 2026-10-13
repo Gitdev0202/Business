@@ -1,10 +1,16 @@
 name: PS5 Marktplaats Monitor
 
 on:
-  # Hervat (5-10-2026, ~22:49 UTC): GitHub Actions' runner-wachtrij was
-  # ~3,5 uur vastgelopen (19:00-22:48 UTC) -- jobs kregen geen runner en
-  # werden na 15 min door GitHub zelf geannuleerd. Bevestigd hersteld met
-  # een testrun die direct een runner kreeg en in 14s succesvol doorliep.
+  # Gespreid (13-10-2026): alle 5 monitors in dit account stonden op
+  # exact dezelfde "*/5 * * * *" en botsten daardoor elke 5 minuten
+  # gelijktijdig -- GitHub's eigen documentatie over het schedule-event
+  # zegt expliciet dat bij hoge belasting "some queued jobs may be
+  # dropped", en raadt aan "to schedule your workflow to run at a
+  # different time of the hour". Gemeten: hierdoor sloeg GitHub soms
+  # 7+ uur aan geplande runs gewoon over (geen foutmelding, de run
+  # verscheen simpelweg nooit). Deze monitor behoudt minuut-offset 0
+  # (:00/:05/:10/...), de andere 4 monitors zijn verschoven naar
+  # offset 1/2/3/4 zodat nooit twee tegelijk een runner opeisen.
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch: {}

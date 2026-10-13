@@ -1,6 +1,10 @@
 name: Horloge Koopjes Monitor
 
 on:
+  # Hernoemd van monitor_watches.yml naar monitor_watches_v2.yml (13-10-2026):
+  # zie monitor_v2.yml voor de volledige uitleg (verse workflow-ID-registratie
+  # omdat GitHub's schedule-trigger was vastgelopen; disable/enable hielp niet).
+  #
   # Gespreid (13-10-2026): minuut-offset 4 (:04/:09/:14/...) i.p.v. 0, zodat
   # deze monitor niet meer gelijktijdig met de andere 4 een runner opeist --
   # zie monitor.yml voor de volledige uitleg (GitHub's "some queued jobs

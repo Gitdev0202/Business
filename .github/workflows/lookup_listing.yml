@@ -1,0 +1,26 @@
+name: Opzoeken advertentie (eenmalig, handmatig)
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Marktplaats-link (share-link of gewone advertentie-URL)"
+        required: true
+        type: string
+
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Advertentie opzoeken
+        env:
+          LISTING_URL: ${{ github.event.inputs.url }}
+        run: python scripts/lookup_listing.py
